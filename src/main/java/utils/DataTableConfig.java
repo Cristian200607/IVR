@@ -1,21 +1,19 @@
 package utils;
 
 import io.cucumber.java.DataTableType;
-import models.User;
-
 import java.util.Map;
+import models.User;
 
 public class DataTableConfig {
 
-    @DataTableType
-    public User userEntry(Map<String, String> entry) {
-        User user = new User();
+  @DataTableType
+  public User userEntry(Map<String, String> entry) {
+    User user = new User();
 
-        user.setNumero(entry.getOrDefault("numero", ""));
-        user.setSaludo(entry.getOrDefault("saludo", ""));
-        user.setValor(entry.getOrDefault("valor", ""));
+    user.setNumero(entry.getOrDefault("numero", ""));
+    user.setSaludo(entry.getOrDefault("saludo", ""));
+    user.setValor(entry.getOrDefault("valor", ""));
 
-
-        return user;
-    }
+    return user;
+  }
 }
