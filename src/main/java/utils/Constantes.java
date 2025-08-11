@@ -1,6 +1,3 @@
 package utils;
 
-public class Constantes {
-
-
-}
+public class Constantes {}
