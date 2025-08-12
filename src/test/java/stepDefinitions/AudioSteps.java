@@ -2,19 +2,20 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import java.io.File;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import tasks.LimpiarYRespaldarAudio;
-import tasks.TraerAudioDesdeCelular;
-import utils.AudioConverter;
-import utils.SpeechToTextExample;
+import ManejoDeAudios.EliminarAudioEnCelular;
+import ManejoDeAudios.LimpiarYRespaldarAudio;
+import ManejoDeAudios.TraerAudioDesdeCelular;
+import ManejoDeAudios.AudioConverter;
+import ManejoDeAudios.SpeechToTextIVR;
 
 public class AudioSteps {
 
     private String inputAudioPath;
     private String convertedAudioPath;
-    private String transcription;
+    public String transcription;
 
 
     @Given("El archivo de audio se trae automáticamente desde el celular")
@@ -72,10 +73,10 @@ public class AudioSteps {
         // Por ejemplo, tomar el primero (o el último modificado)
         File archivoParaReconocer = archivos[0];
 
-        transcription = SpeechToTextExample.recognize(archivoParaReconocer.getAbsolutePath());
+        transcription = SpeechToTextIVR.recognize(archivoParaReconocer.getAbsolutePath());
     }
 
-    @Then("Visualizacion de la trancripcion")
+    @And("Visualizacion de la trancripcion")
     public void entoncesVisualizarTranscripcion() {
         assertNotNull(transcription, "La transcripción no debe ser nula");
         System.out.println("=== Transcripción del audio ===");
@@ -85,6 +86,20 @@ public class AudioSteps {
         LimpiarYRespaldarAudio.ejecutar(
                 "Llamadas/Call", convertedAudioPath, "Llamadas/BackupsAudio"
         );
+    }
+
+    @Then("Validar la transcripción con el texto esperado")
+    public void validarTranscripcion() {
+        String textoEsperado = "ingresa Whatsapp y ahorra tiempo podrás consultar tu plan pagar tu factura y mucho más quieres hacerlo marca uno si quieres comprar alguno de nuestros servicios claro marca dos para continuar con nuestro menú principal marca tres";
+
+        assertTrue(transcription != null && transcription.contains(textoEsperado),
+                "La transcripción no contiene el texto esperado.\nEsperado: " + textoEsperado + "\nTranscripción: " + transcription);
+
+        // Luego de validar, eliminar el archivo en el celular
+        String rutaArchivoCelular = "/sdcard/Recordings/Call/";
+
+        EliminarAudioEnCelular.ejecutar("/sdcard/Recordings/Call/");
+
     }
 
 

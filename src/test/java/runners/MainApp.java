@@ -1,7 +1,7 @@
 package runners;
 
-import utils.AudioConverter;
-import utils.SpeechToTextExample;
+import ManejoDeAudios.AudioConverter;
+import ManejoDeAudios.SpeechToTextIVR;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class MainApp {
             System.out.println("Conversión completada.");
 
             System.out.println("Reconociendo audio...");
-            SpeechToTextExample.recognize(wavPath);
+            SpeechToTextIVR.recognize(wavPath);
 
         } catch (Exception e) {
             e.printStackTrace();
