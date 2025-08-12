@@ -12,7 +12,7 @@ import utils.DataToFeature;
     features = "src/test/resources/features",
     glue = {"stepDefinitions", "utils", "hooks"},
     snippets = SnippetType.CAMELCASE,
-    tags = "@Audio_01")
+    tags = "@IVR_01")
 @RunWith(CustomRunner.class)
 public class GeneralRunner {
   @BeforeSuite

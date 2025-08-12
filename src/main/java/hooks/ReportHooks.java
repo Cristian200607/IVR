@@ -11,8 +11,9 @@ import utils.WordAppium;
 
 public class ReportHooks {
 
-  private static List<String> pasosEjecutados = new ArrayList<>();
+  private static final List<String> pasosEjecutados = new ArrayList<>();
   private static String lineaUsada = "Sin datos";
+  private static String ultimoPaso = "";
 
   public static void registrarPaso(String paso) {
     pasosEjecutados.add(paso);
@@ -23,46 +24,45 @@ public class ReportHooks {
     lineaUsada = linea;
   }
 
+  @Before
+  public void beforeEachScenario() {
+    EstadoPrueba.inicio = System.currentTimeMillis();
+    pasosEjecutados.clear();
+    EstadoPrueba.fallo = false;
+    EstadoPrueba.pasoFallido = "";
+  }
+
   @AfterStep
   public void afterEachStep(Scenario scenario) {
     if (scenario.isFailed()) {
       EstadoPrueba.fallo = true;
-      if (!pasosEjecutados.isEmpty()) {
-        EstadoPrueba.pasoFallido = pasosEjecutados.get(pasosEjecutados.size() - 1);
-      } else {
-        EstadoPrueba.pasoFallido = "No identificado";
-      }
+      EstadoPrueba.pasoFallido = !pasosEjecutados.isEmpty() ? ultimoPaso : "Paso no identificado";
     }
   }
 
   @After
-  public void generarReporte(Scenario scenario) {
+  public void generarReporteFinal(Scenario scenario) {
     EstadoPrueba.fin = System.currentTimeMillis();
-    long duracionTotalSegundos = (EstadoPrueba.fin - EstadoPrueba.inicio) / 1000;
-    long minutos = duracionTotalSegundos / 60;
-    long segundos = duracionTotalSegundos % 60;
+
+    long duracionTotal = (EstadoPrueba.fin - EstadoPrueba.inicio) / 1000;
+    long minutos = duracionTotal / 60;
+    long segundos = duracionTotal % 60;
     String duracionFormato = minutos + " min " + segundos + " seg";
 
     String estadoFinal = EstadoPrueba.fallo ? "FAILED" : "PASSED";
     String pasoFallido = EstadoPrueba.fallo ? EstadoPrueba.pasoFallido : null;
 
     WordAppium.generarReporte(
-        scenario.getName(),
-        pasosEjecutados.toArray(new String[0]),
-        lineaUsada,
-        duracionFormato,
-        pasoFallido,
-        estadoFinal);
+            scenario.getName(),
+            pasosEjecutados.toArray(new String[0]),
+            lineaUsada,
+            duracionFormato,
+            pasoFallido,
+            estadoFinal);
 
+    // Limpiar estado para el siguiente escenario
     pasosEjecutados.clear();
     EstadoPrueba.fallo = false;
     EstadoPrueba.pasoFallido = "";
   }
-
-  @Before
-  public void beforeEachScenario() {
-    EstadoPrueba.inicio = System.currentTimeMillis(); // Marca el inicio de la ejecución real
-  }
-
-  private static String ultimoPaso = "";
 }

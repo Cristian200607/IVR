@@ -1,4 +1,6 @@
-package tasks;
+package ManejoDeAudios;
+
+import interactions.comunes.WaitFor;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +8,7 @@ import java.io.IOException;
 public class TraerAudioDesdeCelular {
 
     public static void desde(String rutaCelular, String rutaLocal) {
+        WaitFor.aTime(4000);
         try {
             // Asegurar que la carpeta local exista
             File carpetaDestino = new File(rutaLocal);

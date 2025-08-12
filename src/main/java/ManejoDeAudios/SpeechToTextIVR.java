@@ -1,4 +1,4 @@
-package utils;
+package ManejoDeAudios;
 
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class SpeechToTextExample {
+public class SpeechToTextIVR {
 
   /**
    * Reconoce el texto contenido en un archivo de audio WAV mono 16kHz usando Google Cloud Speech-to-Text.
