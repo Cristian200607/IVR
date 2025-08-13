@@ -15,7 +15,7 @@ public class AudioSteps {
 
     private String inputAudioPath;
     private String convertedAudioPath;
-    public String transcription;
+    public static String transcription;
 
 
     @Given("El archivo de audio se trae automáticamente desde el celular")
@@ -88,19 +88,7 @@ public class AudioSteps {
         );
     }
 
-    @Then("Validar la transcripción con el texto esperado")
-    public void validarTranscripcion() {
-        String textoEsperado = "ingresa Whatsapp y ahorra tiempo podrás consultar tu plan pagar tu factura y mucho más quieres hacerlo marca uno si quieres comprar alguno de nuestros servicios claro marca dos para continuar con nuestro menú principal marca tres";
 
-        assertTrue(transcription != null && transcription.contains(textoEsperado),
-                "La transcripción no contiene el texto esperado.\nEsperado: " + textoEsperado + "\nTranscripción: " + transcription);
-
-        // Luego de validar, eliminar el archivo en el celular
-        String rutaArchivoCelular = "/sdcard/Recordings/Call/";
-
-        EliminarAudioEnCelular.ejecutar("/sdcard/Recordings/Call/");
-
-    }
 
 
 }
