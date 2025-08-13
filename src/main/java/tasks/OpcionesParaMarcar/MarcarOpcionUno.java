@@ -1,35 +1,33 @@
-package tasks;
+package tasks.OpcionesParaMarcar;
 
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
-import io.appium.java_client.AppiumBy;
+import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
-import org.openqa.selenium.By;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
+import static userinterfaces.IVRPage.BTN_COLGAR;
+import static userinterfaces.IVRPage.BTN_GRABAR;
+import static utils.Constantes.*;
 
-public class MarcarOpcionDos implements Task {
-
+public class MarcarOpcionUno implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitFor.aTime(15000),
-                Click.on(TECLADO_EN_LLAMADA),
-                Click.on(BOTON_2_EN_LLAMADA),
-                Click.on(COLAPSAR_EN_LLAMADA),
-                WaitFor.aTime(4000),
+                WaitFor.aTime(1000),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(19000),
-                Click.on(BTN_COLGAR)
+                WaitFor.aTime(18000),
+                Click.on(TECLADO_TELEFONO_EN_GRABACION),
+                Click.on(BOTON_1_EN_GRABACION),
+                WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
     }
 
     public static Performable marcar() {
-        return instrumented(MarcarOpcionDos.class);
+        return instrumented(MarcarOpcionUno.class);
     }
 }

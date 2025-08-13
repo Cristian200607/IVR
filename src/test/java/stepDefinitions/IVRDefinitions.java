@@ -12,7 +12,8 @@ import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import tasks.GrabarLlamada;
-import tasks.MarcarOpcionDos;
+import tasks.OpcionesParaMarcar.MarcarOpcionDos;
+import tasks.OpcionesParaMarcar.MarcarOpcionUno;
 import tasks.RealizarLlamada;
 import utils.WordAppium;
 
@@ -49,6 +50,13 @@ public class IVRDefinitions {
   }
 
   //Marcar Opciones
+  @And("^Se marca la opcion uno y empieza a grabar$")
+  public void MarcarOpcionUno() {
+    theActorInTheSpotlight().attemptsTo(
+            MarcarOpcionUno.marcar()
+    );
+  }
+
   @And("^Se marca la opcion dos y empieza a grabar$")
   public void MarcarOpcionDos() {
     theActorInTheSpotlight().attemptsTo(

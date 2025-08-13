@@ -7,9 +7,8 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class IVRPage extends PageObject {
 
-  public static final Target TECLADO_TELEFONO =
-          Target.the("Teclado del telefono")
-                  .located(AppiumBy.id("com.hb.dialer.free:id/digits"));
+  public static final Target TECLADO_TELEFONO = Target.the("Teclado del telefono")
+          .located(AppiumBy.id("com.hb.dialer.free:id/digits"));
 
   public static final Target TECLADO_EN_LLAMADA = Target.the("teclado")
           .located(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Teclado']"));
@@ -17,13 +16,23 @@ public class IVRPage extends PageObject {
   public static final Target BOTON_2_EN_LLAMADA = Target.the("vista con content-desc 2")
           .located(By.xpath("//android.view.View[@content-desc='2']"));
 
-  public static final Target BTN_LLAMAR =
-          Target.the("Boton de marcar")
-                  .located(AppiumBy.id("com.hb.dialer.free:id/call"));
+  public static final Target BTN_LLAMAR = Target.the("Boton de marcar")
+          .located(AppiumBy.id("com.hb.dialer.free:id/call"));
 
-  public static final Target BTN_COLGAR =
-          Target.the("Boton colgar")
-                  .located(AppiumBy.xpath("//android.widget.ImageButton[@content-desc=\"Fin. llamada\"]"));
+  public static final Target BTN_COLGAR = Target.the("Boton colgar")
+          .located(AppiumBy.xpath("//android.widget.ImageButton[@content-desc=\"Fin. llamada\"]"));
+
+  public static final Target TECLADO_TELEFONO_EN_GRABACION = Target.the("teclado")
+          .located(AppiumBy.xpath("(//android.widget.ImageView[@resource-id='com.samsung.android.incallui:id/incall_button_icon'])[6]"));
+
+  public static final Target BOTON_1_EN_GRABACION = Target.the("botón uno")
+          .located(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='1']"));
+
+  public static final Target BOTON_2_EN_GRABACION = Target.the("botón dos")
+          .located(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='2']"));
+
+  public static final Target FIN_LLAMADA_EN_GRABACION = Target.the("botón fin llamada")
+          .located(AppiumBy.xpath("//android.widget.TextView[@content-desc='Fin de llamada']"));
 
   public static final Target SUBTITULADO =
           Target.the("caja de texto ivr")
