@@ -1,9 +1,10 @@
 package interactions.comunes;
 
-import io.appium.java_client.AppiumBy;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+
+import io.appium.java_client.MobileBy;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
@@ -26,8 +27,7 @@ public class WaitForResponse implements Interaction {
 
   @Override
   public <T extends Actor> void performAs(T actor) {
-    WebDriverWait wait =
-        new WebDriverWait(BrowseTheWeb.as(actor).getDriver(), Duration.ofSeconds(timeout));
+    WebDriverWait wait = new WebDriverWait(BrowseTheWeb.as(actor).getDriver(), timeout);
     boolean found = false;
     long startTime = System.currentTimeMillis();
 
@@ -35,7 +35,7 @@ public class WaitForResponse implements Interaction {
       for (String text : expectedTexts) {
         try {
           By locator =
-              AppiumBy.androidUIAutomator(
+                  MobileBy.AndroidUIAutomator(
                   String.format("new UiSelector().textContains(\"%s\")", text));
           List<WebElement> elements = BrowseTheWeb.as(actor).getDriver().findElements(locator);
           if (!elements.isEmpty()) {

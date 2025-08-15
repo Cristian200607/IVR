@@ -1,13 +1,14 @@
 package interactions.Click;
 
-import net.serenitybdd.annotations.Step;
+import io.appium.java_client.android.AndroidDriver;
+import net.thucydides.core.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.targets.Target;
-import org.openqa.selenium.WebDriver;
+import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
+import net.thucydides.core.webdriver.WebDriverFacade;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -22,14 +23,16 @@ public class ClickSostenido implements Interaction {
     }
 
     @Override
-    @Step("Mantiene presionado el elemento '#target' por {0} segundos.")
+    @Step("Mantiene presionado el elemento '{0}' por {1} segundos.")
     public <T extends Actor> void performAs(T actor) {
         WebElement elemento = target.resolveFor(actor);
 
-        WebDriver driver = ThucydidesWebDriverSupport.getDriver();
-        Actions actions = new Actions(driver);
+        // Obtener AndroidDriver real desde Serenity
+        AndroidDriver driver = (AndroidDriver) ((WebDriverFacade) ThucydidesWebDriverSupport.getDriver())
+                .getProxiedDriver();
 
-        actions.clickAndHold(elemento)
+        new Actions(driver)
+                .clickAndHold(elemento)
                 .pause(segundos * 1000L)
                 .release()
                 .perform();
