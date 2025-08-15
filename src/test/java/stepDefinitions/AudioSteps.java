@@ -1,6 +1,6 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.*;
+import cucumber.api.java.en.*;
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +18,7 @@ public class AudioSteps {
     public static String transcription;
 
 
-    @Given("El archivo de audio se trae automáticamente desde el celular")
+    @Given("^El archivo de audio se trae automáticamente desde el celular$")
     public void givenTraerArchivoDesdeCelular() {
         String rutaCelular = "/sdcard/Recordings/Call/";
         String rutaLocal = "C:\\IVR\\Llamadas\\";
@@ -27,7 +27,7 @@ public class AudioSteps {
 
 
 
-    @And("Un archivo de audio en formato OGG ubicado en Llamadas")
+    @And("^Un archivo de audio en formato OGG ubicado en Llamadas$")
     public void givenArchivoAudio() {
         File folder = new File("Llamadas/Call");
         File[] archivos = folder.listFiles((dir, name) -> {
@@ -54,15 +54,17 @@ public class AudioSteps {
         }
     }
 
-    @When("Se convierte el archivo a WAV mono 16kHz")
+    @When("^Se convierte el archivo a WAV mono 16kHz$")
     public void cuandoSeConvierteAudio() throws Exception {
         AudioConverter.convertToWav(inputAudioPath, convertedAudioPath);
     }
 
 
-    @And("Se realiza el reconocimiento de voz sobre el archivo convertido en la carpeta {string}")
-    public void cuandoSeReconoceAudio(String rutaCarpeta) throws Exception {
-        // Aquí buscas el archivo dentro de la carpeta (por ejemplo, el único archivo .wav)
+    @And("^Se realiza el reconocimiento de voz sobre el archivo convertido$")
+    public void cuandoSeReconoceAudio() throws Exception {
+        // Ruta fija de la carpeta
+        String rutaCarpeta = "LlamadasConvertidas/";
+
         File carpeta = new File(rutaCarpeta);
         File[] archivos = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".wav"));
 
@@ -70,13 +72,13 @@ public class AudioSteps {
             throw new RuntimeException("No se encontró ningún archivo WAV en la carpeta: " + rutaCarpeta);
         }
 
-        // Por ejemplo, tomar el primero (o el último modificado)
+        // Tomar el primero encontrado
         File archivoParaReconocer = archivos[0];
 
         transcription = SpeechToTextIVR.recognize(archivoParaReconocer.getAbsolutePath());
     }
 
-    @And("Visualizacion de la trancripcion")
+    @And("^Visualizacion de la trancripcion$")
     public void entoncesVisualizarTranscripcion() {
         assertNotNull(transcription, "La transcripción no debe ser nula");
         System.out.println("=== Transcripción del audio ===");
@@ -87,8 +89,5 @@ public class AudioSteps {
                 "Llamadas/Call", convertedAudioPath, "Llamadas/BackupsAudio"
         );
     }
-
-
-
 
 }

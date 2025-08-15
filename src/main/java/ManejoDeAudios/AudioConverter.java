@@ -48,8 +48,8 @@ public class AudioConverter {
     try {
       System.out.println("Directorio de trabajo actual: " + System.getProperty("user.dir"));
 
-      String inputPath = "Llamadas/WhatsApp Audio 2025-08-08 at 2.07.56 PM.ogg";
-      String outputPath = "LlamadasConvertidas/WhatsApp Audio 2025-08-08 at 2.07.56 PM.wav";
+      String inputPath = "Llamadas/";
+      String outputPath = "LlamadasConvertidas/";
 
       System.out.println("Convirtiendo audio...");
       convertToWav(inputPath, outputPath);

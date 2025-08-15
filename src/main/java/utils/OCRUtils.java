@@ -1,10 +1,9 @@
 package utils;
 
 import java.io.File;
-import net.sourceforge.tess4j.ITesseract;
-import net.sourceforge.tess4j.Tesseract;
 
-public class OCRUtils {
+
+/*public class OCRUtils {
 
   public static String leerTexto(String imagePath) {
     try {
@@ -18,4 +17,4 @@ public class OCRUtils {
       return "";
     }
   }
-}
+}*/

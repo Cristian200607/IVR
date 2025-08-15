@@ -1,7 +1,7 @@
 package utils;
 
 import interactions.comunes.WaitFor;
-import io.appium.java_client.AppiumBy;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import net.serenitybdd.screenplay.Actor;
@@ -19,19 +19,17 @@ public class AndroidObject {
 
   //SCROLL
   public void SwipeToElement(Actor actor, String label) {
-    androidDriver(actor).findElement(
-                    AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().text(\""
-                                    + label + "\"));"))
+    androidDriver(actor).findElementByAndroidUIAutomator(
+                    "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().text(\""
+                            + label + "\"));")
             .click();
   }
 
 
   public void UnScrollArribaInicio(Actor actor) {
     try {
-      androidDriver(actor).findElement(
-              AppiumBy.androidUIAutomator(
-                      "new UiScrollable(new UiSelector().resourceIdMatches(\"android:id/list\").scrollable(true)).scrollBackward()"));
+      androidDriver(actor).findElementByAndroidUIAutomator(
+                      "new UiScrollable(new UiSelector().resourceIdMatches(\"android:id/list\").scrollable(true)).scrollBackward()");
     } catch (Exception e) {
       e.printStackTrace(); // Agrega esto para ver si hay algún error
     }
@@ -39,9 +37,8 @@ public class AndroidObject {
 
   public void UnScrollAbajo(Actor actor) {
     try {
-      androidDriver(actor).findElement(
-              AppiumBy.androidUIAutomator(
-                      "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"));
+      androidDriver(actor).findElementByAndroidUIAutomator(
+                      "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()");
     } catch (Exception e) {
     }
   }
@@ -50,7 +47,7 @@ public class AndroidObject {
   public boolean validarTexto(Actor actor, String text) {
     try {
       return androidDriver(actor)
-              .findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))
+              .findElementByAndroidUIAutomator("new UiSelector().text(\"" + text + "\")")
               .isDisplayed();
     } catch (NoSuchElementException e) {
       System.out.println("Texto no encontrado: " + text);
@@ -60,8 +57,7 @@ public class AndroidObject {
 
 
   public void ElTextoContiene(Actor actor, String text) {
-    androidDriver(actor).findElement(
-                    AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + text + "\")"))
+    androidDriver(actor).findElementByAndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")")
             .isDisplayed();
   }
 
@@ -69,15 +65,13 @@ public class AndroidObject {
   //CLICK
   public void ClickByText(Actor actor, String text) {
     actor.attemptsTo(WaitFor.aTime(1000));
-    androidDriver(actor).findElement(
-                    AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")"))
+    androidDriver(actor).findElementByAndroidUIAutomator("new UiSelector().text(\"" + text + "\")")
             .click();
 
   }
 
   public void ClickElTextoContiene(Actor actor, String text) {
-    androidDriver(actor).findElement(
-                    AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + text + "\")"))
+    androidDriver(actor).findElementByAndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")")
             .click();
 
   }

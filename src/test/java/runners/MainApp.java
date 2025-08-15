@@ -3,7 +3,7 @@ package runners;
 import ManejoDeAudios.AudioConverter;
 import ManejoDeAudios.SpeechToTextIVR;
 
-public class MainApp {
+/*public class MainApp {
     public static void main(String[] args) {
         try {
             String inputPath = "C:/IVR/Llamadas/audio.ogg";
@@ -20,5 +20,5 @@ public class MainApp {
             e.printStackTrace();
         }
     }
-}
+}*/
 
