@@ -60,7 +60,18 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la trancripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
+
+  @IVR_06
+  Scenario: Marcación IVR y reconocimiento de audio opcion 2 y 4
+    Given Se realiza la llamada al numero *611#
+    And Se marca la opcion 4 en comprar servicios y empieza a grabar
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio en formato OGG ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la trancripcion
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
 
   @IVR_07
   Scenario: Marcación IVR y reconocimiento de audio opcion 3
