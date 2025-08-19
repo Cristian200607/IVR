@@ -72,6 +72,13 @@ public class IVRDefinitions {
             ComprarServiciosOpcion1.marcar()
     );
   }
+
+  @And("^Se marca la opcion 4 en comprar servicios y empieza a grabar$")
+  public void ComprarServiciosOpcion4() {
+    theActorInTheSpotlight().attemptsTo(
+            ComprarServiciosOpcion4.marcar()
+    );
+  }
   //***************************************************************************************
 
   @And("^Se marca la opcion tres y empieza a grabar$")

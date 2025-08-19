@@ -36,6 +36,9 @@ public class IVRPage extends PageObject {
   public static final Target BOTON_3_EN_GRABACION = Target.the("botón tres")
           .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='3']"));
 
+  public static final Target BOTON_4_EN_GRABACION = Target.the("botón tres")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='4']"));
+
   public static final Target FIN_LLAMADA_EN_GRABACION = Target.the("botón fin llamada")
           .located(By.xpath("//android.widget.TextView[@content-desc='Fin de llamada']"));
 
