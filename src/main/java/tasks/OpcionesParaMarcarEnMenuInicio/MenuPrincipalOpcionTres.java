@@ -1,4 +1,4 @@
-package tasks.OpcionesParaMarcarEnMenuPrincipal;
+package tasks.OpcionesParaMarcarEnMenuInicio;
 
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
@@ -13,10 +13,9 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 import static utils.Constantes.FIN_LLAMADA_GRABACION;
 
-public class MenuPrincipalOpcionDos implements Task {
-
+public class MenuPrincipalOpcionTres implements Task {
     private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 2";
+    private static final String paso1 = "Marcar Opcion 3";
     private static final String paso2 = "Esperar a que se cuelgue la llamda";
 
     @Override
@@ -25,13 +24,13 @@ public class MenuPrincipalOpcionDos implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(14000),
+                WaitFor.aTime(15000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
-                Click.on(BOTON_2_EN_GRABACION)
+                Click.on(BOTON_3_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura(paso1);
         actor.attemptsTo(
-                WaitFor.aTime(27000),
+                WaitFor.aTime(31000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
@@ -39,6 +38,6 @@ public class MenuPrincipalOpcionDos implements Task {
     }
 
     public static Performable marcar() {
-        return instrumented(MenuPrincipalOpcionDos.class);
+        return instrumented(MenuPrincipalOpcionTres.class);
     }
 }

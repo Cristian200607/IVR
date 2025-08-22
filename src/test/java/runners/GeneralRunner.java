@@ -13,7 +13,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity; // <-- agregado
         features = "src/test/resources/features",
         glue = {"stepDefinitions", "utils", "hooks"},
         snippets = SnippetType.CAMELCASE,
-        tags = "@IVR_07")
+        tags = "@IVR_00")
 @RunWith(CucumberWithSerenity.class) // <-- cambiado
 public class GeneralRunner {
   @BeforeSuite
