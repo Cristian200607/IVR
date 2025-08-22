@@ -3,6 +3,8 @@ package stepDefinitions;
 import cucumber.api.java.en.*;
 import java.io.File;
 
+import static coloresTerminal.colores.BLUE;
+import static coloresTerminal.colores.RESET;
 import static org.junit.jupiter.api.Assertions.*;
 
 import ManejoDeAudios.EliminarAudioEnCelular;
@@ -81,9 +83,9 @@ public class AudioSteps {
     @And("^Visualizacion de la trancripcion$")
     public void entoncesVisualizarTranscripcion() {
         assertNotNull(transcription, "La transcripción no debe ser nula");
-        System.out.println("=== Transcripción del audio ===");
+        System.out.println(BLUE + "=== Transcripción del audio ===" + RESET);
         System.out.println(transcription);
-        System.out.println("===============================");
+        System.out.println(BLUE + "===============================" + RESET);
 
         LimpiarYRespaldarAudio.ejecutar(
                 "Llamadas/Call", convertedAudioPath, "Llamadas/BackupsAudio"
