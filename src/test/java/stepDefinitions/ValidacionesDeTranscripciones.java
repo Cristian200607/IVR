@@ -48,6 +48,18 @@ public class ValidacionesDeTranscripciones {
         validarTranscripcion(textoEsperado);
     }
 
+    @Then("^Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea$")
+    public void validarTranscripcionValidarMenuPrincipalDespuesDeValidarLaLinea() {
+        String textoEsperado = "ingresa whatsapp y ahorra tiempo podra consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menu principal marca 3 de las siguientes opciones seleccione servicio relacionado con tu consulta linea prepago terminada en 056 marca 1 linea postpago terminada en 182 marca 2 linea postpago terminada en 102 marca 3 quieres consultar otro servicio marca 4 para repetir este menu marca 9 por favor ingresa el numero de celular que vas a consultar tu numero de celular es 321 326 8056 es correcto marca 1 eres corregirlo marca 2 apreciado usuario por actividades de mejoramiento de nuestra red se puede presentar variacion en la calidad de su servicio de voz o datos le informamos que en nuestra area tecnica se encuentra trabajando para normalizar el servicio a la mayor brevedad muchas gracias hemos notado que llamaste recientemente por saldo prepago si ese es el motivo de tu llamada marca 1 o 9 para ir al menu principal tienes dudas con tu factura pagos saldo consumos compra de paquetes y otros detalles marca asterisco si necesita soporte de tus servicios moviles fijos gestionar visitas traslados o tu clave wi-fi marca numeral para informacion general o activar sus servicios marca 1 para gestionar sus equipos marca 2 si necesitas una queja recurso o solicitar la cancelacion de tus servicios marca 3 si quieres conocer servicios especiales para ti marca 4 escuchar nuevamente las opciones marca 9";
+        validarTranscripcion(textoEsperado);
+    }
+
+    @Then("^Validar la transcripción con el texto esperado de Opcion 3 despues 4$")
+    public void validarTranscripcionOpcion3y24() {
+        String textoEsperado = "ingresa whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menu principal marca 3 de las siguientes opciones selecciona el servicio relacionado con su consulta linea prepago terminada en 056 marca 1 linea postpago terminada en 102 marca 2 linea postpago terminada en 840 marca 3 quieres consultar otro servicio marca 4 para repetir este menu marca 9 por favor ingresa el numero de celular que vas a consultar tu numero de celular es 321 326 8056 es correcto marca 1 eres corregirlo marca 2 hemos notado que llamaste recientemente por saldo prepago si ese es el motivo de tu llamada marca 1 o 9 para ir al menu principal tienes dudas con tu factura para 2 saldo consumos compra de paquetes y otros detalles marca asterisco si necesita soporte de tus servicios moviles fijos gestionar visitas traslados o tu clave wi-fi marca numeral para informacion general o activar un servicio marca 1 para gestionar sus equipos marca 2 si necesitas a dejar una queja recurso o solicitar la cancelacion de tus servicios marca 3 si quieres conocer servicios especiales para ti marca 4 escuchar nuevamente las opciones marca 9";
+        validarTranscripcion(textoEsperado);
+    }
+
     // Método central de validación
     private void validarTranscripcion(String textoEsperado) {
         try {

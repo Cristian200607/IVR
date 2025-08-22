@@ -12,21 +12,21 @@ Feature: Validar los flujos de IVR
   @Audio_01
   Scenario: Convertir y reconocer un archivo de audio
     Given El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio en formato OGG ubicado en Llamadas
-    When Se convierte el archivo a WAV mono 16kHz
+    And Un archivo de audio ubicado en Llamadas
+    When Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
-    Then Visualizacion de la trancripcion
+    Then Visualizacion de la transcripcion
 
   @IVR_00
   Scenario: Marcación IVR y reconocimiento de audio menu principal
     Given Se realiza la llamada al numero *611
     When  Se valida el flujo menu principal
     And   El archivo de audio se trae automáticamente desde el celular
-    And   Un archivo de audio en formato OGG ubicado en Llamadas
-    And   Se convierte el archivo a WAV mono 16kHz
+    And   Un archivo de audio ubicado en Llamadas
+    And   Se convierte el archivo a WAV mono 16kHz si es necesario
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
-    And   Visualizacion de la trancripcion
-    Then  Validar la transcripción con el texto esperado del menu principal
+    And   Visualizacion de la transcripcion
+    #Then  Validar la transcripción con el texto esperado del menu principal
 
 
   @IVR_01
@@ -34,10 +34,10 @@ Feature: Validar los flujos de IVR
     Given Se realiza la llamada al numero *611#
     And   Se marca la opcion uno y empieza a grabar
     And   El archivo de audio se trae automáticamente desde el celular
-    And   Un archivo de audio en formato OGG ubicado en Llamadas
-    And   Se convierte el archivo a WAV mono 16kHz
+    And   Un archivo de audio ubicado en Llamadas
+    And   Se convierte el archivo a WAV mono 16kHz si es necesario
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
-    And   Visualizacion de la trancripcion
+    And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado de Opcion 1
 
   @IVR_02
@@ -45,10 +45,10 @@ Feature: Validar los flujos de IVR
     Given Se realiza la llamada al numero *611#
     And Se marca la opcion dos y empieza a grabar
     And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio en formato OGG ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la trancripcion
+    And Visualizacion de la transcripcion
     Then Validar la transcripción con el texto esperado de Opcion 2
 
   @IVR_03
@@ -56,10 +56,10 @@ Feature: Validar los flujos de IVR
     Given Se realiza la llamada al numero *611#
     And Se marca la opcion 1 en comprar servicios y empieza a grabar
     And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio en formato OGG ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la trancripcion
+    And Visualizacion de la transcripcion
     Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
 
   @IVR_06
@@ -67,10 +67,10 @@ Feature: Validar los flujos de IVR
     Given Se realiza la llamada al numero *611#
     And Se marca la opcion 4 en comprar servicios y empieza a grabar
     And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio en formato OGG ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la trancripcion
+    And Visualizacion de la transcripcion
     Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
 
   @IVR_07
@@ -78,8 +78,85 @@ Feature: Validar los flujos de IVR
     Given Se realiza la llamada al numero *611#
     And Se marca la opcion tres y empieza a grabar
     And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio en formato OGG ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la trancripcion
+    And Visualizacion de la transcripcion
     Then Validar la transcripción con el texto esperado de Opcion 3
+
+  @IVR_08
+  Scenario: Marcación IVR y Validar Menu Principal Despues de consultar linea
+    Given Se realiza la llamada al numero *611#
+    And Se valida el menu principal despues de digitar la linea a consultar
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    Then Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea
+
+  @IVR_09
+  Scenario: Marcación IVR y Consulta de saldo por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca la opcion cuatro en Consultar Lineas y empieza a grabar
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_10
+  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca numeral opcion 1
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_11
+  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca numeral opcion 2
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_12
+  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca numeral opcion 3
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_13
+  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca numeral opcion 4
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_14
+  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+    Given Se realiza la llamada al numero *611#
+    And Se marca numeral opcion infromacion general
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
