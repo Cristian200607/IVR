@@ -9,8 +9,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
-import static userinterfaces.IVRPage.BTN_COLGAR;
-import static userinterfaces.IVRPage.BTN_GRABAR;
+import static userinterfaces.IVRPage.*;
 
 public class MenuPrincipal implements Task {
     private static final String paso = "Presionar boton grabar";
@@ -26,7 +25,6 @@ public class MenuPrincipal implements Task {
         actor.attemptsTo(Click.on(BTN_COLGAR));
         EvidenciaUtils.registrarCaptura(paso2);
         System.out.println("📞 Llamada realizada y finalizada correctamente.");
-
     }
 
     public static Performable validar () {

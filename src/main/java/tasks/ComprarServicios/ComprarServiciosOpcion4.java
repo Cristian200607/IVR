@@ -1,4 +1,4 @@
-package tasks.OpcionesParaMarcarEnMenuPrincipal;
+package tasks.ComprarServicios;
 
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
@@ -11,12 +11,15 @@ import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
+import static userinterfaces.IVRPage.BOTON_2_EN_GRABACION;
+import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.FIN_LLAMADA_GRABACION;
 
-public class MenuPrincipalOpcionTres implements Task {
+public class ComprarServiciosOpcion4 implements Task {
     private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 3";
-    private static final String paso2 = "Esperar a que se cuelgue la llamda";
+    private static final String paso1 = "Marcar Opcion 2";
+    private static final String paso2 = "Marcar Opcion 4";
+    private static final String paso3 = "Esperar a que se cuelgue la llamda";
 
     @Override
     public <T extends Actor> void performAs(T actor) {
@@ -24,20 +27,25 @@ public class MenuPrincipalOpcionTres implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(15000),
+                WaitFor.aTime(13000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
-                Click.on(BOTON_3_EN_GRABACION)
+                Click.on(BOTON_2_EN_GRABACION),
+                WaitFor.aTime(27000)
         );
         EvidenciaUtils.registrarCaptura(paso1);
         actor.attemptsTo(
-                WaitFor.aTime(31000),
+                Click.on(BOTON_4_EN_GRABACION),
+                WaitFor.aTime(7000)
+        );
+        EvidenciaUtils.registrarCaptura(paso2);
+        actor.attemptsTo(
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura(paso2);
+        EvidenciaUtils.registrarCaptura(paso3);
     }
 
     public static Performable marcar() {
-        return instrumented(MenuPrincipalOpcionTres.class);
+        return instrumented(ComprarServiciosOpcion4.class);
     }
 }

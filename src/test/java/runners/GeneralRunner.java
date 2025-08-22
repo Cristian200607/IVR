@@ -21,7 +21,6 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
         },
         monochrome = false // importante: false para que NO quite los coloresTerminal.colores
 )
-
 @RunWith(CucumberWithSerenity.class)
 public class GeneralRunner {
     @BeforeSuite

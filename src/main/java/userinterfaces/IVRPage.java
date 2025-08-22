@@ -6,8 +6,16 @@ import net.serenitybdd.screenplay.targets.Target;
 
 public class IVRPage extends PageObject {
 
+  public static final Target BOTON_TEST = Target.the("boton de prueba").locatedBy("dummy");
+
   public static final Target TECLADO_TELEFONO = Target.the("Teclado del telefono")
           .located(By.id("com.hb.dialer.free:id/digits"));
+
+  public static final Target TECLADO_TELEFONO_EN_LLAMADA = Target.the("campo donde aparece el número marcado")
+          .located(By.id("com.samsung.android.incallui:id/dialpad_digits"));
+
+  public static final Target BOTON_SILENCIAR_EN_LLAMADA = Target.the("Quinto botón del incall")
+          .located(By.xpath("(//android.widget.ImageView[@resource-id='com.samsung.android.incallui:id/incall_button_icon'])[5]"));
 
   public static final Target TECLADO_EN_LLAMADA = Target.the("teclado")
           .located(By.xpath("//android.widget.LinearLayout[@content-desc='Teclado']"));
@@ -27,6 +35,15 @@ public class IVRPage extends PageObject {
   public static final Target TECLADO_TELEFONO_EN_GRABACION = Target.the("teclado")
           .located(By.xpath("(//android.widget.ImageView[@resource-id='com.samsung.android.incallui:id/incall_button_icon'])[6]"));
 
+  public static final Target BOTON_ASTERISCO_EN_GRABACION = Target.the("botón *")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='∗']"));
+
+  public static final Target BOTON_NUMERAL_EN_GRABACION = Target.the("botón #")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='#']"));
+
+  public static final Target BOTON_0_EN_GRABACION = Target.the("botón cero")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='0']"));
+
   public static final Target BOTON_1_EN_GRABACION = Target.the("botón uno")
           .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='1']"));
 
@@ -36,6 +53,23 @@ public class IVRPage extends PageObject {
   public static final Target BOTON_3_EN_GRABACION = Target.the("botón tres")
           .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='3']"));
 
+  public static final Target BOTON_4_EN_GRABACION = Target.the("botón tres")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='4']"));
+
+  public static final Target BOTON_5_EN_GRABACION = Target.the("botón cinco")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='5']"));
+
+  public static final Target BOTON_6_EN_GRABACION = Target.the("botón seis")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='6']"));
+
+  public static final Target BOTON_7_EN_GRABACION = Target.the("botón siete")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='7']"));
+
+  public static final Target BOTON_8_EN_GRABACION = Target.the("botón ocho")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='8']"));
+
+  public static final Target BOTON_9_EN_GRABACION = Target.the("botón nueve")
+          .located(By.xpath("//android.widget.TextView[@resource-id='com.samsung.android.incallui:id/dialpad_key_number' and @text='9']"));
   public static final Target FIN_LLAMADA_EN_GRABACION = Target.the("botón fin llamada")
           .located(By.xpath("//android.widget.TextView[@content-desc='Fin de llamada']"));
 

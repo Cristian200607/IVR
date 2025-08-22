@@ -1,4 +1,4 @@
-package tasks.OpcionesParaMarcarEnMenuPrincipal;
+package tasks.OpcionesParaMarcarEnMenuInicio;
 
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;

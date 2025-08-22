@@ -11,10 +11,11 @@ import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
+import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
 import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.FIN_LLAMADA_GRABACION;
 
-public class ComprarServiciosOpcion1 implements Task {
+public class ComprarServiciosOpcion2 implements Task {
     private static final String paso = "Pulsar Grbrar llamada";
     private static final String paso1 = "Marcar Opcion 2";
     private static final String paso2 = "Marcar Opcion 1";
@@ -33,7 +34,7 @@ public class ComprarServiciosOpcion1 implements Task {
         );
         EvidenciaUtils.registrarCaptura(paso1);
         actor.attemptsTo(
-                Click.on(BOTON_1_EN_GRABACION),
+                Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(13000)
         );
         EvidenciaUtils.registrarCaptura(paso2);
@@ -45,6 +46,6 @@ public class ComprarServiciosOpcion1 implements Task {
     }
 
     public static Performable marcar() {
-        return instrumented(ComprarServiciosOpcion1.class);
+        return instrumented(ComprarServiciosOpcion2.class);
     }
 }

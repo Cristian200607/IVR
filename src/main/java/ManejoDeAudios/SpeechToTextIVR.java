@@ -13,8 +13,40 @@ import java.util.concurrent.TimeUnit;
 public class SpeechToTextIVR {
 
   private static final String[] IVR_KEYWORDS = {
-          "WhatsApp", "marca 1", "marca 2", "marca 3", "marca 4", "marca 9",
-          "linea prepago", "Claro", "computadores", "televisores", "celulares", "linea postpago"
+          // Menú inicial
+          "WhatsApp",
+          "marca 1", "marca 2", "marca 3", "marca 4", "marca 5",
+          "marca 6", "marca 7", "marca 8", "marca 9", "marca 0",
+
+          // Opciones de líneas
+          "linea prepago", "línea prepago",
+          "linea postpago", "línea postpago",
+
+          // Servicios y consultas
+          "consultar tu plan", "pagar tu factura", "factura", "saldo",
+          "consumos", "compra de paquetes", "otros detalles",
+          "paquetes de datos", "minutos", "recargas",
+
+          // Navegación y validación
+          "número de celular", "es correcto", "corregirlo",
+          "menú principal", "escuchar nuevamente", "volver atrás",
+          "continuar", "repetir", "finalizar", "pagos",
+
+          // Atención a problemas y soporte
+          "soporte", "servicios móviles", "servicios fijos",
+          "internet", "televisión", "telefonía",
+          "visitas", "traslados", "clave wi-fi",
+          "fallas técnicas", "reportar daño",
+
+          // Teclas especiales
+          "asterisco", "estrella",
+          "numeral", "gatillo",
+
+          // Más servicios
+          "información general", "activar un servicio",
+          "gestionar sus equipos", "cancelación",
+          "queja", "recurso", "servicios especiales",
+          "atención al cliente", "hablar con un asesor", "agente"
   };
 
   private static final String BUCKET_NAME = "ivr_bucket_claro"; // bucket GCS
@@ -35,7 +67,9 @@ public class SpeechToTextIVR {
             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
             .setLanguageCode("es-CO")
             .setSampleRateHertz(16000)
-            .setModel("phone_call")
+            .setModel("telephony") // ✅ usar modelo telephony en vez de phone_call
+            .setUseEnhanced(true) // ✅ activa el modelo mejorado
+            .setEnableAutomaticPunctuation(false) // ⚡ evita comas y puntos
             .addSpeechContexts(context)
             .build();
 
@@ -73,7 +107,37 @@ public class SpeechToTextIVR {
       }
     }
 
-    return normalizeNumbers(transcription.toString().trim());
+    return normalizeText(transcription.toString().trim());
+  }
+
+  public static String recognizeBytes(byte[] audioBytes) throws Exception {
+    SpeechContext context = SpeechContext.newBuilder()
+            .addAllPhrases(Arrays.asList(IVR_KEYWORDS))
+            .setBoost(20.0f)
+            .build();
+
+    RecognitionConfig config = RecognitionConfig.newBuilder()
+            .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
+            .setLanguageCode("es-CO")
+            .setSampleRateHertz(16000)
+            .setModel("telephony")
+            .setUseEnhanced(true)
+            .addSpeechContexts(context)
+            .build();
+
+    StringBuilder transcription = new StringBuilder();
+
+    try (SpeechClient speechClient = SpeechClient.create()) {
+      ByteString bytes = ByteString.copyFrom(audioBytes);
+      RecognitionAudio audio = RecognitionAudio.newBuilder().setContent(bytes).build();
+
+      RecognizeResponse response = speechClient.recognize(config, audio);
+      for (SpeechRecognitionResult result : response.getResultsList()) {
+        transcription.append(result.getAlternatives(0).getTranscript()).append(" ");
+      }
+    }
+
+    return normalizeText(transcription.toString().trim());
   }
 
   // Subir audio a Google Cloud Storage
@@ -97,9 +161,11 @@ public class SpeechToTextIVR {
     }
   }
 
-  private static String normalizeNumbers(String text) {
+  // Normaliza texto: números, acentos y elimina signos
+  private static String normalizeText(String text) {
     if (text == null) return "";
-    return text.toLowerCase()
+    text = text.toLowerCase()
+            // Números en palabra -> dígitos
             .replaceAll("\\bcero\\b", "0")
             .replaceAll("\\buno\\b", "1")
             .replaceAll("\\bdos\\b", "2")
@@ -112,7 +178,16 @@ public class SpeechToTextIVR {
             .replaceAll("\\bnueve\\b", "9")
             .replaceAll("\\bdiez\\b", "10")
             .replaceAll("\\bonce\\b", "11")
-            .replaceAll("\\bdoce\\b", "12");
+            .replaceAll("\\bdoce\\b", "12")
+            // Quitar acentos
+            .replaceAll("[áàäâ]", "a").replaceAll("[éèëê]", "e")
+            .replaceAll("[íìïî]", "i").replaceAll("[óòöô]", "o")
+            .replaceAll("[úùüû]", "u")
+            // Quitar signos
+            .replaceAll("[,.;:!?]", "")
+            // Normalizar espacios
+            .replaceAll("\\s+", " ").trim();
+    return text;
   }
 
   public static void main(String[] args) {

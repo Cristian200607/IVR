@@ -11,10 +11,16 @@ import java.io.File;
 import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import tasks.MenuPrincipalOpciones.ConsultarSaldoOpcionAsterisco;
+import tasks.MenuPrincipalOpciones.MenuPrincipalDespuesDeDigitarLinea;
+import tasks.MenuPrincipalOpciones.Numeral.Opcion1;
 import tasks.MenuPrincipal;
-import tasks.OpcionesParaMarcarEnMenuPrincipal.MenuPrincipalOpcionDos;
-import tasks.OpcionesParaMarcarEnMenuPrincipal.MenuPrincipalOpcionTres;
-import tasks.OpcionesParaMarcarEnMenuPrincipal.MenuPrincipalOpcionUno;
+import tasks.MenuPrincipalOpciones.Numeral.Opcion2;
+import tasks.MenuPrincipalOpciones.Numeral.Opcion3;
+import tasks.MenuPrincipalOpciones.Numeral.Opcion4;
+import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionDos;
+import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionTres;
+import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionUno;
 import tasks.ComprarServicios.*;
 import tasks.RealizarLlamada;
 import utils.WordAppium;
@@ -72,12 +78,61 @@ public class IVRDefinitions {
             ComprarServiciosOpcion1.marcar()
     );
   }
-  //***************************************************************************************
 
+  @And("^Se marca la opcion 4 en comprar servicios y empieza a grabar$")
+  public void ComprarServiciosOpcion4() {
+    theActorInTheSpotlight().attemptsTo(
+            ComprarServiciosOpcion4.marcar()
+    );
+  }
+
+  //Marcar Opciones En Escenario Cosultar Lineas***************************************************
   @And("^Se marca la opcion tres y empieza a grabar$")
-  public void MarcarOpcionTres() {
+  public void ConsultarLineasOpcionTres() {
     theActorInTheSpotlight().attemptsTo(
             MenuPrincipalOpcionTres.marcar()
+    );
+  }
+
+  @And("^Se marca la opcion cuatro en Consultar Lineas y empieza a grabar$")
+  public void ConsultarLineasOpcionCuatro() {
+    theActorInTheSpotlight().attemptsTo(
+            ConsultarSaldoOpcionAsterisco.marcar("3125457947")
+    );
+  }
+
+  @And("^Se marca numeral opcion 1$")
+  public void MarcaNumeralOp1() {
+    theActorInTheSpotlight().attemptsTo(
+            Opcion1.marcar("3125457947")
+    );
+  }
+
+  @And("^Se marca numeral opcion 2$")
+  public void MarcaNumeralOp2() {
+    theActorInTheSpotlight().attemptsTo(
+            Opcion2.marcar("3125457947")
+    );
+  }
+
+  @And("^Se marca numeral opcion 3$")
+  public void MarcaNumeralOp3() {
+    theActorInTheSpotlight().attemptsTo(
+            Opcion3.marcar("3125457947")
+    );
+  }
+
+  @And("^Se marca numeral opcion 4$")
+  public void MarcaNumeralOp4() {
+    theActorInTheSpotlight().attemptsTo(
+            Opcion4.marcar("3125457947")
+    );
+  }
+
+  @And("^Se valida el menu principal despues de digitar la linea a consultar$")
+  public void ValidarOpcionesMenuPrincipalDespuesDeDigitarLinea() {
+    theActorInTheSpotlight().attemptsTo(
+            MenuPrincipalDespuesDeDigitarLinea.marcar("3213268056")
     );
   }
   //
