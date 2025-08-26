@@ -1,4 +1,4 @@
-package tasks.MenuPrincipalOpciones;
+package tasks.MenuPrincipalOpciones.Opcion2;
 
 import MarcarLinea.DialPadHelper;
 import interactions.Click.ClickSostenido;
@@ -7,33 +7,33 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import utils.EvidenciaUtils;
 
-import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
-import static userinterfaces.IVRPage.BOTON_0_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
+import static userinterfaces.IVRPage.BOTON_2_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_3_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
-import static utils.Constantes.FIN_LLAMADA_GRABACION;
+import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class ConsultarSaldoOpcion1 implements Task {
+public class GestionEquiposOp3 implements Task {
     private final String numero;
 
-    public ConsultarSaldoOpcion1(String numero) {
+    public GestionEquiposOp3(String numero) {
         this.numero = numero;
     }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
+        EvidenciaUtils.registrarCaptura("Pulsar Grabar llamada");
         actor.attemptsTo(
-                WaitFor.aTime(400),
+                WaitFor.aTime(300),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(11000),
+                WaitFor.aTime(13700),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(30000)
@@ -41,40 +41,43 @@ public class ConsultarSaldoOpcion1 implements Task {
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         actor.attemptsTo(
                 Click.on(BOTON_4_EN_GRABACION),
-                WaitFor.aTime(1700)
+                WaitFor.aTime(4000)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
 
         // Marcar los números del parámetro lo más rápido posible
-        EvidenciaUtils.registrarCaptura("Marcando número rápido");
+        EvidenciaUtils.registrarCaptura("Se Digita La Linea A Consultar");
         DialPadHelper.marcarNumeroMaximo(actor, numero);
 
         actor.attemptsTo(
-                WaitFor.aTime(16000),
+                WaitFor.aTime(17000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(26000),
-                Click.on(BOTON_1_EN_GRABACION)
+                WaitFor.aTime(12000),
+                Click.on(BOTON_9_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Marcar Opcion 1");
+        EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                // Validar de nuevo todo el meunu principal = WaitFor.aTime(40000)
+                WaitFor.aTime(38000),
+                Click.on(BOTON_2_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 2");
         actor.attemptsTo(
+                WaitFor.aTime(24000),
+                Click.on(BOTON_3_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 3");
 
-        );
         actor.attemptsTo(
-                WaitFor.aTime(58000),
-                Click.on(BOTON_0_EN_GRABACION),
-                WaitFor.aTime(23000),
-                WaitForResponse.withText(FIN_LLAMADA_GRABACION)
+                WaitFor.aTime(57000),
+                WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(ConsultarSaldoOpcionAsterisco.class, numero);
+        return Tasks.instrumented(GestionEquiposOp3.class, numero);
     }
 }
