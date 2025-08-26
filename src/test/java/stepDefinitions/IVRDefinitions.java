@@ -11,13 +11,24 @@ import java.io.File;
 import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import tasks.MenuPrincipalOpciones.ConsultarSaldoOpcionAsterisco;
+import tasks.MenuPrincipalOpciones.Asterico.ComprarPaquetes.AsteriscoOpcion2;
+import tasks.MenuPrincipalOpciones.Asterico.ConsultarSaldo.AsteriscoOpcion1;
+import tasks.MenuPrincipalOpciones.Asterico.PaquetesActivos.Opcion5;
 import tasks.MenuPrincipalOpciones.MenuPrincipalDespuesDeDigitarLinea;
 import tasks.MenuPrincipalOpciones.Numeral.Opcion1;
 import tasks.MenuPrincipal;
 import tasks.MenuPrincipalOpciones.Numeral.Opcion2;
 import tasks.MenuPrincipalOpciones.Numeral.Opcion3;
 import tasks.MenuPrincipalOpciones.Numeral.Opcion4;
+import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.ActivarRoamingInternacionalOp1;
+import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.ActivarRoamingInternacionalOp2;
+import tasks.MenuPrincipalOpciones.Opcion1.AdquirirEquipos.AdquirirEquipos;
+import tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro.*;
+import tasks.MenuPrincipalOpciones.Opcion1.EligidosMovilFamilia.ElegidosMovilFamilia;
+import tasks.MenuPrincipalOpciones.Opcion1.InformacionGeneral.InformacionGeneral;
+import tasks.MenuPrincipalOpciones.Opcion4.ClaroPay.ClaroPay;
+import tasks.MenuPrincipalOpciones.Opcion4.ClaroPayMasterCard.ClaroPayMasterCard;
+import tasks.MenuPrincipalOpciones.Opcion4.ClaroPayMasterCard.ClaroPayMasterCardOp2;
 import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionDos;
 import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionTres;
 import tasks.OpcionesParaMarcarEnMenuInicio.MenuPrincipalOpcionUno;
@@ -97,7 +108,21 @@ public class IVRDefinitions {
   @And("^Se marca la opcion cuatro en Consultar Lineas y empieza a grabar$")
   public void ConsultarLineasOpcionCuatro() {
     theActorInTheSpotlight().attemptsTo(
-            ConsultarSaldoOpcionAsterisco.marcar("3125457947")
+            AsteriscoOpcion1.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Asterisco, Op2, Valida Metodos De Pago$")
+  public void MenuPrincipalAsteriscoOp2ValidaMetodosDePago() {
+    theActorInTheSpotlight().attemptsTo(
+            AsteriscoOpcion2.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Asterisco, Op4, Paquetes Activos$")
+  public void MenuPrincipalAsteriscoOp4PaquetesActivos() {
+    theActorInTheSpotlight().attemptsTo(
+            Opcion5.marcar("3213268056")
     );
   }
 
@@ -126,6 +151,119 @@ public class IVRDefinitions {
   public void MarcaNumeralOp4() {
     theActorInTheSpotlight().attemptsTo(
             Opcion4.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Info General$")
+  public void MenuPrincipalOp1InfoGeneral() {
+    theActorInTheSpotlight().attemptsTo(
+            InformacionGeneral.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Activar Roaming, Op1$")
+  public void MenuPrincipalOp1ActivarRoamingOp1() {
+    theActorInTheSpotlight().attemptsTo(
+            ActivarRoamingInternacionalOp1.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Activar Roaming, Op2$")
+  public void MenuPrincipalOp1ActivarRoamingOp2() {
+    theActorInTheSpotlight().attemptsTo(
+            ActivarRoamingInternacionalOp2.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Equipos$")
+  public void MenuPrincipalOp1AdquirirEquipos() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirEquipos.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op1$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp1() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp1.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op2$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp2() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp2.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op3$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp3() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp3.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op4$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp4() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp4.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op5$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp5() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp5.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op5, Op2$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp5Op2() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp5Op2.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op5, Op3$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp5Op3() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp5.marcar("3125457947")
+    );
+  }
+
+
+  @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op6$")
+  public void MenuPrincipalOp1AdquirirServiciosClaroOp6() {
+    theActorInTheSpotlight().attemptsTo(
+            AdquirirServiciosClaroOp6.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op1, Elegidos Movil Familia$")
+  public void MenuPrincipalOp1ElegidosMovilFamilia() {
+    theActorInTheSpotlight().attemptsTo(
+            ElegidosMovilFamilia.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op4, Claro Pay$")
+  public void MenuPrincipalOp4ClaroPay() {
+    theActorInTheSpotlight().attemptsTo(
+            ClaroPay.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op4, Claro Pay Master Card$")
+  public void MenuPrincipalOp4ClaroPayMasterCard() {
+    theActorInTheSpotlight().attemptsTo(
+            ClaroPayMasterCard.marcar("3125457947")
+    );
+  }
+
+  @And("^Menu Principal, Op4, Claro Pay Master Card, Op2$")
+  public void MenuPrincipalOp4ClaroPayMasterCardOp2() {
+    theActorInTheSpotlight().attemptsTo(
+            ClaroPayMasterCardOp2.marcar("3125457947")
     );
   }
 
