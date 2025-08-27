@@ -1,4 +1,4 @@
-package tasks.MenuPrincipalOpciones.Opcion1.EligidosMovilFamilia;
+package tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro;
 
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
@@ -18,15 +18,14 @@ import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class ElegidosMovilFamilia implements Task {
-
+public class Op3ClaroVideo implements Task {
     private static final String paso = "Pulsar Grbrar llamada";
     private static final String paso1 = "Marcar Opcion 3";
     private static final String paso2 = "Marcar Opcion 1";
     private static final String paso3 = "Esperar a que se cuelgue la llamada";
     private final String numero;
 
-    public ElegidosMovilFamilia(String numero) {
+    public Op3ClaroVideo(String numero) {
         this.numero = numero;
     }
 
@@ -66,18 +65,22 @@ public class ElegidosMovilFamilia implements Task {
                 Click.on(BOTON_1_EN_GRABACION)
         );
         actor.attemptsTo(
-                WaitFor.aTime(40000),
-                Click.on(BOTON_5_EN_GRABACION)
+                WaitFor.aTime(39000),
+                Click.on(BOTON_4_EN_GRABACION)
         );
         actor.attemptsTo(
-                WaitFor.aTime(9000),
-                Click.on(BTN_COLGAR),
+                WaitFor.aTime(36000),
+                Click.on(BOTON_3_EN_GRABACION)
+        );
+        actor.attemptsTo(
+                WaitFor.aTime(25000),
+                Click.on(BOTON_2_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura(paso3);
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(ElegidosMovilFamilia.class, numero);
+        return instrumented(Op3ClaroVideo.class, numero);
     }
 }
