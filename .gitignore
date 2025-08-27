@@ -1,36 +1,39 @@
-# Generated files
+# ============================
+# Archivos y carpetas generadas
+# ============================
 bin/
 gen/
 out/
 null/
 
-# Gradle files
+# Gradle
 .gradle
 build/
 gradlew.bat
-# Compiled class file
+
+# Compilados Java
 *.class
 
-# Log Files
+# Logs
 *.log
-.log
 
-# IntelliJ
+# IntelliJ / IDEA
 *.iml
 *.iws
 .idea/
 !/gradle/wrapper/gradle-wrapper.jar
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Sonarlint plugin
 .idea/sonarlint
 
-# Package Files #
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+log/
+
+# Bibliotecas y empaquetados
 *.jar
 *.nar
 *.zip
@@ -38,23 +41,35 @@ gradlew.bat
 *.rar
 *.war
 *.ear
+*.lib
+*.a
+*.la
+*.lo
 
-# ignore files target
-target/
+# Capturas de pantalla
+Capturas/
 
-# Eclipse
-.classpath
-.project
-.settings/
+# Android APK
+*.apk
 
 # Mac
 .DS_Store
 
-# Maven
-log/
+# ============================
+# Reglas personalizadas
+# ============================
 
-#Capturas de pantalla
-Capturas/
+# 1. Ignorar todos los .java dentro de ManejoDeAudios
+src/main/java/ManejoDeAudios/**/*.java
 
-#APK
-*.apk
+# 2. Ignorar solo el archivo AudioSteps.java
+src/test/java/stepDefinitions/AudioSteps.java
+
+# 3. Ignorar carpeta completa Llamadas (y subcarpetas)
+Llamadas/
+
+# 4. Ignorar carpeta completa LlamadasConvertidas (y subcarpetas)
+LlamadasConvertidas/
+
+# 6. Ignorar carpeta completa reportes (y subcarpetas)
+reportes/

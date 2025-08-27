@@ -7,7 +7,7 @@ Feature: Validar los flujos de IVR
     Examples:
       | saludo |  numero | valor |
   ##@externalData@./src/test/resources/data/Datos.xlsx@correo@
-   |Hola   |3558   |$ 50.000|
+      |Hola   |3558   |$ 50.000|
 
   @Audio_01
   Scenario: Convertir y reconocer un archivo de audio
@@ -18,9 +18,9 @@ Feature: Validar los flujos de IVR
     Then Visualizacion de la transcripcion
 
   @IVR_00
-  Scenario: Marcación IVR y reconocimiento de audio menu principal
+  Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
-    When  Se valida el flujo menu principal
+    When  Se Valida Menu Inicio
     And   El archivo de audio se trae automáticamente desde el celular
     And   Un archivo de audio ubicado en Llamadas
     And   Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -30,61 +30,83 @@ Feature: Validar los flujos de IVR
 
 
   @IVR_01
-  Scenario: Marcación IVR y reconocimiento de audio opcion 1
+  Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp
     Given Se realiza la llamada al numero *611#
-    And   Se marca la opcion uno y empieza a grabar
+    And   Op1, Ingreso a WhatsApp
     And   El archivo de audio se trae automáticamente desde el celular
     And   Un archivo de audio ubicado en Llamadas
     And   Se convierte el archivo a WAV mono 16kHz si es necesario
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-    #Then  Validar la transcripción con el texto esperado de Opcion 1
+    Then  Validar la transcripción con el texto esperado de Opcion 1
 
   @IVR_02
-  Scenario: Marcación IVR y reconocimiento de audio opcion 2
+  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Servicios Hogar
     Given Se realiza la llamada al numero *611#
-    And Se marca la opcion dos y empieza a grabar
+    And Comprar Servicios Claro, Servicios Hogar
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 2
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
 
   @IVR_03
-  Scenario: Marcación IVR y reconocimiento de audio opcion 2 y 1
+  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Plan Postpago Movil
     Given Se realiza la llamada al numero *611#
-    And Se marca la opcion 1 en comprar servicios y empieza a grabar
+    And Comprar Servicios Claro, Plan Postpago Movil
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+
+  @IVR_04
+  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Compra De Equipos
+    Given Se realiza la llamada al numero *611#
+    And Comprar Servicios Claro, Compra De Equipos
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+
+  @IVR_04
+  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Compra De Equipos
+    Given Se realiza la llamada al numero *611#
+    And Comprar Servicios Claro, Compra De Equipos
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+
+  @IVR_05
+  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
+    Given Se realiza la llamada al numero *611#
+    And Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
 
   @IVR_06
-  Scenario: Marcación IVR y reconocimiento de audio opcion 2 y 4
+  Scenario: Marcación IVR y Valida Menu Para Consultar Lineas
     Given Se realiza la llamada al numero *611#
-    And Se marca la opcion 4 en comprar servicios y empieza a grabar
+    And Valida Menu Para Consultar Lineas
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
 
   @IVR_07
-  Scenario: Marcación IVR y reconocimiento de audio opcion 3
-    Given Se realiza la llamada al numero *611#
-    And Se marca la opcion tres y empieza a grabar
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3
-
-  @IVR_08
   Scenario: Marcación IVR y Validar Menu Principal Despues de consultar linea
     Given Se realiza la llamada al numero *611#
     And Se valida el menu principal despues de digitar la linea a consultar
@@ -93,12 +115,23 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea
+    Then Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea
+
+  @IVR_08
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Consultar Saldo
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Asterisco, Consultar Saldo
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_09
-  Scenario: Marcación IVR y Consulta de saldo por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
     Given Se realiza la llamada al numero *611#
-    And Se marca la opcion cuatro en Consultar Lineas y empieza a grabar
+    And Menu Principal, Asterisco, Comprar Paquetes, Validar Menu Comprar Paquetes
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -107,9 +140,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_10
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
     Given Se realiza la llamada al numero *611#
-    And Se marca numeral opcion 1
+    And Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -118,9 +151,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_11
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
     Given Se realiza la llamada al numero *611#
-    And Se marca numeral opcion 2
+    And Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -129,9 +162,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_12
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Recargar Linea Prepago
     Given Se realiza la llamada al numero *611#
-    And Se marca numeral opcion 3
+    And Menu Principal, Asterisco, Recarga Linea Prepago
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -140,9 +173,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_13
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Productos Financiados
     Given Se realiza la llamada al numero *611#
-    And Se marca numeral opcion 4
+    And Menu Principal, Asterisco, Productos Financiados
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -151,9 +184,10 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_14
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Paquetes Activos
+
     Given Se realiza la llamada al numero *611#
-    And Se marca numeral opcion informacion general
+    And Menu Principal, Asterisco, Paquetes Activos, Validar Menu Paquetes Activos
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -162,10 +196,11 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_15
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Paquetes Activos
+
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Activar Roaming, Op1
-    And El archivo de audio se trae automáticamente desde el celular
+    And Menu Principal, Asterisco, Recarga Linea Prepago
+    And Menu Principal, Asterisco, Paquetes Activos, Retorno Menu Principal
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
@@ -173,9 +208,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_16
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Numeral, Soporte De Voz
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Activar Roaming, Op2
+    And Menu Principal, Numeral, Soporte De Voz
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -184,7 +219,73 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_17
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Numeral, Te Pasaste a Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Numeral, Te Pasaste a Claro
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_18
+  Scenario: Marcación IVR y Menu Principal, Numeral, Robo De Celular
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Numeral, Robo De Celular
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_19
+  Scenario: Marcación IVR y Menu Principal, Numeral, Reconectar Linea
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Numeral, Reconectar Linea
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_20
+  Scenario: Marcación IVR y Menu Principal, Op1, Info General
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Info General
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_21
+  Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Activar Roaming Internacional, Op1
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_22
+  Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Activar Roaming Internacional, Op2
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_23
+  Scenario: Marcación IVR y Menu Principal, Op1, Adquirir Equipos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Equipos
     And El archivo de audio se trae automáticamente desde el celular
@@ -194,76 +295,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_18
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op1
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_19
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_20
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op3
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_21
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op4
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_22
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op5
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_23
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op5, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
   @IVR_24
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op5, Op3
+    And Menu Principal, Op1, Pasarte a Claro y Adquirir Servicios Claro, Servicios Moviles y Servicios Hogar
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -272,9 +307,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_25
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op1, Adquirir Servicios Claro, Op6
+    And Menu Principal, Op1, Adquirir Servicios Claro, Pasarte Claro Con Tu Mismo Numero
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -283,7 +318,73 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_26
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Claro Video
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_27
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Claro Musica
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_28
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Activar Servicio
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_29
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_30
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Solicitud de Asistencia
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_31
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_32
+  Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Elegidos Movil Familia
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Elegidos Movil Familia
     And El archivo de audio se trae automáticamente desde el celular
@@ -293,10 +394,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_27
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_33
+  Scenario: Marcación IVR y Menu Principal, Op2, Perdida De Celular
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op4, Claro Pay
+    And Menu Principal, Op2, Perdida De Celular
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -304,10 +405,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_28
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_34
+  Scenario: Marcación IVR y Menu Principal, Op2, Reconeccion
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op4, Claro Pay Master Card
+    And Menu Principal, Op2, Reconeccion
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -315,10 +416,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_29
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_35
+  Scenario: Marcación IVR y Menu Principal, Op2, Registrar Equipo
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op4, Claro Pay Master Card, Op2
+    And Menu Principal, Op2, Registrar Equipo
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -326,10 +427,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_30
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_36
+  Scenario: Marcación IVR y Menu Principal, Op2, Reciclaje De Equipos
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Asterisco, Op2, valida metodos de pago
+    And Menu Principal, Op2, Reciclaje De Equipos
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -337,10 +438,10 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_31
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_37
+  Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Asterisco, Op2, valida metodos de pago
+    And Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -348,10 +449,21 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_32
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  @IVR_38
+  Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Asterisco, Op4, Paquetes Activos
+    And Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
+    And El archivo de audio se trae automáticamente desde el celular
+    And Un archivo de audio ubicado en Llamadas
+    And Se convierte el archivo a WAV mono 16kHz si es necesario
+    And Se realiza el reconocimiento de voz sobre el archivo convertido
+    And Visualizacion de la transcripcion
+    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+
+  @IVR_39
+  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
+    Given Se realiza la llamada al numero *611#
+    And Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -360,9 +472,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_40
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op2, Op1
+    And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -371,9 +483,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_41
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op2, Op2
+    And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -382,9 +494,9 @@ Feature: Validar los flujos de IVR
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
   @IVR_42
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op2, Op3
+    And Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones quejas o Recursos
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -395,7 +507,7 @@ Feature: Validar los flujos de IVR
   @IVR_43
   Scenario: Marcación IVR y Soporte de tus servicios por menu principal
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op2, Op4
+    And Menu Principal, Op4, Claro Pay
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -406,7 +518,7 @@ Feature: Validar los flujos de IVR
   @IVR_44
   Scenario: Marcación IVR y Soporte de tus servicios por menu principal
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op1
+    And Menu Principal, Op4, Claro Pay Master Card
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
@@ -417,51 +529,7 @@ Feature: Validar los flujos de IVR
   @IVR_45
   Scenario: Marcación IVR y Soporte de tus servicios por menu principal
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op1, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_46
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_47
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op2, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_48
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op2, Op2, Op2
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
-
-  @IVR_49
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
-    Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Op2, Op3
+    And Menu Principal, Op4, Claro Pay Master Card, Op2
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario

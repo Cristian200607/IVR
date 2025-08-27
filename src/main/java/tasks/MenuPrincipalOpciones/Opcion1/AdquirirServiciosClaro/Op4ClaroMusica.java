@@ -1,4 +1,4 @@
-package tasks.MenuPrincipalOpciones.Opcion1.AdquirirEquipos;
+package tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro;
 
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
@@ -8,7 +8,6 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.Op2ActivarRoamingInternacional;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -17,13 +16,13 @@ import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_3_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
-import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class AdquirirEquipos implements Task {
+
+public class Op4ClaroMusica implements Task {
     private final String numero;
 
-    public AdquirirEquipos(String numero) {
+    public Op4ClaroMusica(String numero) {
         this.numero = numero;
     }
 
@@ -67,19 +66,25 @@ public class AdquirirEquipos implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(39000),
-                Click.on(BOTON_3_EN_GRABACION)
+                WaitFor.aTime(40000),
+                Click.on(BOTON_4_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Marca Opcion 3");
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(53000),
-                Click.on(BTN_COLGAR),
+                WaitFor.aTime(37000),
+                Click.on(BOTON_4_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
+        actor.attemptsTo(
+                WaitFor.aTime(23000),
+                Click.on(BOTON_2_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(Op2ActivarRoamingInternacional.class, numero);
+        return instrumented(Op4ClaroMusica.class, numero);
     }
+
 }

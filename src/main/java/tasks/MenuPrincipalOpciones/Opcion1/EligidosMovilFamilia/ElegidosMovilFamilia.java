@@ -8,7 +8,6 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro.AdquirirServiciosClaroOp6;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -16,7 +15,6 @@ import static userinterfaces.IVRPage.*;
 import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_3_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
-import static userinterfaces.IVRPage.BOTON_6_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 

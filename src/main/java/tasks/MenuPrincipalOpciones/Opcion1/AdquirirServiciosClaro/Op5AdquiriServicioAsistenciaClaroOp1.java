@@ -1,4 +1,4 @@
-package tasks.MenuPrincipalOpciones.Opcion1.AdquirirEquipos;
+package tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro;
 
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
@@ -8,9 +8,7 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.Op2ActivarRoamingInternacional;
 import utils.EvidenciaUtils;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
@@ -20,10 +18,10 @@ import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
 import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class AdquirirEquipos implements Task {
+public class Op5AdquiriServicioAsistenciaClaroOp1 implements Task {
     private final String numero;
 
-    public AdquirirEquipos(String numero) {
+    public Op5AdquiriServicioAsistenciaClaroOp1(String numero) {
         this.numero = numero;
     }
 
@@ -68,11 +66,21 @@ public class AdquirirEquipos implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(39000),
-                Click.on(BOTON_3_EN_GRABACION)
+                Click.on(BOTON_4_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Marca Opcion 3");
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(53000),
+                WaitFor.aTime(41000),
+                Click.on(BOTON_5_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 5");
+        actor.attemptsTo(
+                WaitFor.aTime(10000),
+                Click.on(BOTON_1_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
+        actor.attemptsTo(
+                WaitFor.aTime(50000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
@@ -80,6 +88,6 @@ public class AdquirirEquipos implements Task {
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(Op2ActivarRoamingInternacional.class, numero);
+        return instrumented(Op5AdquiriServicioAsistenciaClaroOp1.class, numero);
     }
 }

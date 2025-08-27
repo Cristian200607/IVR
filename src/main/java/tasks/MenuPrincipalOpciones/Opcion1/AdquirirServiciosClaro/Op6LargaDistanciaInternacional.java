@@ -1,4 +1,4 @@
-package tasks.MenuPrincipalOpciones.Opcion1.AdquirirEquipos;
+package tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro;
 
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
@@ -8,7 +8,6 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.Op2ActivarRoamingInternacional;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -17,13 +16,18 @@ import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_3_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
-import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class AdquirirEquipos implements Task {
+
+
+public class Op6LargaDistanciaInternacional implements Task {
+    private static final String paso = "Pulsar Grbrar llamada";
+    private static final String paso1 = "Marcar Opcion 3";
+    private static final String paso2 = "Marcar Opcion 1";
+    private static final String paso3 = "Esperar a que se cuelgue la llamada";
     private final String numero;
 
-    public AdquirirEquipos(String numero) {
+    public Op6LargaDistanciaInternacional(String numero) {
         this.numero = numero;
     }
 
@@ -46,7 +50,6 @@ public class AdquirirEquipos implements Task {
                 WaitFor.aTime(2000)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
-
         // Marcar los números del parámetro lo más rápido posible
         EvidenciaUtils.registrarCaptura("Marcando número rápido");
         DialPadHelper.marcarNumeroMaximo(actor, numero);
@@ -63,23 +66,30 @@ public class AdquirirEquipos implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
                 WaitFor.aTime(41000),
+                Click.on(BOTON_NUMERAL_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion Numeral");
+        actor.attemptsTo(
+                WaitFor.aTime(29000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(39000),
-                Click.on(BOTON_3_EN_GRABACION)
+                Click.on(BOTON_4_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Marca Opcion 3");
         actor.attemptsTo(
-                WaitFor.aTime(53000),
-                Click.on(BTN_COLGAR),
+                WaitFor.aTime(40000),
+                Click.on(BOTON_6_EN_GRABACION)
+        );
+        actor.attemptsTo(
+                WaitFor.aTime(7000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(Op2ActivarRoamingInternacional.class, numero);
+        return instrumented(Op6LargaDistanciaInternacional.class, numero);
     }
 }
