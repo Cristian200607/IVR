@@ -20,10 +20,10 @@ import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
 import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class PresentarReclamosOp2Op2 implements Task {
+public class PresentarReclamosOp2Op2Op1 implements Task {
     private final String numero;
 
-    public PresentarReclamosOp2Op2(String numero) {
+    public PresentarReclamosOp2Op2Op1(String numero) {
         this.numero = numero;
     }
 
@@ -94,6 +94,6 @@ public class PresentarReclamosOp2Op2 implements Task {
     }
 
     public static Performable marcar(String numero) {
-        return Tasks.instrumented(PresentarReclamosOp2Op2.class, numero);
+        return Tasks.instrumented(PresentarReclamosOp2Op2Op1.class, numero);
     }
 }

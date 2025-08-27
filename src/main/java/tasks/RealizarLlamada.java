@@ -16,7 +16,6 @@ import static userinterfaces.IVRPage.*;
 public class RealizarLlamada implements Task {
 
   private final String numero;
-  private static final String paso = "Marcar *611";
 
   public RealizarLlamada(String numero) {
     this.numero = "*611";
@@ -30,7 +29,7 @@ public class RealizarLlamada implements Task {
             Click.on(TECLADO_TELEFONO),
             Enter.theValue(numero).into(By.id("digits"))
     );
-    EvidenciaUtils.registrarCaptura(paso);
+    EvidenciaUtils.registrarCaptura("Marcar *611");
     actor.attemptsTo(
             Click.on(BTN_LLAMAR)
     );

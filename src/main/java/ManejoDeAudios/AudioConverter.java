@@ -15,7 +15,8 @@ public class AudioConverter {
    */
   public static void convertToWav(String inputFile, String outputFile) throws Exception {
     // Ruta completa a ffmpeg.exe (ajustada con tu ruta real)
-    String ffmpegPath = "C:\\ffmpeg-7.1.1-full_build\\bin\\ffmpeg.exe";
+    String ffmpegPath = "C:\\Herramientas\\ffmpeg-7.1.1-full_build\\bin\\ffmpeg.exe";
+
 
     // Verificar si el archivo existe
     File ffmpegFile = new File(ffmpegPath);

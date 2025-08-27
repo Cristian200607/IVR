@@ -241,7 +241,7 @@ public class IVRDefinitions {
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Op6$")
   public void MenuPrincipalOp1AdquirirServiciosClaroOp6() {
     theActorInTheSpotlight().attemptsTo(
-            informacionGeneral.AdquirirServiciosClaroOp6.marcar("3125457947")
+            AdquirirServiciosClaroOp6.marcar("3125457947")
     );
   }
 
@@ -327,14 +327,14 @@ public class IVRDefinitions {
   @And("^Menu Principal, Op3, Op2$")
   public void MenuPrincipalOp3Op2() {
     theActorInTheSpotlight().attemptsTo(
-            PresentarReclamosOp2.marcar("3125457947")
+            PresentarReclamosOp2Op1.marcar("3125457947")
     );
   }
 
   @And("^Menu Principal, Op3, Op2, Op2$")
   public void MenuPrincipalOp3Op2Op2() {
     theActorInTheSpotlight().attemptsTo(
-            PresentarReclamosOp2Op2.marcar("3125457947")
+            PresentarReclamosOp2Op2Op1.marcar("3125457947")
     );
   }
 

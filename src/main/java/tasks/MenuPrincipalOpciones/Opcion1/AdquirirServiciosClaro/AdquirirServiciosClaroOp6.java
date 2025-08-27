@@ -21,10 +21,6 @@ import static utils.Constantes.ATENCION_AL_CLIENTE;
 
 
 public class AdquirirServiciosClaroOp6 implements Task {
-    private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 3";
-    private static final String paso2 = "Marcar Opcion 1";
-    private static final String paso3 = "Esperar a que se cuelgue la llamada";
     private final String numero;
 
     public AdquirirServiciosClaroOp6(String numero) {

@@ -16,14 +16,10 @@ import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.FIN_LLAMADA_GRABACION;
 
 public class ComprarServiciosOpcion4 implements Task {
-    private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 2";
-    private static final String paso2 = "Marcar Opcion 4";
-    private static final String paso3 = "Esperar a que se cuelgue la llamda";
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        EvidenciaUtils.registrarCaptura(paso);
+        EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
@@ -32,17 +28,17 @@ public class ComprarServiciosOpcion4 implements Task {
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(27000)
         );
-        EvidenciaUtils.registrarCaptura(paso1);
+        EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(
                 Click.on(BOTON_4_EN_GRABACION),
                 WaitFor.aTime(7000)
         );
-        EvidenciaUtils.registrarCaptura(paso2);
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura(paso3);
+        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar() {

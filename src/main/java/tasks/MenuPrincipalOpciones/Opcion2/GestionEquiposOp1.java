@@ -37,7 +37,7 @@ public class GestionEquiposOp1 implements Task {
                 WaitFor.aTime(13700),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
-                WaitFor.aTime(31000)
+                WaitFor.aTime(30000)
         );
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         actor.attemptsTo(
@@ -55,12 +55,12 @@ public class GestionEquiposOp1 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(14000),
+                WaitFor.aTime(13000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(40000),
                 Click.on(BOTON_2_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");
@@ -70,7 +70,7 @@ public class GestionEquiposOp1 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(34000),
+                WaitFor.aTime(56000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );

@@ -20,10 +20,6 @@ import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
 public class AdquirirServiciosClaroOp2 implements Task {
-    private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 3";
-    private static final String paso2 = "Marcar Opcion 1";
-    private static final String paso3 = "Esperar a que se cuelgue la llamada";
     private final String numero;
 
     public AdquirirServiciosClaroOp2(String numero) {
@@ -33,7 +29,7 @@ public class AdquirirServiciosClaroOp2 implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        EvidenciaUtils.registrarCaptura(paso);
+        EvidenciaUtils.registrarCaptura("Pulsar Grabar llamada");
         actor.attemptsTo(
                 WaitFor.aTime(500),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
@@ -43,11 +39,12 @@ public class AdquirirServiciosClaroOp2 implements Task {
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
         );
-        EvidenciaUtils.registrarCaptura(paso1);
+        EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         actor.attemptsTo(
                 Click.on(BOTON_4_EN_GRABACION),
                 WaitFor.aTime(2000)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
 
         // Marcar los números del parámetro lo más rápido posible
         EvidenciaUtils.registrarCaptura("Marcando número rápido");
@@ -57,23 +54,28 @@ public class AdquirirServiciosClaroOp2 implements Task {
                 WaitFor.aTime(16000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(14000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
                 WaitFor.aTime(41000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(39000),
                 Click.on(BOTON_4_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
                 WaitFor.aTime(39000),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(3000)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 2");
 
         // Marcar los números del parámetro lo más rápido posible
         EvidenciaUtils.registrarCaptura("Marcando número rápido");
@@ -83,11 +85,12 @@ public class AdquirirServiciosClaroOp2 implements Task {
                 WaitFor.aTime(9000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(5000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura(paso3);
+        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

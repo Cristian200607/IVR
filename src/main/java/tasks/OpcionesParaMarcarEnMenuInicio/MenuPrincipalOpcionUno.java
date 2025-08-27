@@ -15,13 +15,11 @@ import static userinterfaces.IVRPage.BTN_GRABAR;
 import static utils.Constantes.*;
 
 public class MenuPrincipalOpcionUno implements Task {
-    private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 1";
-    private static final String paso2 = "Esperar a que se cuelgue la llamda";
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        EvidenciaUtils.registrarCaptura(paso);
+
+        EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
@@ -29,11 +27,11 @@ public class MenuPrincipalOpcionUno implements Task {
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_1_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura(paso1);
+        EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 1");
         actor.attemptsTo(
-                WaitForResponse.withText(FIN_LLAMADA_GRABACION)
+                WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura(paso2);
+        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
 
     }
 
