@@ -8,13 +8,12 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.ActivarRoamingInternacionalOp2;
+import tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional.Op2ActivarRoamingInternacional;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 import static userinterfaces.IVRPage.BOTON_1_EN_GRABACION;
-import static userinterfaces.IVRPage.BOTON_2_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_3_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_4_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
@@ -81,6 +80,6 @@ public class AdquirirEquipos implements Task {
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(ActivarRoamingInternacionalOp2.class, numero);
+        return instrumented(Op2ActivarRoamingInternacional.class, numero);
     }
 }
