@@ -33,6 +33,7 @@ public class ClaroPay implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
+        EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         EvidenciaUtils.registrarCaptura(paso);
         actor.attemptsTo(
                 WaitFor.aTime(500),
@@ -43,11 +44,13 @@ public class ClaroPay implements Task {
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
         );
+        EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         EvidenciaUtils.registrarCaptura(paso1);
         actor.attemptsTo(
                 Click.on(BOTON_4_EN_GRABACION),
                 WaitFor.aTime(2000)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
 
         // Marcar los números del parámetro lo más rápido posible
         EvidenciaUtils.registrarCaptura("Marcando número rápido");
@@ -57,22 +60,27 @@ public class ClaroPay implements Task {
                 WaitFor.aTime(16000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(14000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
                 WaitFor.aTime(41000),
                 Click.on(BOTON_4_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
                 WaitFor.aTime(18000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(28000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
+        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar (String numero){

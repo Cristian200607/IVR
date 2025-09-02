@@ -21,10 +21,6 @@ import static utils.Constantes.ATENCION_AL_CLIENTE;
 
 
 public class Op6LargaDistanciaInternacional implements Task {
-    private static final String paso = "Pulsar Grbrar llamada";
-    private static final String paso1 = "Marcar Opcion 3";
-    private static final String paso2 = "Marcar Opcion 1";
-    private static final String paso3 = "Esperar a que se cuelgue la llamada";
     private final String numero;
 
     public Op6LargaDistanciaInternacional(String numero) {
@@ -60,28 +56,25 @@ public class Op6LargaDistanciaInternacional implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(14000),
+                WaitFor.aTime(13000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
-                Click.on(BOTON_NUMERAL_EN_GRABACION)
-        );
-        EvidenciaUtils.registrarCaptura("Marca Opcion Numeral");
-        actor.attemptsTo(
-                WaitFor.aTime(29000),
+                WaitFor.aTime(40000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(39000),
+                WaitFor.aTime(41000),
                 Click.on(BOTON_4_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(40000),
+                WaitFor.aTime(39000),
                 Click.on(BOTON_6_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 6");
         actor.attemptsTo(
                 WaitFor.aTime(7000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)

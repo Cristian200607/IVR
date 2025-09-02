@@ -80,6 +80,6 @@ public class AdquirirEquipos implements Task {
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(Op2ActivarRoamingInternacional.class, numero);
+        return instrumented(AdquirirEquipos.class, numero);
     }
 }

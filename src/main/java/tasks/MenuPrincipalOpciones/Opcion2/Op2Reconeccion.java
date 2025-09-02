@@ -34,10 +34,10 @@ public class Op2Reconeccion implements Task {
                 WaitFor.aTime(300),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(13700),
+                WaitFor.aTime(13000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
-                WaitFor.aTime(31000)
+                WaitFor.aTime(30000)
         );
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         actor.attemptsTo(
@@ -51,7 +51,7 @@ public class Op2Reconeccion implements Task {
         DialPadHelper.marcarNumeroMaximo(actor, numero);
 
         actor.attemptsTo(
-                WaitFor.aTime(16000),
+                WaitFor.aTime(15000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
@@ -61,7 +61,7 @@ public class Op2Reconeccion implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(40000),
                 Click.on(BOTON_2_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");

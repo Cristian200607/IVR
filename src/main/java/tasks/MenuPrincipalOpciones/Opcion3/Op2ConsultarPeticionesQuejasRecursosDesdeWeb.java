@@ -34,7 +34,7 @@ public class Op2ConsultarPeticionesQuejasRecursosDesdeWeb implements Task {
                 WaitFor.aTime(300),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(9000),
+                WaitFor.aTime(15000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(30000)

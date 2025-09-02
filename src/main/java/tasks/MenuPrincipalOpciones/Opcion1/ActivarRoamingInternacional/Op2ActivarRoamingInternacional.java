@@ -57,7 +57,7 @@ public class Op2ActivarRoamingInternacional implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(14000),
+                WaitFor.aTime(13000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
@@ -72,7 +72,7 @@ public class Op2ActivarRoamingInternacional implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");
         actor.attemptsTo(
-                WaitFor.aTime(35000),
+                WaitFor.aTime(34000),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(53000),
                 Click.on(BTN_COLGAR),

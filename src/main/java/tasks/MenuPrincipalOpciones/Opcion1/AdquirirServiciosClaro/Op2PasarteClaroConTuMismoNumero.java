@@ -82,7 +82,7 @@ public class Op2PasarteClaroConTuMismoNumero implements Task {
         DialPadHelper.marcarNumeroMaximo(actor, numero);
 
         actor.attemptsTo(
-                WaitFor.aTime(9000),
+                WaitFor.aTime(11000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");

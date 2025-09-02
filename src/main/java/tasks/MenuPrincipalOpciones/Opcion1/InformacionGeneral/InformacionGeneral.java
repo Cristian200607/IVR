@@ -60,6 +60,7 @@ public class InformacionGeneral implements Task {
                 WaitFor.aTime(14000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marcar Opcion 9");
         actor.attemptsTo(
                 WaitFor.aTime(41000),
                 Click.on(BOTON_1_EN_GRABACION)
@@ -69,6 +70,7 @@ public class InformacionGeneral implements Task {
                 WaitFor.aTime(39000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
+        EvidenciaUtils.registrarCaptura("Marcar Opcion 1");
         actor.attemptsTo(
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );

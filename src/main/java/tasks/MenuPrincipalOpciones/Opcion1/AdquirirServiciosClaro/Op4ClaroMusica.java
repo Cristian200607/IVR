@@ -61,7 +61,7 @@ public class Op4ClaroMusica implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(40000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");

@@ -70,7 +70,7 @@ public class ElegidosMovilFamilia implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 5");
         actor.attemptsTo(
-                WaitFor.aTime(9000),
+                WaitFor.aTime(8000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );

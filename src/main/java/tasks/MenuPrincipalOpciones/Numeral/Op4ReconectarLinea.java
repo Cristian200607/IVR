@@ -57,7 +57,7 @@ public class Op4ReconectarLinea implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(14000),
+                WaitFor.aTime(13000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
@@ -67,7 +67,7 @@ public class Op4ReconectarLinea implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion Numeral");
         actor.attemptsTo(
-                WaitFor.aTime(29000),
+                WaitFor.aTime(27000),
                 Click.on(BOTON_4_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");

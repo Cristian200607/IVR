@@ -71,7 +71,7 @@ public class Op1ActivarRoamingInternacional implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");
         actor.attemptsTo(
-                WaitFor.aTime(35000),
+                WaitFor.aTime(34000),
                 Click.on(BOTON_1_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
