@@ -7,6 +7,7 @@ import interactions.comunes.WaitForResponse;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
 import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -71,7 +72,8 @@ public class ProductosFinanciados implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(4000),
+                WaitFor.aTime(13000),
+                Click.on(BOTON_2_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");

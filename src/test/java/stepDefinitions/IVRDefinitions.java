@@ -12,8 +12,8 @@ import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetes;
-import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoOp2Op3;
-import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoOp2Op4;
+import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op3;
+import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op4;
 import tasks.MenuPrincipalOpciones.Asterico.Op1ConsultarSaldo.AsteriscoConsultarSaldo;
 import tasks.MenuPrincipalOpciones.Asterico.Op3RecargarLineaPrepago.RecargarLineaPrepago;
 import tasks.MenuPrincipalOpciones.Asterico.Op4ProductosFinanciados.ProductosFinanciados;
@@ -153,14 +153,14 @@ public class IVRDefinitions {
   @And("^Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes$")
   public void MenuPrincipalAsteriscoOp2ValidaMasMetodosDePago() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoOp2Op3.marcar("3125457947")
+            AsteriscoComprarPaquetesOp2Op3.marcar("3125457947")
     );
   }
 
   @And("^Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga$")
   public void MenuPrincipalAsteriscoOp2ValidaMasMetodosDePagoo() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoOp2Op4.marcar("3125457947")
+            AsteriscoComprarPaquetesOp2Op4.marcar("3125457947")
     );
   }
 

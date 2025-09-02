@@ -21,10 +21,10 @@ import static userinterfaces.IVRPage.BOTON_9_EN_GRABACION;
 import static userinterfaces.IVRPage.BOTON_ASTERISCO_EN_GRABACION;
 import static utils.Constantes.ATENCION_AL_CLIENTE;
 
-public class AsteriscoOp2Op4 implements Task {
+public class AsteriscoComprarPaquetesOp2Op4 implements Task {
     private final String numero;
 
-    public AsteriscoOp2Op4(String numero) {
+    public AsteriscoComprarPaquetesOp2Op4(String numero) {
         this.numero = numero;
     }
 
@@ -63,7 +63,7 @@ public class AsteriscoOp2Op4 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(39000),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_ASTERISCO_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion Asterisco");
@@ -73,19 +73,19 @@ public class AsteriscoOp2Op4 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");
         actor.attemptsTo(
-                WaitFor.aTime(48000),
+                WaitFor.aTime(41000),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_4_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(48000),
-                Click.on(BOTON_0_EN_GRABACION),
+                WaitFor.aTime(21000),
+                Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {
-        return instrumented(AsteriscoOp2Op4.class, numero);
+        return instrumented(AsteriscoComprarPaquetesOp2Op4.class, numero);
     }
 }
