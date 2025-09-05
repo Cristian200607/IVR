@@ -23,7 +23,7 @@ public class ComprarServiciosOpcion3 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(13000),
+                WaitFor.aTime(15000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(30000)
@@ -31,7 +31,7 @@ public class ComprarServiciosOpcion3 implements Task {
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(
                 Click.on(BOTON_3_EN_GRABACION),
-                WaitFor.aTime(7000)
+                WaitFor.aTime(1700)
         );
         EvidenciaUtils.registrarCaptura("Marcar Opcion 3");
         actor.attemptsTo(

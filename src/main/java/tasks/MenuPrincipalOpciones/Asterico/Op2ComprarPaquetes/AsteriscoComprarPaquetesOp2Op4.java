@@ -78,7 +78,7 @@ public class AsteriscoComprarPaquetesOp2Op4 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(21000),
+                WaitFor.aTime(20000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );

@@ -87,9 +87,6 @@ public class AudioSteps {
         LimpiarYRespaldarAudio.ejecutar(
                 "Llamadas/Call", convertedAudioPath, "Llamadas/BackupsAudio"
         );
-
-        // 🔥 Elimina los audios en el celular para que no se acumulen
-        EliminarAudioEnCelular.ejecutar("/sdcard/Recordings/Call/");
     }
 
 }
