@@ -22,15 +22,15 @@ public class ComprarServiciosOpcion2 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(14000),
+                WaitFor.aTime(16000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
-                WaitFor.aTime(27000)
+                WaitFor.aTime(28000)
         );
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(
                 Click.on(BOTON_2_EN_GRABACION),
-                WaitFor.aTime(13000)
+                WaitFor.aTime(1800)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 2");
         actor.attemptsTo(

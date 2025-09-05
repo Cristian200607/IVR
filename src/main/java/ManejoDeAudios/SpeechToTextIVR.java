@@ -107,7 +107,9 @@ public class SpeechToTextIVR {
       }
     }
 
-    return normalizeText(transcription.toString().trim());
+    return cleanDynamicBlock(
+            normalizeText(transcription.toString().trim())
+    );
   }
 
   public static String recognizeBytes(byte[] audioBytes) throws Exception {
@@ -137,7 +139,9 @@ public class SpeechToTextIVR {
       }
     }
 
-    return normalizeText(transcription.toString().trim());
+    return cleanDynamicBlock(
+            normalizeText(transcription.toString().trim())
+    );
   }
 
   // Subir audio a Google Cloud Storage
@@ -188,6 +192,20 @@ public class SpeechToTextIVR {
             // Normalizar espacios
             .replaceAll("\\s+", " ").trim();
     return text;
+  }
+
+  // Elimina el bloque dinámico del IVR que siempre cambia en números
+  private static String cleanDynamicBlock(String text) {
+    if (text == null || text.isEmpty()) return "";
+
+    // Expresión regular: desde "de las siguientes opciones..." hasta "marca 3"
+    text = text.replaceAll(
+            "de las siguientes opciones selecciona el servicio relacionado con tu consulta.*?marca 3",
+            ""
+    );
+
+    // Normalizar espacios sobrantes
+    return text.replaceAll("\\s+", " ").trim();
   }
 
   public static void main(String[] args) {

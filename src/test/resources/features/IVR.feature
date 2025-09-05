@@ -17,7 +17,7 @@ Feature: Validar los flujos de IVR
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     Then Visualizacion de la transcripcion
 
-  @IVR_00
+  @IVR_00 @Menu_Inicio
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
     When  Se Valida Menu Inicio
@@ -26,10 +26,10 @@ Feature: Validar los flujos de IVR
     And   Se convierte el archivo a WAV mono 16kHz si es necesario
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-    #Then  Validar la transcripción con el texto esperado del menu principal
+    Then  Validar la transcripción con el texto esperado del menu principal
 
 
-  @IVR_01
+  @IVR_01 @Inegreso_WhatsApp
   Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp
     Given Se realiza la llamada al numero *611#
     And   Op1, Ingreso a WhatsApp
@@ -38,9 +38,9 @@ Feature: Validar los flujos de IVR
     And   Se convierte el archivo a WAV mono 16kHz si es necesario
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-    Then  Validar la transcripción con el texto esperado de Opcion 1
+    Then  Validar la transcripción Menu Inicio, Ingreso a WhatsApp
 
-  @IVR_02
+  @IVR_02 @Menu_Inicio_Comprar_Servicios_Claro
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Servicios Hogar
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Servicios Hogar
@@ -49,9 +49,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 1
+    Then Validar la transcripción Comprar Servicios Claro, Servicios Hogar
 
-  @IVR_03
+  @IVR_03 @Menu_Inicio_Comprar_Servicios_Claro
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Plan Postpago Movil
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Plan Postpago Movil
@@ -60,9 +60,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+    Then Validar la transcripción Comprar Servicios Claro, Plan Postpago Movil
 
-  @IVR_04
+  @IVR_04 @Menu_Inicio_Comprar_Servicios_Claro
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Compra De Equipos
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Compra De Equipos
@@ -71,20 +71,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+    Then Validar la transcripción Menu Inicio, Comprar Servicios Claro, Compra De Equipos
 
-  @IVR_04
-  Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Compra De Equipos
-    Given Se realiza la llamada al numero *611#
-    And Comprar Servicios Claro, Compra De Equipos
-    And El archivo de audio se trae automáticamente desde el celular
-    And Un archivo de audio ubicado en Llamadas
-    And Se convierte el archivo a WAV mono 16kHz si es necesario
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
-
-  @IVR_05
+  @IVR_05 @Menu_Inicio_Comprar_Servicios_Claro
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
@@ -93,7 +82,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+    Then Validar la transcripción Menu Inicio, Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
 
   @IVR_06
   Scenario: Marcación IVR y Valida Menu Para Consultar Lineas
@@ -104,7 +93,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Opcion 2 depues 4
+    Then Validar la transcripción Valida Menu Para Consultar Lineas
 
   @IVR_07
   Scenario: Marcación IVR y Validar Menu Principal Despues de consultar linea
@@ -115,9 +104,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea
+    #Then Validar la transcripción con el texto esperado de Validar Menu principal despues de digitar la linea
 
-  @IVR_08
+  @IVR_08 @Menu_Principal_Asterisco_Consultar_Saldo
   Scenario: Marcación IVR y Menu Principal, Asterisco, Consultar Saldo
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Consultar Saldo
@@ -126,9 +115,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Asterisco, Consultar Saldo
 
-  @IVR_09
+  @IVR_09 @Menu_Principal_Asterisco_Comprar_Paquetes
   Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Comprar Paquetes, Validar Menu Comprar Paquetes
@@ -137,10 +126,10 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Asterisco, Comprar Paquetes
 
   @IVR_10
-  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes
     And El archivo de audio se trae automáticamente desde el celular
@@ -148,10 +137,10 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes
 
   @IVR_11
-  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes
+  Scenario: Marcación IVR y Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga
     And El archivo de audio se trae automáticamente desde el celular
@@ -159,7 +148,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga
 
   @IVR_12
   Scenario: Marcación IVR y Menu Principal, Asterisco, Recargar Linea Prepago
@@ -170,9 +159,9 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Asterisco, Recargar Linea Prepago
 
-  @IVR_13
+  @IVR_13 #Hallazgo
   Scenario: Marcación IVR y Menu Principal, Asterisco, Productos Financiados
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Productos Financiados
@@ -185,7 +174,6 @@ Feature: Validar los flujos de IVR
 
   @IVR_14
   Scenario: Marcación IVR y Menu Principal, Asterisco, Paquetes Activos
-
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Paquetes Activos, Validar Menu Paquetes Activos
     And El archivo de audio se trae automáticamente desde el celular
@@ -193,19 +181,17 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    #Then Validar la transcripción Menu Principal, Asterisco, Paquetes Activos
 
   @IVR_15
   Scenario: Marcación IVR y Menu Principal, Asterisco, Paquetes Activos
-
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Asterisco, Recarga Linea Prepago
     And Menu Principal, Asterisco, Paquetes Activos, Retorno Menu Principal
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    #Then Validar la transcripción Menu Principal, Asterisco, Paquetes Activos, Retorno Menu Principal
 
   @IVR_16
   Scenario: Marcación IVR y Menu Principal, Numeral, Soporte De Voz
@@ -216,7 +202,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Numeral, Soporte De Voz
 
   @IVR_17
   Scenario: Marcación IVR y Menu Principal, Numeral, Te Pasaste a Claro
@@ -227,7 +213,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Numeral, Te Pasaste a Claro
 
   @IVR_18
   Scenario: Marcación IVR y Menu Principal, Numeral, Robo De Celular
@@ -238,7 +224,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Numeral, Robo De Celular
 
   @IVR_19
   Scenario: Marcación IVR y Menu Principal, Numeral, Reconectar Linea
@@ -249,7 +235,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Numeral, Reconectar Linea
 
   @IVR_20
   Scenario: Marcación IVR y Menu Principal, Op1, Info General
@@ -260,7 +246,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Info General
 
   @IVR_21
   Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional
@@ -271,10 +257,10 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Activar Roaming Internacional
 
   @IVR_22
-  Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional
+  Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional, Op2
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Activar Roaming Internacional, Op2
     And El archivo de audio se trae automáticamente desde el celular
@@ -282,7 +268,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Activar Roaming Internacional, Op2
 
   @IVR_23
   Scenario: Marcación IVR y Menu Principal, Op1, Adquirir Equipos
@@ -293,7 +279,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Equipos
 
   @IVR_24
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -304,7 +290,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Pasarte a Claro y Adquirir Servicios Claro, Servicios Moviles y Servicios Hogar
 
   @IVR_25
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -315,7 +301,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Pasarte Claro Con Tu Mismo Numero
 
   @IVR_26
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -326,7 +312,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Claro Video
 
   @IVR_27
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -337,7 +323,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Claro Musica
 
   @IVR_28
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -348,7 +334,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Activar Servicio
 
   @IVR_29
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -359,7 +345,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
 
   @IVR_30
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -370,7 +356,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Solicitud de Asistencia
 
   @IVR_31
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
@@ -381,7 +367,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
 
   @IVR_32
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Elegidos Movil Familia
@@ -392,7 +378,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op1, Elegidos Movil Familia
 
   @IVR_33
   Scenario: Marcación IVR y Menu Principal, Op2, Perdida De Celular
@@ -403,7 +389,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op2, Perdida De Celular
 
   @IVR_34
   Scenario: Marcación IVR y Menu Principal, Op2, Reconeccion
@@ -414,7 +400,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op2, Reconeccion
 
   @IVR_35
   Scenario: Marcación IVR y Menu Principal, Op2, Registrar Equipo
@@ -425,7 +411,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op2, Registrar Equipo
 
   @IVR_36
   Scenario: Marcación IVR y Menu Principal, Op2, Reciclaje De Equipos
@@ -436,7 +422,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op2, Reciclaje De Equipos
 
   @IVR_37
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
@@ -447,7 +433,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
 
   @IVR_38
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
@@ -458,7 +444,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
 
   @IVR_39
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
@@ -469,7 +455,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
 
   @IVR_40
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
@@ -480,7 +466,7 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
 
   @IVR_41
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
@@ -491,21 +477,21 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
 
   @IVR_42
-  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
+  Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones Quejas o Recursos
     Given Se realiza la llamada al numero *611#
-    And Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones quejas o Recursos
+    And Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
     And El archivo de audio se trae automáticamente desde el celular
     And Un archivo de audio ubicado en Llamadas
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
 
   @IVR_43
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay
     And El archivo de audio se trae automáticamente desde el celular
@@ -513,10 +499,10 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op4, Claro Pay
 
   @IVR_44
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay Master Card
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay Master Card
     And El archivo de audio se trae automáticamente desde el celular
@@ -524,10 +510,10 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op4, Claro Pay Master Card
 
   @IVR_45
-  Scenario: Marcación IVR y Soporte de tus servicios por menu principal
+  Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay Master Card, Op2
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay Master Card, Op2
     And El archivo de audio se trae automáticamente desde el celular
@@ -535,4 +521,4 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
+    Then Validar la transcripción Menu Principal, Op4, Claro Pay Master Card, Op2

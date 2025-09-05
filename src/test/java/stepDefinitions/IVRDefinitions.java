@@ -381,7 +381,7 @@ public class IVRDefinitions {
     );
   }
 
-  @And("^Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones quejas o Recursos$")
+  @And("^Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos$")
   public void MenuPrincipalOp3Op2Op3() {
     theActorInTheSpotlight().attemptsTo(
             Op3RadicarPeticionesQuejasORecursos.marcar("3125457947")

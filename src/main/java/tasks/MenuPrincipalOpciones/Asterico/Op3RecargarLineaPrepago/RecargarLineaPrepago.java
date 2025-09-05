@@ -34,7 +34,7 @@ public class RecargarLineaPrepago implements Task {
                 WaitFor.aTime(500),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(13600),
+                WaitFor.aTime(14000),
                 net.serenitybdd.screenplay.actions.Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
