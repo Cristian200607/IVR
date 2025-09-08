@@ -17,7 +17,7 @@ Feature: Validar los flujos de IVR
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     Then Visualizacion de la transcripcion
 
-  @IVR_00 @Menu_Inicio
+  @IVR_00 @Menu_Inicio @IVR_46_POS
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
     When  Se Valida Menu Inicio
@@ -29,7 +29,7 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal
 
 
-  @IVR_01 @Inegreso_WhatsApp
+  @IVR_01 @Inegreso_WhatsApp @IVR_47_POS
   Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp
     Given Se realiza la llamada al numero *611#
     And   Op1, Ingreso a WhatsApp
@@ -40,7 +40,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción Menu Inicio, Ingreso a WhatsApp
 
-  @IVR_02 @Menu_Inicio_Comprar_Servicios_Claro
+  @IVR_02 @Menu_Inicio_Comprar_Servicios_Claro @IVR_48_POS
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Servicios Hogar
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Servicios Hogar
@@ -51,7 +51,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Comprar Servicios Claro, Servicios Hogar
 
-  @IVR_03 @Menu_Inicio_Comprar_Servicios_Claro
+  @IVR_03 @Menu_Inicio_Comprar_Servicios_Claro @IVR_49_POS
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Plan Postpago Movil
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Plan Postpago Movil
@@ -62,7 +62,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Comprar Servicios Claro, Plan Postpago Movil
 
-  @IVR_04 @Menu_Inicio_Comprar_Servicios_Claro
+  @IVR_04 @Menu_Inicio_Comprar_Servicios_Claro @IVR_50_POS
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Compra De Equipos
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Compra De Equipos
@@ -73,7 +73,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Inicio, Comprar Servicios Claro, Compra De Equipos
 
-  @IVR_05 @Menu_Inicio_Comprar_Servicios_Claro
+  @IVR_05 @Menu_Inicio_Comprar_Servicios_Claro @IVR_51_POS
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
     Given Se realiza la llamada al numero *611#
     And Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
@@ -84,7 +84,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Inicio, Comprar Servicios Claro, Adquirir Servicios Y Pasarte a Claro
 
-  @IVR_06
+  @IVR_06 @IVR_52_POS
   Scenario: Marcación IVR y Valida Menu Para Consultar Lineas
     Given Se realiza la llamada al numero *611#
     And Valida Menu Para Consultar Lineas
@@ -95,7 +95,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Valida Menu Para Consultar Lineas
 
-  @IVR_07
+  @IVR_07 @IVR_53_POS
   Scenario: Marcación IVR y Validar Menu Principal Despues de consultar linea
     Given Se realiza la llamada al numero *611#
     And Se valida el menu principal despues de digitar la linea a consultar
@@ -193,7 +193,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción Menu Principal, Asterisco, Paquetes Activos, Retorno Menu Principal
 
-  @IVR_16
+  @IVR_16 @IVR_66_POS
   Scenario: Marcación IVR y Menu Principal, Numeral, Soporte De Voz
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Numeral, Soporte De Voz
@@ -204,7 +204,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Numeral, Soporte De Voz
 
-  @IVR_17
+  @IVR_17 @IVR_67_POS
   Scenario: Marcación IVR y Menu Principal, Numeral, Te Pasaste a Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Numeral, Te Pasaste a Claro
@@ -215,7 +215,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Numeral, Te Pasaste a Claro
 
-  @IVR_18
+  @IVR_18 @IVR_68_POS
   Scenario: Marcación IVR y Menu Principal, Numeral, Robo De Celular
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Numeral, Robo De Celular
@@ -226,7 +226,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Numeral, Robo De Celular
 
-  @IVR_19
+  @IVR_19 @IVR_69_POS
   Scenario: Marcación IVR y Menu Principal, Numeral, Reconectar Linea
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Numeral, Reconectar Linea
@@ -237,7 +237,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Numeral, Reconectar Linea
 
-  @IVR_20
+  @IVR_20 #@IVR_70_POS
   Scenario: Marcación IVR y Menu Principal, Op1, Info General
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Info General
@@ -248,7 +248,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Info General
 
-  @IVR_21
+  @IVR_21 #@IVR_71_POS
   Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Activar Roaming Internacional, Op1
@@ -259,7 +259,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Activar Roaming Internacional
 
-  @IVR_22
+  @IVR_22 #@IVR_72_POS
   Scenario: Marcación IVR y Menu Principal, Op1, Activar Roaming Internacional, Op2
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Activar Roaming Internacional, Op2
@@ -270,7 +270,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Activar Roaming Internacional, Op2
 
-  @IVR_23
+  @IVR_23 #@IVR_73_POS
   Scenario: Marcación IVR y Menu Principal, Op1, Adquirir Equipos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Equipos
@@ -281,7 +281,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Equipos
 
-  @IVR_24
+  @IVR_24 #@IVR_74_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Pasarte a Claro y Adquirir Servicios Claro, Servicios Moviles y Servicios Hogar
@@ -292,7 +292,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Pasarte a Claro y Adquirir Servicios Claro, Servicios Moviles y Servicios Hogar
 
-  @IVR_25
+  @IVR_25 #@IVR_75_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Pasarte Claro Con Tu Mismo Numero
@@ -303,7 +303,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Pasarte Claro Con Tu Mismo Numero
 
-  @IVR_26
+  @IVR_26 #@IVR_76_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Claro Video
@@ -314,7 +314,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Claro Video
 
-  @IVR_27
+  @IVR_27 #@IVR_77_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Claro Musica
@@ -325,7 +325,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Claro Musica
 
-  @IVR_28
+  @IVR_28 #@IVR_78_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Activar Servicio
@@ -336,7 +336,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Activar Servicio
 
-  @IVR_29
+  @IVR_29 #@IVR_79_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
@@ -347,7 +347,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
 
-  @IVR_30
+  @IVR_30 #@IVR_80_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Solicitud de Asistencia
@@ -358,7 +358,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Solicitud de Asistencia
 
-  @IVR_31
+  @IVR_31 #@IVR_81_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
@@ -369,7 +369,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
 
-  @IVR_32
+  @IVR_32 #@IVR_83_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Elegidos Movil Familia
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Elegidos Movil Familia
@@ -380,7 +380,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op1, Elegidos Movil Familia
 
-  @IVR_33
+  @IVR_33 @IVR_84_POS
   Scenario: Marcación IVR y Menu Principal, Op2, Perdida De Celular
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Perdida De Celular
@@ -391,7 +391,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op2, Perdida De Celular
 
-  @IVR_34
+  @IVR_34 @IVR_85_POS
   Scenario: Marcación IVR y Menu Principal, Op2, Reconeccion
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Reconeccion
@@ -402,7 +402,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op2, Reconeccion
 
-  @IVR_35
+  @IVR_35 @IVR_86_POS
   Scenario: Marcación IVR y Menu Principal, Op2, Registrar Equipo
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Registrar Equipo
@@ -413,7 +413,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op2, Registrar Equipo
 
-  @IVR_36
+  @IVR_36 @IVR_87_POS
   Scenario: Marcación IVR y Menu Principal, Op2, Reciclaje De Equipos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Reciclaje De Equipos
@@ -424,7 +424,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op2, Reciclaje De Equipos
 
-  @IVR_37
+  @IVR_37 @IVR_88_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
@@ -435,7 +435,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
 
-  @IVR_38
+  @IVR_38 @IVR_89_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
@@ -446,7 +446,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
 
-  @IVR_39
+  @IVR_39 @IVR_90_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
@@ -457,7 +457,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
 
-  @IVR_40
+  @IVR_40 @IVR_91_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
@@ -468,7 +468,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
 
-  @IVR_41
+  @IVR_41 @IVR_92_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
@@ -479,7 +479,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
 
-  @IVR_42
+  @IVR_42 @IVR_93_POS
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones Quejas o Recursos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
@@ -490,7 +490,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
 
-  @IVR_43
+  @IVR_43 @IVR_94_POS
   Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay
@@ -501,7 +501,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op4, Claro Pay
 
-  @IVR_44
+  @IVR_44 @IVR_95_POS
   Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay Master Card
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay Master Card
@@ -512,7 +512,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     Then Validar la transcripción Menu Principal, Op4, Claro Pay Master Card
 
-  @IVR_45
+  @IVR_45 @IVR_96_POS
   Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay Master Card, Op2
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Claro Pay Master Card, Op2
