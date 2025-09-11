@@ -22,8 +22,9 @@ public class AudioSteps {
     @Given("^El archivo de audio se trae automáticamente desde el celular$")
     public void givenTraerArchivoDesdeCelular() {
         String rutaCelular = "/sdcard/Recordings/Call/";
-        String rutaLocal = "C:\\IVR\\Llamadas\\";
-        TraerAudioDesdeCelular.desde(rutaCelular, rutaLocal);
+        String rutaLocal = System.getProperty("user.dir") + File.separator + "Llamadas" + File.separator;
+        String udid = "R9WW70LL61V";
+        TraerAudioDesdeCelular.desde(udid, rutaCelular, rutaLocal);
     }
 
     @And("^Un archivo de audio ubicado en Llamadas$")

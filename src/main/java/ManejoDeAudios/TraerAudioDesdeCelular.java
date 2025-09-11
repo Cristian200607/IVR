@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class TraerAudioDesdeCelular {
 
-    public static void desde(String rutaCelular, String rutaLocal) {
+    public static void desde(String udid, String rutaCelular, String rutaLocal) {
         WaitFor.aTime(4000);
         try {
             // Asegurar que la carpeta local exista
@@ -16,8 +16,8 @@ public class TraerAudioDesdeCelular {
                 carpetaDestino.mkdirs();
             }
 
-            // Comando adb pull
-            String comando = String.format("adb pull %s %s", rutaCelular, rutaLocal);
+            // Comando adb pull con UDID
+            String comando = String.format("adb -s %s pull %s %s", udid, rutaCelular, rutaLocal);
 
             System.out.println("Ejecutando comando: " + comando);
 
@@ -26,7 +26,7 @@ public class TraerAudioDesdeCelular {
             int resultado = proceso.waitFor();
 
             if (resultado == 0) {
-                System.out.println("Archivo(s) copiado(s) correctamente desde el celular.");
+                System.out.println("Archivo(s) copiado(s) correctamente desde el celular con UDID: " + udid);
             } else {
                 System.err.println("Error al copiar archivo(s) desde el celular. Código: " + resultado);
             }
