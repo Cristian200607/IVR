@@ -58,6 +58,8 @@ public class IVRDefinitions {
     OnStage.setTheStage(new OnlineCast());
     LOGGER.info("Limpiando carpeta de capturas...");
     WordAppium.inicializarPlantillaReporte();
+
+    // Limpiar capturas locales
     File folder = new File("Capturas");
     if (folder.exists() && folder.isDirectory()) {
       for (File file : folder.listFiles()) {
@@ -65,6 +67,29 @@ public class IVRDefinitions {
           file.delete();
         }
       }
+    }
+
+    // Limpiar audios en el celular
+    String rutaCelular = "/sdcard/Recordings/Call/";
+    String udid = "R9WW70LL61V"; // tu UDID
+    try {
+      // Crear carpeta si no existe
+      String crearCarpeta = String.format("adb -s %s shell mkdir -p %s", udid, rutaCelular);
+      Runtime.getRuntime().exec(crearCarpeta).waitFor();
+
+      // Borrar todo dentro
+      String borrarArchivos = String.format("adb -s %s shell rm -rf %s*", udid, rutaCelular);
+      System.out.println("Limpiando audios del celular con: " + borrarArchivos);
+      Process proceso = Runtime.getRuntime().exec(borrarArchivos);
+      int resultado = proceso.waitFor();
+      if (resultado == 0) {
+        System.out.println("Carpeta de audios del celular limpia correctamente: " + rutaCelular);
+      } else {
+        System.err.println("Error limpiando carpeta del celular. Código: " + resultado);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new RuntimeException("Error ejecutando adb para limpiar carpeta del celular", e);
     }
   }
 
