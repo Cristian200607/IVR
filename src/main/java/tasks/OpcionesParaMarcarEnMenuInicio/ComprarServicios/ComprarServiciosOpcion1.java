@@ -22,7 +22,7 @@ public class ComprarServiciosOpcion1 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(500),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(15000),
+                WaitFor.aTime(17000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(28000)

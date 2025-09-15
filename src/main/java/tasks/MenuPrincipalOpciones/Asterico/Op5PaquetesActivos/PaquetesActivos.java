@@ -35,7 +35,7 @@ public class PaquetesActivos implements Task {
                 WaitFor.aTime(500),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(13600),
+                WaitFor.aTime(15000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
@@ -52,7 +52,7 @@ public class PaquetesActivos implements Task {
         DialPadHelper.marcarNumeroMaximo(actor, numero);
 
         actor.attemptsTo(
-                WaitFor.aTime(16000),
+                WaitFor.aTime(17500),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
@@ -72,17 +72,18 @@ public class PaquetesActivos implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 5");
         actor.attemptsTo(
-                WaitFor.aTime(8000),
-                Click.on(BOTON_1_EN_GRABACION)
-        );
-        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
-        actor.attemptsTo(
                 WaitFor.aTime(10000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(4000),
+                WaitFor.aTime(13000),
+                Click.on(BOTON_1_EN_GRABACION)
+        );
+        EvidenciaUtils.registrarCaptura("Marca Opcion 1");
+        actor.attemptsTo(
+                WaitFor.aTime( 3000),
+                Click.on(BTN_COLGAR),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
