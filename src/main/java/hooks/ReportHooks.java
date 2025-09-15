@@ -57,11 +57,12 @@ public class ReportHooks {
             lineaUsada,
             duracionFormato,
             pasoFallido,
-            estadoFinal);
+            estadoFinal,
+            EstadoPrueba.transcripcion,   // 👈 se agrega
+            EstadoPrueba.textoEsperado    // 👈 se agrega
+    );
 
-    // Limpiar estado para el siguiente escenario
     pasosEjecutados.clear();
-    EstadoPrueba.fallo = false;
-    EstadoPrueba.pasoFallido = "";
+    EstadoPrueba.reset();
   }
 }

@@ -6,6 +6,7 @@ import static stepDefinitions.AudioSteps.transcription;
 
 import ManejoDeAudios.EliminarAudioEnCelular;
 import org.apache.commons.text.similarity.LevenshteinDistance;
+import utils.EstadoPrueba;
 
 public class ValidacionesDeTranscripciones {
 
@@ -297,9 +298,14 @@ public class ValidacionesDeTranscripciones {
                             "Transcripción: " + transcripcionNormalizada + "\n" +
                             "Coincidencia: " + porcentaje + "%"
             );
+
             System.out.println("✅ Coincidencia aceptable (" + porcentaje + "%)");
             System.out.println("✅ Texto Esperado");
             System.out.println(esperadoNormalizado);
+
+            // 🔹 Guardar en EstadoPrueba para el reporte final
+            EstadoPrueba.transcripcion = transcription;
+            EstadoPrueba.textoEsperado = textoEsperado;
 
         } finally {
             EliminarAudioEnCelular.ejecutar(RUTA_ARCHIVO_CELULAR);

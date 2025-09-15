@@ -19,34 +19,41 @@ public class WordAppium {
 
   private static final Logger LOGGER = Logger.getLogger(WordAppium.class.getName());
   private static final String TEMPLATE_PATH =
-      System.getProperty("user.dir")
-          + File.separator
-          + "ruta"
-          + File.separator
-          + "InformeFinal.docx";
+          System.getProperty("user.dir")
+                  + File.separator
+                  + "ruta"
+                  + File.separator
+                  + "InformeFinal.docx";
   private static final String CAPTURAS_DIR = "Capturas/";
 
   private static final DateTimeFormatter FORMATTER =
-      DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+          DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
+  /**
+   * Genera el reporte final en Word incluyendo capturas, conclusión,
+   * transcripción y texto esperado
+   */
   public static void generarReporte(
-      String nombreEscenario,
-      String[] pasosEjecutados,
-      String linea,
-      String duracionFormato,
-      String pasoFallido,
-      String estadoFinal) {
+          String nombreEscenario,
+          String[] pasosEjecutados,
+          String linea,
+          String duracionFormato,
+          String pasoFallido,
+          String estadoFinal,
+          String transcripcion,   // NUEVO
+          String textoEsperado    // NUEVO
+  ) {
     File capturasFolder = new File(CAPTURAS_DIR);
     File[] capturasFiles = capturasFolder.listFiles();
     String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
     String nombreArchivo =
-        "Reporte_" + nombreEscenario.replaceAll("\\s+", "_") + "_" + timestamp + ".docx";
+            "Reporte_" + nombreEscenario.replaceAll("\\s+", "_") + "_" + timestamp + ".docx";
     String rutaDestino =
-        System.getProperty("user.dir")
-            + File.separator
-            + "reportes"
-            + File.separator
-            + nombreArchivo;
+            System.getProperty("user.dir")
+                    + File.separator
+                    + "reportes"
+                    + File.separator
+                    + nombreArchivo;
 
     if (capturasFiles == null || capturasFiles.length == 0) {
       LOGGER.warning("No hay capturas para procesar.");
@@ -56,21 +63,25 @@ public class WordAppium {
     new File(System.getProperty("user.dir") + File.separator + "reportes").mkdirs();
 
     try (FileInputStream fis = new FileInputStream(TEMPLATE_PATH);
-        XWPFDocument document = new XWPFDocument(fis);
-        FileOutputStream fos = new FileOutputStream(rutaDestino)) {
+         XWPFDocument document = new XWPFDocument(fis);
+         FileOutputStream fos = new FileOutputStream(rutaDestino)) {
 
-      // Reemplazar marcadores en plantilla
+      // Reemplazos normales
       reemplazarTextoEnDocumento(document, "{{ESCENARIO}}", nombreEscenario);
       reemplazarTextoEnDocumento(document, "{{FECHA}}", FORMATTER.format(LocalDateTime.now()));
       reemplazarTextoEnDocumento(document, "{{LINEA}}", linea);
       reemplazarTextoEnDocumento(document, "{{DURACION}}", duracionFormato);
       reemplazarTextoEnDocumento(
-          document,
-          "{{CONCLUSION}}",
-          generarConclusion(nombreEscenario, pasosEjecutados, linea, pasoFallido, estadoFinal));
+              document,
+              "{{CONCLUSION}}",
+              generarConclusion(nombreEscenario, pasosEjecutados, linea, pasoFallido, estadoFinal));
 
-      //    agregarEncabezado(document, nombreEscenario, linea, pasosEjecutados);
+      // Pasos + capturas
       agregarPasosYCapturas(document, pasosEjecutados, capturasFiles);
+
+      // 🔹 NUEVO: Secciones dinámicas al final
+      agregarSeccionTexto(document, "🎤 Transcripción:", transcripcion);
+      agregarSeccionTexto(document, "📌 Texto esperado:", textoEsperado);
 
       document.write(fos);
       LOGGER.info("Reporte actualizado correctamente.");
@@ -83,7 +94,7 @@ public class WordAppium {
   }
 
   private static void agregarPasosYCapturas(XWPFDocument doc, String[] pasos, File[] capturas)
-      throws IOException, InvalidFormatException {
+          throws IOException, InvalidFormatException {
 
     for (String paso : pasos) {
       XWPFParagraph pasoParrafo = doc.createParagraph();
@@ -95,9 +106,6 @@ public class WordAppium {
       pasoRun.setFontSize(11);
       pasoRun.setText(" ✅ " + paso);
 
-      XWPFParagraph paragraph = doc.createParagraph();
-      XWPFRun run = paragraph.createRun();
-
       File imagenPaso = buscarImagenDePaso(paso, capturas);
       if (imagenPaso != null) {
         XWPFParagraph imagenParrafo = doc.createParagraph();
@@ -105,11 +113,11 @@ public class WordAppium {
         XWPFRun imagenRun = imagenParrafo.createRun();
         try (FileInputStream is = new FileInputStream(imagenPaso)) {
           imagenRun.addPicture(
-              is,
-              Document.PICTURE_TYPE_PNG,
-              imagenPaso.getName(),
-              Units.toEMU(150),
-              Units.toEMU(270));
+                  is,
+                  Document.PICTURE_TYPE_PNG,
+                  imagenPaso.getName(),
+                  Units.toEMU(150),
+                  Units.toEMU(270));
           imagenRun.addBreak();
         }
       } else {
@@ -121,7 +129,7 @@ public class WordAppium {
 
   private static File buscarImagenDePaso(String paso, File[] capturas) {
     String pasoNormalizado =
-        paso.toLowerCase().replaceAll("[^a-z0-9]", "_"); // igual que en CapturaDePantallaMovil
+            paso.toLowerCase().replaceAll("[^a-z0-9]", "_");
 
     for (File img : capturas) {
       if (img.getName().toLowerCase().contains(pasoNormalizado)) {
@@ -133,7 +141,7 @@ public class WordAppium {
 
   /** Genera la conclusión del reporte basada en la ejecución de los pasos */
   private static String generarConclusion(
-      String escenario, String[] pasos, String linea, String pasoFallido, String estadoFinal) {
+          String escenario, String[] pasos, String linea, String pasoFallido, String estadoFinal) {
     StringBuilder conclusion = new StringBuilder();
     conclusion.append(iniciarConclusion(linea)).append("\n\n");
 
@@ -169,7 +177,6 @@ public class WordAppium {
 
   static {
     try {
-      // Cargar el ResourceBundle desde el classpath
       messages = ResourceBundle.getBundle("messages");
     } catch (MissingResourceException e) {
       LOGGER.severe("No se pudo cargar el archivo de mensajes: " + e.getMessage());
@@ -181,15 +188,11 @@ public class WordAppium {
     return MessageFormat.format(messages.getString("report.initial_message"), linea);
   }
 
-  private static String procesarPasoPendiente(String paso) {
-    return "⏭️ Paso pendiente (no ejecutado): " + paso + ". ";
-  }
-
   private static final Properties STEP_MESSAGES = new Properties();
 
   static {
     try (InputStream input =
-        WordAppium.class.getClassLoader().getResourceAsStream("messages.properties")) {
+                 WordAppium.class.getClassLoader().getResourceAsStream("messages.properties")) {
       if (input != null) {
         STEP_MESSAGES.load(input);
         LOGGER.info("Archivo messages.properties cargado correctamente desde classpath.");
@@ -204,30 +207,17 @@ public class WordAppium {
   private static String procesarPasoEspecifico(String paso) {
     String pasoNormalizado = paso.toLowerCase().replaceAll("\\s+", "_");
 
-    // Buscar coincidencia exacta
     if (STEP_MESSAGES.containsKey(pasoNormalizado)) {
       return STEP_MESSAGES.getProperty(pasoNormalizado);
     }
 
-    // Buscar coincidencia parcial (por si el paso contiene más texto que la key)
     for (String key : STEP_MESSAGES.stringPropertyNames()) {
       if (pasoNormalizado.contains(key)) {
         return STEP_MESSAGES.getProperty(key);
       }
     }
 
-    // Si no se encontró, devuelve una descripción genérica
     return "";
-  }
-
-  private static String marcarPasoFallido() {
-    return "❌ La prueba falló en este paso. ";
-  }
-
-  private static String finalizarConclusion(String estadoFinal) {
-    return "FAILED".equalsIgnoreCase(estadoFinal)
-        ? "⚠️ La prueba finalizó con errores."
-        : "✅ Todos los pasos fueron completados exitosamente.";
   }
 
   private static void eliminarCapturas(File[] capturas) {
@@ -243,7 +233,7 @@ public class WordAppium {
   }
 
   private static void reemplazarTextoEnDocumento(
-      XWPFDocument document, String marcador, String nuevoTexto) {
+          XWPFDocument document, String marcador, String nuevoTexto) {
     for (XWPFParagraph paragraph : document.getParagraphs()) {
       for (XWPFRun run : paragraph.getRuns()) {
         String text = run.getText(0);
@@ -273,26 +263,43 @@ public class WordAppium {
 
   public static void inicializarPlantillaReporte() {
     String plantillaOriginal =
-        System.getProperty("user.dir")
-            + File.separator
-            + "ruta"
-            + File.separator
-            + "PlantillaInforme.docx";
+            System.getProperty("user.dir")
+                    + File.separator
+                    + "ruta"
+                    + File.separator
+                    + "PlantillaInforme.docx";
     String destinoEditable =
-        System.getProperty("user.dir")
-            + File.separator
-            + "ruta"
-            + File.separator
-            + "InformeFinal.docx";
+            System.getProperty("user.dir")
+                    + File.separator
+                    + "ruta"
+                    + File.separator
+                    + "InformeFinal.docx";
 
     try {
       Files.copy(
-          Paths.get(plantillaOriginal),
-          Paths.get(destinoEditable),
-          StandardCopyOption.REPLACE_EXISTING);
+              Paths.get(plantillaOriginal),
+              Paths.get(destinoEditable),
+              StandardCopyOption.REPLACE_EXISTING);
       LOGGER.info("Se inicializó el archivo InformeFinal.docx con la plantilla base.");
     } catch (IOException e) {
       LOGGER.severe("Error al copiar la plantilla del informe: " + e.getMessage());
     }
+  }
+
+  // 🔹 Nuevo método para secciones dinámicas
+  private static void agregarSeccionTexto(XWPFDocument doc, String titulo, String contenido) {
+    XWPFParagraph tituloParrafo = doc.createParagraph();
+    tituloParrafo.setSpacingBefore(300);
+    XWPFRun tituloRun = tituloParrafo.createRun();
+    tituloRun.setBold(true);
+    tituloRun.setFontSize(12);
+    tituloRun.setText(titulo);
+
+    XWPFParagraph contenidoParrafo = doc.createParagraph();
+    XWPFRun contenidoRun = contenidoParrafo.createRun();
+    contenidoRun.setFontSize(11);
+    contenidoRun.setText(contenido != null && !contenido.isBlank()
+            ? contenido
+            : "(No disponible)");
   }
 }
