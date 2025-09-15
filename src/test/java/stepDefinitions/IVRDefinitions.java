@@ -413,29 +413,12 @@ public class IVRDefinitions {
     );
   }
 
-  @And("^Menu Principal, Op4, Claro Pay$")
-  public void MenuPrincipalOp4ClaroPay() {
-    theActorInTheSpotlight().attemptsTo(
-            ClaroPay.marcar("3125457947")
-    );
-  }
-
-  @And("^Menu Principal, Op4, Claro Pay Master Card$")
+  @And("^Menu Principal, Op4, Acerca De Billetra Claro Pay$")
   public void MenuPrincipalOp4ClaroPayMasterCard() {
     theActorInTheSpotlight().attemptsTo(
             ClaroPayMasterCard.marcar("3125457947")
     );
   }
-
-  @And("^Menu Principal, Op4, Claro Pay Master Card, Op2$")
-  public void MenuPrincipalOp4ClaroPayMasterCardOp2() {
-    theActorInTheSpotlight().attemptsTo(
-            ClaroPayMasterCardOp2.marcar("3125457947")
-    );
-  }
-
-
-
   //
 
 

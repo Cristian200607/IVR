@@ -72,7 +72,7 @@ public class PaquetesActivosOp2 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 5");
         actor.attemptsTo(
-                WaitFor.aTime(8000),
+                WaitFor.aTime(9000),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");

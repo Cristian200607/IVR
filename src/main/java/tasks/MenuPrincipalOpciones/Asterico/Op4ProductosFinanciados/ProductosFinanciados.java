@@ -52,7 +52,7 @@ public class ProductosFinanciados implements Task {
         DialPadHelper.marcarNumeroMaximo(actor, numero);
 
         actor.attemptsTo(
-                WaitFor.aTime(16000),
+                WaitFor.aTime(17000),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
