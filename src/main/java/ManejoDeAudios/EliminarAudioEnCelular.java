@@ -1,37 +1,38 @@
 package ManejoDeAudios;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class EliminarAudioEnCelular {
 
-    /**
-     * Elimina todos los archivos dentro de la carpeta del celular indicada
-     *
-     * @param rutaCarpetaCelular Ruta completa en el celular (ej: "/sdcard/Recordings/Call/")
-     */
-    public static void ejecutar(String rutaCarpetaCelular) {
+    public static void ejecutar(String udid, String rutaCelular) {
         try {
-            // Comando adb para borrar todos los archivos dentro de la carpeta (el * borra todo)
-            String comando = String.format("adb shell rm %s*", rutaCarpetaCelular);
+            // Comando adb con udid
+            String comando = String.format("adb -s %s shell rm %s", udid, rutaCelular);
 
-            Process process = Runtime.getRuntime().exec(comando);
+            System.out.println("Ejecutando comando: " + comando);
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            Process proceso = Runtime.getRuntime().exec(comando);
+            int resultado = proceso.waitFor();
+
+            if (resultado == 0) {
+                System.out.println("Archivo eliminado en el celular: " + rutaCelular);
+            } else {
+                // Capturar STDERR para ver el error real
+                BufferedReader br = new BufferedReader(new InputStreamReader(proceso.getErrorStream()));
+                StringBuilder errorMsg = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    errorMsg.append(line).append("\n");
+                }
+                throw new RuntimeException("Error al eliminar archivos en el celular. Código: "
+                        + resultado + " - Detalle: " + errorMsg);
             }
 
-            int exitCode = process.waitFor();
-            if (exitCode != 0) {
-                throw new RuntimeException("Error al eliminar archivos en el celular. Código: " + exitCode);
-            }
-
-            System.out.println("Archivos eliminados correctamente en la carpeta del celular: " + rutaCarpetaCelular);
-        } catch (Exception e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error ejecutando comando adb para eliminar archivos en celular: " + e.getMessage(), e);
+            throw new RuntimeException("Error ejecutando adb rm: " + e.getMessage(), e);
         }
     }
 }
