@@ -11,6 +11,7 @@ import utils.EstadoPrueba;
 public class ValidacionesDeTranscripciones {
 
     private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
+    private static final String udid = "R9WW70LL61V"; // tu UDID
     private static final double UMBRAL_COINCIDENCIA = 90.0; // Porcentaje mínimo aceptable
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")
@@ -308,7 +309,7 @@ public class ValidacionesDeTranscripciones {
             EstadoPrueba.textoEsperado = textoEsperado;
 
         } finally {
-            EliminarAudioEnCelular.ejecutar(RUTA_ARCHIVO_CELULAR);
+            EliminarAudioEnCelular.ejecutar(udid, RUTA_ARCHIVO_CELULAR);
         }
     }
 
