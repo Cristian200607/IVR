@@ -8,8 +8,8 @@ public class EliminarAudioEnCelular {
 
     public static void ejecutar(String udid, String rutaCelular) {
         try {
-            // Comando adb con udid
-            String comando = String.format("adb -s %s shell rm %s", udid, rutaCelular);
+            // Aseguramos que se eliminen todos los archivos dentro del directorio
+            String comando = String.format("adb -s %s shell rm -f %s/*", udid, rutaCelular);
 
             System.out.println("Ejecutando comando: " + comando);
 
@@ -17,7 +17,7 @@ public class EliminarAudioEnCelular {
             int resultado = proceso.waitFor();
 
             if (resultado == 0) {
-                System.out.println("Archivo eliminado en el celular: " + rutaCelular);
+                System.out.println("Archivos eliminados en el celular: " + rutaCelular);
             } else {
                 // Capturar STDERR para ver el error real
                 BufferedReader br = new BufferedReader(new InputStreamReader(proceso.getErrorStream()));
