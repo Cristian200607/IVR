@@ -46,6 +46,7 @@ import tasks.OpcionesParaMarcarEnMenuInicio.ComprarServicios.ComprarServiciosOpc
 import tasks.OpcionesParaMarcarEnMenuInicio.ValidaMenuDeLineas;
 import tasks.OpcionesParaMarcarEnMenuInicio.IngresoWhatsApp;
 import tasks.RealizarLlamada;
+import utils.EstadoPrueba;
 import utils.WordAppium;
 
 public class IVRDefinitions {
@@ -53,11 +54,39 @@ public class IVRDefinitions {
   User addCredentials;
   private static final Logger LOGGER = Logger.getLogger(WordAppium.class.getName());
 
+  // 📌 Variable general para el número de celular
+  public static final String NUMERO_CELULAR = "3204108085";
+
+
   @Before
   public void initScenario(Scenario scenario) {
     OnStage.setTheStage(new OnlineCast());
     LOGGER.info("Limpiando carpeta de capturas...");
     WordAppium.inicializarPlantillaReporte();
+
+    EstadoPrueba.reset();  // esto ya guarda horaInicio automáticamente
+    // 👉 Guardar en EstadoPrueba el número de celular y la hora
+    EstadoPrueba.linea = NUMERO_CELULAR;
+
+
+    // Mantener la pantalla encendida (infinito)
+    String udid = "R9WW70LL61V"; // tu UDID
+    try {
+      String keepScreenOn = String.format(
+              "adb -s %s shell settings put system_off_timeout 2147483647",
+              udid
+      );
+      Process procesoKeepAlive = Runtime.getRuntime().exec(keepScreenOn);
+      int resultadoKeepAlive = procesoKeepAlive.waitFor();
+      if (resultadoKeepAlive == 0) {
+        System.out.println("Pantalla configurada para nunca apagarse.");
+      } else {
+        System.err.println("Error configurando el timeout de pantalla. Código: " + resultadoKeepAlive);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new RuntimeException("Error ejecutando adb para mantener pantalla encendida", e);
+    }
 
     // Limpiar capturas locales
     File folder = new File("Capturas");
@@ -71,13 +100,10 @@ public class IVRDefinitions {
 
     // Limpiar audios en el celular
     String rutaCelular = "/sdcard/Recordings/Call/";
-    String udid = "R9WW70LL61V"; // tu UDID
     try {
-      // Crear carpeta si no existe
       String crearCarpeta = String.format("adb -s %s shell mkdir -p %s", udid, rutaCelular);
       Runtime.getRuntime().exec(crearCarpeta).waitFor();
 
-      // Borrar todo dentro
       String borrarArchivos = String.format("adb -s %s shell rm -rf %s*", udid, rutaCelular);
       System.out.println("Limpiando audios del celular con: " + borrarArchivos);
       Process proceso = Runtime.getRuntime().exec(borrarArchivos);
@@ -92,6 +118,8 @@ public class IVRDefinitions {
       throw new RuntimeException("Error ejecutando adb para limpiar carpeta del celular", e);
     }
   }
+
+
 
   @Given("^Se realiza la llamada al numero (.*)$")
   public void realizaUnaLlamadaAlNumero(String numero) {
@@ -157,63 +185,63 @@ public class IVRDefinitions {
   @And("^Se valida el menu principal despues de digitar la linea a consultar$")
   public void ValidarOpcionesMenuPrincipalDespuesDeDigitarLinea() {
     theActorInTheSpotlight().attemptsTo(
-            MenuPrincipalDespuesDeDigitarLinea.marcar("3213268056")
+            MenuPrincipalDespuesDeDigitarLinea.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Consultar Saldo$")
   public void ConsultarLineasOpcionCuatro() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoConsultarSaldo.marcar("3125457947")
+            AsteriscoConsultarSaldo.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Comprar Paquetes, Validar Menu Comprar Paquetes$")
   public void MenuPrincipalAsteriscoOp2ValidaMetodosDePago() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoComprarPaquetes.marcar("3125457947")
+            AsteriscoComprarPaquetes.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Comprar Paquetes, Mas opciones de paquetes$")
   public void MenuPrincipalAsteriscoOp2ValidaMasMetodosDePago() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoComprarPaquetesOp2Op3.marcar("3125457947")
+            AsteriscoComprarPaquetesOp2Op3.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Comprar Paquetes, Mas Opciones De Recarga$")
   public void MenuPrincipalAsteriscoOp2ValidaMasMetodosDePagoo() {
     theActorInTheSpotlight().attemptsTo(
-            AsteriscoComprarPaquetesOp2Op4.marcar("3125457947")
+            AsteriscoComprarPaquetesOp2Op4.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Recarga Linea Prepago$")
   public void MenuPrincipalAsteriscoRecargaLineaPrepago() {
     theActorInTheSpotlight().attemptsTo(
-            RecargarLineaPrepago.marcar("3125457947")
+            RecargarLineaPrepago.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Productos Financiados$")
   public void MenuPrincipalAsteriscoProductosFinanciados() {
     theActorInTheSpotlight().attemptsTo(
-            ProductosFinanciados.marcar("3125457947")
+            ProductosFinanciados.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Paquetes Activos, Validar Menu Paquetes Activos$")
   public void MenuPrincipalAsteriscoProductosFinanciadosPaquetesActivosValidarMenuPaquetesActivos() {
     theActorInTheSpotlight().attemptsTo(
-            PaquetesActivos.marcar("3125457947")
+            PaquetesActivos.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Asterisco, Paquetes Activos, Retorno Menu Principal$")
   public void MenuPrincipalAsteriscoProductosFinanciadosPaquetesActivosRetornoMenuPrincipal() {
     theActorInTheSpotlight().attemptsTo(
-            PaquetesActivosOp2.marcar("3125457947")
+            PaquetesActivosOp2.marcar(NUMERO_CELULAR)
     );
   }
   //
@@ -222,28 +250,28 @@ public class IVRDefinitions {
   @And("^Menu Principal, Numeral, Soporte De Voz$")
   public void MarcaNumeralOp1() {
     theActorInTheSpotlight().attemptsTo(
-            Op1SoporteDeVoz.marcar("3125457947")
+            Op1SoporteDeVoz.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Numeral, Te Pasaste a Claro$")
   public void MarcaNumeralOp2() {
     theActorInTheSpotlight().attemptsTo(
-            Op2PasarseAClaro.marcar("3125457947")
+            Op2PasarseAClaro.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Numeral, Robo De Celular$")
   public void MarcaNumeralOp3() {
     theActorInTheSpotlight().attemptsTo(
-            Op3RoboDeCelular.marcar("3125457947")
+            Op3RoboDeCelular.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Numeral, Reconectar Linea$")
   public void MarcaNumeralOp4() {
     theActorInTheSpotlight().attemptsTo(
-            Op4ReconectarLinea.marcar("3125457947")
+            Op4ReconectarLinea.marcar(NUMERO_CELULAR)
     );
   }
   //
@@ -253,91 +281,91 @@ public class IVRDefinitions {
   @And("^Menu Principal, Op1, Info General$")
   public void MenuPrincipalOp1InfoGeneral() {
     theActorInTheSpotlight().attemptsTo(
-            InformacionGeneral.marcar("3125457947")
+            InformacionGeneral.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Activar Roaming Internacional, Op1$")
   public void MenuPrincipalOp1ActivarRoamingInternacionalOp1() {
     theActorInTheSpotlight().attemptsTo(
-            Op1ActivarRoamingInternacional.marcar("3125457947")
+            Op1ActivarRoamingInternacional.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Activar Roaming Internacional, Op2$")
   public void MenuPrincipalOp1ActivarRoamingInternacionalOp2() {
     theActorInTheSpotlight().attemptsTo(
-            Op2ActivarRoamingInternacional.marcar("3125457947")
+            Op2ActivarRoamingInternacional.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Equipos$")
   public void MenuPrincipalOp1AdquirirEquipos() {
     theActorInTheSpotlight().attemptsTo(
-            AdquirirEquipos.marcar("3125457947")
+            AdquirirEquipos.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Pasarte a Claro y Adquirir Servicios Claro, Servicios Moviles y Servicios Hogar$")
   public void MenuPrincipalOp1PasarteaClaroyAdquirirServiciosClaroServiciosMovilesyServiciosHogar() {
     theActorInTheSpotlight().attemptsTo(
-            Op1ServiciosMovilesServiciosHogar.marcar("3125457947")
+            Op1ServiciosMovilesServiciosHogar.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Pasarte Claro Con Tu Mismo Numero$")
   public void MenuPrincipalOp1AdquirirServiciosClaroPasarteClaroConTuMismoNumero() {
     theActorInTheSpotlight().attemptsTo(
-            Op2PasarteClaroConTuMismoNumero.marcar("3125457947")
+            Op2PasarteClaroConTuMismoNumero.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Claro Video$")
   public void MenuPrincipalOp1AdquirirServiciosClaroClaroVideo() {
     theActorInTheSpotlight().attemptsTo(
-            Op3ClaroVideo.marcar("3125457947")
+            Op3ClaroVideo.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Claro Musica$")
   public void MenuPrincipalOp1AdquirirServiciosClaroClaroMusica() {
     theActorInTheSpotlight().attemptsTo(
-            Op4ClaroMusica.marcar("3125457947")
+            Op4ClaroMusica.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Activar Servicio$")
   public void MenuPrincipalOp1AdquirirServiciosClaroAdquirirServicioAsistenciaClaroActivarServicio() {
     theActorInTheSpotlight().attemptsTo(
-            Op5AdquiriServicioAsistenciaClaroOp1.marcar("3125457947")
+            Op5AdquiriServicioAsistenciaClaroOp1.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion$")
   public void MenuPrincipalOp1AdquirirServiciosClaroAdquirirServicioAsistenciaClaroMayorInformacion() {
     theActorInTheSpotlight().attemptsTo(
-            Op5AdquiriServicioAsistenciaClaroOp2.marcar("3125457947")
+            Op5AdquiriServicioAsistenciaClaroOp2.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Solicitud de Asistencia$")
   public void MenuPrincipalOp1AdquirirServiciosClaroAdquirirtServicioAsistenciaClaroSolicitudDeAsistencia() {
     theActorInTheSpotlight().attemptsTo(
-            Op5AdquiriServicioAsistenciaClaroOp3.marcar("3125457947")
+            Op5AdquiriServicioAsistenciaClaroOp3.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional$")
   public void MenuPrincipalOp1AdquirirServiciosClaroOp6() {
     theActorInTheSpotlight().attemptsTo(
-            Op6LargaDistanciaInternacional.marcar("3125457947")
+            Op6LargaDistanciaInternacional.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op1, Elegidos Movil Familia$")
   public void MenuPrincipalOp1ElegidosMovilFamilia() {
     theActorInTheSpotlight().attemptsTo(
-            ElegidosMovilFamilia.marcar("3125457947")
+            ElegidosMovilFamilia.marcar(NUMERO_CELULAR)
     );
   }
   //
@@ -346,77 +374,77 @@ public class IVRDefinitions {
   @And("^Menu Principal, Op2, Perdida De Celular$")
   public void MenuPrincipalOp2PerdidaDeCelular() {
     theActorInTheSpotlight().attemptsTo(
-            Op1PerdidaCelular.marcar("3125457947")
+            Op1PerdidaCelular.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op2, Reconeccion$")
   public void MenuPrincipalOp2Reconeccion() {
     theActorInTheSpotlight().attemptsTo(
-            Op2Reconeccion.marcar("3125457947")
+            Op2Reconeccion.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op2, Registrar Equipo$")
   public void MenuPrincipalOp2RegistrarEquipo3() {
     theActorInTheSpotlight().attemptsTo(
-            Op3RegistrarEquipo.marcar("3125457947")
+            Op3RegistrarEquipo.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op2, Reciclaje De Equipos$")
   public void MenuPrincipalOp2OReciclajeDeEquipos() {
     theActorInTheSpotlight().attemptsTo(
-            Op4ReciclajeDeEquipos.marcar("3125457947")
+            Op4ReciclajeDeEquipos.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil$")
   public void MenuPrincipalOp3Op1() {
     theActorInTheSpotlight().attemptsTo(
-            Op1CancelarServiciosHogarOMovil.marcar("3125457947")
+            Op1CancelarServiciosHogarOMovil.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales$")
   public void MenuPrincipalOp3Op1Op2() {
     theActorInTheSpotlight().attemptsTo(
-            Op1CancelarServiciosAdicionales.marcar("3125457947")
+            Op1CancelarServiciosAdicionales.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web$")
   public void MenuPrincipalOp3RadicarPeticionesConsultarPeticionesQuejasORecursosDesdeWeb() {
     theActorInTheSpotlight().attemptsTo(
-            Op2ConsultarPeticionesQuejasRecursosDesdeWeb.marcar("3125457947")
+            Op2ConsultarPeticionesQuejasRecursosDesdeWeb.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1$")
   public void MenuPrincipalOp3Op2Op2() {
     theActorInTheSpotlight().attemptsTo(
-            PresentarReclamosOp2Op2Op1.marcar("3125457947")
+            PresentarReclamosOp2Op2Op1.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2$")
   public void MenuPrincipalOp3Op2Op2Op2() {
     theActorInTheSpotlight().attemptsTo(
-            PresentarReclamosOp2Op2Op2.marcar("3125457947")
+            PresentarReclamosOp2Op2Op2.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos$")
   public void MenuPrincipalOp3Op2Op3() {
     theActorInTheSpotlight().attemptsTo(
-            Op3RadicarPeticionesQuejasORecursos.marcar("3125457947")
+            Op3RadicarPeticionesQuejasORecursos.marcar(NUMERO_CELULAR)
     );
   }
 
   @And("^Menu Principal, Op4, Acerca De Billetra Claro Pay$")
   public void MenuPrincipalOp4ClaroPayMasterCard() {
     theActorInTheSpotlight().attemptsTo(
-            ClaroPayMasterCard.marcar("3125457947")
+            ClaroPayMasterCard.marcar(NUMERO_CELULAR)
     );
   }
   //

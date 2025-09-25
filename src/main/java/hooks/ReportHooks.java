@@ -54,12 +54,12 @@ public class ReportHooks {
     WordAppium.generarReporte(
             scenario.getName(),
             pasosEjecutados.toArray(new String[0]),
-            lineaUsada,
+            EstadoPrueba.linea,
             duracionFormato,
             pasoFallido,
             estadoFinal,
             EstadoPrueba.transcripcion,   // 👈 se agrega
-            EstadoPrueba.textoEsperado    // 👈 se agrega
+            EstadoPrueba.textoEsperado   // 👈 se agrega
     );
 
     pasosEjecutados.clear();
