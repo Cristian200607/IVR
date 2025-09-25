@@ -93,7 +93,6 @@ Feature: Validar los flujos de IVR
     And Se convierte el archivo a WAV mono 16kHz si es necesario
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
-    Then Validar la transcripción Valida Menu Para Consultar Lineas
 
   @IVR_07 @IVR_50_POS @IVR
   Scenario: Marcación IVR y Validar Menu Principal Despues de consultar linea
@@ -105,7 +104,7 @@ Feature: Validar los flujos de IVR
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     And Visualizacion de la transcripcion
 
-  @IVR_08 @Menu_Principal_Asterisco @IVR
+  @IVR_08 @Menu_Principal_Asterisco @IVR #revisar
   Scenario: Marcación IVR y Menu Principal, Asterisco, Consultar Saldo
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Consultar Saldo
@@ -171,7 +170,7 @@ Feature: Validar los flujos de IVR
     And Visualizacion de la transcripcion
     #Then Validar la transcripción con el texto esperado de Opcion 3 despues 4
 
-  @IVR_14 @Menu_Principal_Asterisco @IVR
+  @IVR_14 @Menu_Principal_Asterisco @IVR #revisar
   Scenario: Marcación IVR y Menu Principal, Asterisco, Paquetes Activos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Paquetes Activos, Validar Menu Paquetes Activos

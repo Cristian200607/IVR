@@ -31,7 +31,7 @@ public class WordAppium {
 
   /**
    * Genera el reporte final en Word incluyendo capturas, conclusión,
-   * transcripción y texto esperado
+   * transcripción, texto esperado, número de celular y hora de inicio
    */
   public static void generarReporte(
           String nombreEscenario,
@@ -40,8 +40,8 @@ public class WordAppium {
           String duracionFormato,
           String pasoFallido,
           String estadoFinal,
-          String transcripcion,   // NUEVO
-          String textoEsperado    // NUEVO
+          String transcripcion,
+          String textoEsperado
   ) {
     File capturasFolder = new File(CAPTURAS_DIR);
     File[] capturasFiles = capturasFolder.listFiles();
@@ -69,17 +69,21 @@ public class WordAppium {
       // Reemplazos normales
       reemplazarTextoEnDocumento(document, "{{ESCENARIO}}", nombreEscenario);
       reemplazarTextoEnDocumento(document, "{{FECHA}}", FORMATTER.format(LocalDateTime.now()));
-      reemplazarTextoEnDocumento(document, "{{LINEA}}", linea);
+      reemplazarTextoEnDocumento(document, "{{LINEA_PROBADA}}", linea);
       reemplazarTextoEnDocumento(document, "{{DURACION}}", duracionFormato);
+      // 👉 Nuevos: número celular y hora de inicio desde EstadoPrueba
+      reemplazarTextoEnDocumento(document, "{{HORA_INICIO}}", EstadoPrueba.horaInicio);
+
       reemplazarTextoEnDocumento(
               document,
               "{{CONCLUSION}}",
-              generarConclusion(nombreEscenario, pasosEjecutados, linea, pasoFallido, estadoFinal));
+              generarConclusion(nombreEscenario, pasosEjecutados, linea, pasoFallido, estadoFinal)
+      );
 
       // Pasos + capturas
       agregarPasosYCapturas(document, pasosEjecutados, capturasFiles);
 
-      // 🔹 NUEVO: Secciones dinámicas al final
+      // 🔹 Secciones dinámicas al final
       agregarSeccionTexto(document, "🎤 Transcripción:", transcripcion);
       agregarSeccionTexto(document, "📌 Texto esperado:", textoEsperado);
 

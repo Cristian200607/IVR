@@ -58,7 +58,7 @@ public class Op5AdquiriServicioAsistenciaClaroOp2 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(14000),
+                WaitFor.aTime(13000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
@@ -73,7 +73,7 @@ public class Op5AdquiriServicioAsistenciaClaroOp2 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 4");
         actor.attemptsTo(
-                WaitFor.aTime(40000),
+                WaitFor.aTime(38000),
                 Click.on(BOTON_5_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 5");

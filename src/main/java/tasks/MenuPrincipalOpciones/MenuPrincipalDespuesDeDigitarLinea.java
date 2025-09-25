@@ -31,7 +31,7 @@ public class MenuPrincipalDespuesDeDigitarLinea implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(13000),
+                WaitFor.aTime(15000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(30000)
@@ -53,12 +53,12 @@ public class MenuPrincipalDespuesDeDigitarLinea implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(26000),
+                WaitFor.aTime(27000),
                 Click.on(BOTON_9_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(40000),
+                WaitFor.aTime(41000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
