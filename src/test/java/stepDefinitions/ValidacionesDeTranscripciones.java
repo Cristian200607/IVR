@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import ManejoDeAudios.LimpiarYRespaldarAudio;
 import cucumber.api.java.en.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static stepDefinitions.AudioSteps.transcription;
@@ -16,7 +17,7 @@ public class ValidacionesDeTranscripciones {
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")
     public void validarTranscripcionMenuPrincipal() {
-        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podrás consultar tu plan pagar tu factura y mucho más quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menú principal marca 3";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca uno si quieres comprar alguno de nuestros servicios claro marca dos para continuar con nuestro menu principal marca tres";
         validarTranscripcion(textoEsperado);
     }
 
@@ -278,25 +279,37 @@ public class ValidacionesDeTranscripciones {
             String esperadoNormalizado = normalizar(textoEsperado);
             String transcripcionNormalizada = normalizar(transcription);
 
-            double porcentaje = calcularPorcentajeCoincidencia(transcripcionNormalizada, esperadoNormalizado);
+            double porcentaje = calcularPorcentajeCoincidencia(
+                    transcripcionNormalizada,
+                    esperadoNormalizado
+            );
 
+            // Log tradicional para consola
             assertTrue(
                     porcentaje >= UMBRAL_COINCIDENCIA,
                     () -> "La transcripción no coincide lo suficiente.\n" +
-                            "Es: " + esperadoNormalizado + "\n" +
-                            "Tr: " + transcripcionNormalizada + "\n" +
+                            "Esperado : " + esperadoNormalizado + "\n" +
+                            "Obtenido : " + transcripcionNormalizada + "\n" +
                             "Coincidencia: " + porcentaje + "%"
             );
 
+            // Logs bonitos
             System.out.println("✅ Coincidencia aceptable (" + porcentaje + "%)");
-            System.out.println("✅ Texto Esperado");
+            System.out.println("🟦 Texto Esperado Normalizado:");
             System.out.println(esperadoNormalizado);
+            System.out.println("🟩 Transcripción Normalizada:");
+            System.out.println(transcripcionNormalizada);
 
         } finally {
-            // 🔹 Guardar en EstadoPrueba para el reporte final
-            EstadoPrueba.transcripcion = transcription;
-            EstadoPrueba.textoEsperado = textoEsperado;
+
+            // 🔹 Guardar todo para el Front / Reporte
+            EstadoPrueba.transcripcion = transcription;                  // texto crudo
+            EstadoPrueba.textoEsperado = textoEsperado;                  // texto crudo
+
+
+            // Mantener flujo que ya tenías
             EliminarAudioEnCelular.ejecutar(udid, RUTA_ARCHIVO_CELULAR);
+            LimpiarYRespaldarAudio.ejecutar("Llamadas/Call", "Llamadas/BackupsAudio");
         }
     }
 

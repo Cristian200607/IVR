@@ -7,52 +7,43 @@ import java.nio.file.*;
 public class LimpiarYRespaldarAudio {
 
     /**
-     * Elimina todos los archivos dentro de la carpeta original (Llamadas/Call)
-     * y mueve el archivo convertido a la carpeta BackupsAudio.
+     * Mueve todos los archivos de la carpeta original a la carpeta de backup
+     * y luego limpia la carpeta original.
      *
-     * @param carpetaOriginal Ruta de la carpeta original con audios a eliminar (ej: "Llamadas/Call")
-     * @param archivoConvertido Ruta completa del archivo convertido (ej: "LlamadasConvertidas/audio.wav")
-     * @param carpetaBackup Carpeta destino para mover el archivo convertido (ej: "Llamadas/BackupsAudio")
+     * @param carpetaOriginal Carpeta con audios a respaldar y eliminar (ej: "Llamadas/Call")
+     * @param carpetaBackup Carpeta destino para mover los audios (ej: "Llamadas/BackupsAudio")
      */
-    public static void ejecutar(String carpetaOriginal, String archivoConvertido, String carpetaBackup) {
+    public static void ejecutar(String carpetaOriginal, String carpetaBackup) {
         try {
-            // 1. Eliminar archivos dentro de carpeta original
             File dirOriginal = new File(carpetaOriginal);
-            if (dirOriginal.exists() && dirOriginal.isDirectory()) {
-                File[] archivos = dirOriginal.listFiles();
-                if (archivos != null) {
-                    for (File archivo : archivos) {
-                        if (archivo.isFile()) {
-                            boolean eliminado = archivo.delete();
-                            System.out.println("Archivo eliminado: " + archivo.getName() + " -> " + eliminado);
-                        }
-                    }
-                }
-            } else {
+            if (!dirOriginal.exists() || !dirOriginal.isDirectory()) {
                 System.out.println("La carpeta original no existe o no es un directorio: " + carpetaOriginal);
+                return;
             }
 
-            // 2. Crear carpeta backup si no existe
+            // Crear carpeta backup si no existe
             File dirBackup = new File(carpetaBackup);
             if (!dirBackup.exists()) {
                 boolean creada = dirBackup.mkdirs();
                 System.out.println("Carpeta backup creada: " + creada);
             }
 
-            // 3. Mover archivo convertido a carpeta backup
-            Path origen = Paths.get(archivoConvertido);
-            if (!Files.exists(origen)) {
-                System.out.println("Archivo convertido no existe: " + archivoConvertido);
-                return;
+            // Mover todos los archivos a backup
+            File[] archivos = dirOriginal.listFiles();
+            if (archivos != null) {
+                for (File archivo : archivos) {
+                    if (archivo.isFile()) {
+                        Path origen = archivo.toPath();
+                        Path destino = Paths.get(carpetaBackup, archivo.getName());
+                        Files.move(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+                        System.out.println("Archivo movido a backup: " + destino.toString());
+                    }
+                }
             }
-
-            Path destino = Paths.get(carpetaBackup, origen.getFileName().toString());
-            Files.move(origen, destino, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("Archivo movido a backup: " + destino.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error al limpiar y respaldar archivos: " + e.getMessage(), e);
+            throw new RuntimeException("Error al respaldar y limpiar archivos: " + e.getMessage(), e);
         }
     }
 }

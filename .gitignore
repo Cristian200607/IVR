@@ -60,9 +60,6 @@ Capturas/
 # ============================
 
 # 1. Ignorar todos los .java dentro de ManejoDeAudios
-src/main/java/ManejoDeAudios/**/*.java
-
-# 2. Ignorar solo el archivo AudioSteps.java
 src/test/java/stepDefinitions/AudioSteps.java
 
 # 3. Ignorar carpeta completa Llamadas (y subcarpetas)
