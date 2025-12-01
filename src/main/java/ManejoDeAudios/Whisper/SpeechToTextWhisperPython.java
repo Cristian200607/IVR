@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 public class SpeechToTextWhisperPython {
 
-    private static final String PYTHON = "C:\\Users\\PARDOC\\whisper_env\\Scripts\\python.exe";
+    private static final String PYTHON = "C:\\Users\\Pruebas\\whisper_env\\Scripts\\python.exe";
     private static final String SCRIPT = "C:\\Whisper\\transcribe_whisper.py";
 
     // 🔹 Ahora recibe solo la ruta de la carpeta, NO un WAV específico
