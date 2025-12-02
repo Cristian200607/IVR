@@ -29,7 +29,8 @@ public class AudioSteps {
     @And("^Se realiza el reconocimiento de voz sobre el archivo convertido$")
     public void cuandoSeReconoceAudio() throws Exception {
 
-        String carpetaAudios = "C:\\IVR\\Llamadas\\Call";
+        String rutaLocal = System.getProperty("user.dir") + File.separator + "Llamadas";
+        String carpetaAudios = rutaLocal + File.separator + "Call";
 
         System.out.println("🎤 Iniciando transcripción con Whisper Python...");
         System.out.println("📂 Carpeta: " + carpetaAudios);
