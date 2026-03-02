@@ -9,7 +9,13 @@ public class IVRPage extends PageObject {
   public static final Target BOTON_TEST = Target.the("boton de prueba").locatedBy("dummy");
 
   public static final Target TECLADO_TELEFONO = Target.the("Teclado del telefono")
-          .located(By.id("com.hb.dialer.free:id/digits"));
+          .located(By.id("com.hb.dialer.free:id/asterisk"));
+
+  public static final Target TECLADO_6 = Target.the("Quinto botón del incall")
+          .located(By.xpath("//android.view.View[@content-desc=\"6\"]"));
+
+  public static final Target TECLADO_1 = Target.the("Quinto botón del incall")
+          .located(By.xpath("//android.view.View[@content-desc=\"1\"]"));
 
   public static final Target TECLADO_TELEFONO_EN_LLAMADA = Target.the("campo donde aparece el número marcado")
           .located(By.id("com.samsung.android.incallui:id/dialpad_digits"));

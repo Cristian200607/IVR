@@ -27,7 +27,10 @@ public class RealizarLlamada implements Task {
     // 🔹 Marca el número
     actor.attemptsTo(
             Click.on(TECLADO_TELEFONO),
-            Enter.theValue(numero).into(By.id("digits"))
+            Click.on(TECLADO_6),
+            Click.on(TECLADO_1),
+            Click.on(TECLADO_1)
+
     );
     EvidenciaUtils.registrarCaptura("Marcar *611");
     actor.attemptsTo(
