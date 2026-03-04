@@ -23,7 +23,7 @@ Feature: Validar los flujos de IVR
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-   # Then  Validar la transcripción Menu Inicio, Ingreso a WhatsApp
+    Then  Validar la transcripción Menu Inicio, Ingreso a WhatsApp
 
   @IVR_02 @IVR_45_POS @Menu_Inicio_Comprar_Servicios @Menu_Inicio_Comprar_Servicios_Pos @IVR
   Scenario: Marcación IVR y Menu Inicio, Comprar Servicios Claro, Servicios Hogar
