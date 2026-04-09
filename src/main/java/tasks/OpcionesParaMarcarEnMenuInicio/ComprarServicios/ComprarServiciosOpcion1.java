@@ -20,7 +20,7 @@ public class ComprarServiciosOpcion1 implements Task {
     public <T extends Actor> void performAs(T actor) {
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(500),
+                WaitFor.aTime(400),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
                 WaitFor.aTime(17000),

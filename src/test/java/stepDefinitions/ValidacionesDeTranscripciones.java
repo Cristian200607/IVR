@@ -12,7 +12,7 @@ import utils.EstadoPrueba;
 public class ValidacionesDeTranscripciones {
 
     private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
-    private static final String udid = "R9WW70LL61V"; // tu UDID
+    private static final String udid = "10.125.108.142:41911"; // tu UDID adb-R9WW70LL61V-6ykNPm._adb-tls-connect._tcp
     private static final double UMBRAL_COINCIDENCIA = 90.0; // Porcentaje mínimo aceptable
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")

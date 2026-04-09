@@ -22,7 +22,7 @@ public class AudioSteps {
     public void givenTraerArchivoDesdeCelular() {
         String rutaCelular = "/sdcard/Recordings/Call/";
         String rutaLocal = System.getProperty("user.dir") + File.separator + "Llamadas";
-        String udid = "R9WW70LL61V";
+        String udid = "10.125.108.142:41911";
         TraerAudioDesdeCelular.desde(udid, rutaCelular, rutaLocal);
     }
 

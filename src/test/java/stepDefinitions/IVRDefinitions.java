@@ -70,7 +70,7 @@ public class IVRDefinitions {
 
 
     // Mantener la pantalla encendida (infinito)
-    String udid = "R9WW70LL61V"; // tu UDID
+    String udid = "10.125.108.142:41911"; // tu UDID
     try {
       String keepScreenOn = String.format(
               "adb -s %s shell settings put system_off_timeout 2147483647",
