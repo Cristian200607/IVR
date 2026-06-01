@@ -21,13 +21,13 @@ public class ComprarServiciosOpcion3 implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(400),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(17000),
+                WaitFor.aTime(34000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
-                WaitFor.aTime(30000)
+                WaitFor.aTime(28000)
         );
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(

@@ -48,4 +48,21 @@ public class AudioSteps {
         System.out.println(BLUE + "===============================" + RESET);
     }
 
+    private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
+    private static final String UDID = "R9WW70LL61V";
+    private static final double UMBRAL_COINCIDENCIA = 90.0;
+
+    @And("^Se eliminan y respaldan los audios del celular$")
+    public void eliminarYRespaldarAudios() {
+
+        EliminarAudioEnCelular.ejecutar(UDID, RUTA_ARCHIVO_CELULAR);
+
+        LimpiarYRespaldarAudio.ejecutar(
+                "Llamadas/Call",
+                "Llamadas/BackupsAudio"
+        );
+
+        System.out.println("✅ Audios eliminados y respaldados correctamente");
+    }
+
 }

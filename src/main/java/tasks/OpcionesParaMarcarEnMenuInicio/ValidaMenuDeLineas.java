@@ -20,9 +20,9 @@ public class ValidaMenuDeLineas implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(400),
+                WaitFor.aTime(300),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(15000),
+                WaitFor.aTime(33000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION)
         );

@@ -20,10 +20,10 @@ public class ComprarServiciosOpcion1 implements Task {
     public <T extends Actor> void performAs(T actor) {
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(500),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(17000),
+                WaitFor.aTime(33000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(28000)
@@ -31,7 +31,7 @@ public class ComprarServiciosOpcion1 implements Task {
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(
                 Click.on(BOTON_1_EN_GRABACION),
-                WaitFor.aTime(13000)
+                WaitFor.aTime(3000)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
