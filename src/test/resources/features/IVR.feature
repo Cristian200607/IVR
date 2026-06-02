@@ -132,7 +132,7 @@ Feature: Validar los flujos de IVR
   #  And Visualizacion de la transcripcion
   #  Then Validar la transcripción Menu Principal, Asterisco, Recargar Linea Prepago
 
-  @IVR_13 #En mantenimiento @IVR
+  @IVR_13 @IVR
   Scenario: Marcación IVR y Menu Principal, Asterisco, Productos Financiados
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Asterisco, Productos Financiados
@@ -282,138 +282,153 @@ Feature: Validar los flujos de IVR
   #  And Visualizacion de la transcripcion
   #  Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Activar Servicio
 
-  @IVR_28 @Menu_Principal_Op1 @IVR #@IVR_78_POS
+  @IVR_28 @IVR #@IVR_78_POS
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Mayor Informacion
 
-  @IVR_29 @Menu_Principal_Op1  #@IVR_79_POS
+  @IVR_29 @IVR
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Adquiri Servicio Asistencia Claro, Solicitud de Asistencia
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Solicitud de Asistencia
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Adquirir Servicio Asistencia Claro, Solicitud de Asistencia
 
-  @IVR_30 @Menu_Principal_Op1  #@IVR_80_POS
+  @IVR_30 @IVR
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Adquirir Servicios Claro
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op1, Adquirir Servicios Claro, Larga Distancia Internacional
 
-  @IVR_31 @Menu_Principal_Op1  #@IVR_81_POS
+  @IVR_31 @IVR
   Scenario: Marcación IVR y Menu Principal Op1, Pasarte a Claro y Elegidos Movil Familia
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op1, Elegidos Movil Familia
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op1, Elegidos Movil Familia
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op1, Elegidos Movil Familia
 
-  @IVR_32 @IVR_81_POS @Menu_Principal_Op2 @Menu_Principal_Op2_Pos
+  @IVR_32 @IVR
   Scenario: Marcación IVR y Menu Principal, Op2, Perdida De Celular
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Perdida De Celular
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op2, Perdida De Celular
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op2, Perdida De Celular
 
-  @IVR_33 @IVR_82_POS @Menu_Principal_Op2 @Menu_Principal_Op2_Pos
+  @IVR_33 @IVR
   Scenario: Marcación IVR y Menu Principal, Op2, Reconeccion
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Reconeccion
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op2, Reconeccion
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op2, Reconeccion
 
-  @IVR_34 @IVR_83_POS @Menu_Principal_Op2 @Menu_Principal_Op2_Pos
+  @IVR_34 @IVR
   Scenario: Marcación IVR y Menu Principal, Op2, Registrar Equipo
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Registrar Equipo
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op2, Registrar Equipo
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op2, Registrar Equipo
 
-  @IVR_35 @IVR_84_POS @Menu_Principal_Op2 @Menu_Principal_Op2_Pos
+  @IVR_35 @IVR
   Scenario: Marcación IVR y Menu Principal, Op2, Reciclaje De Equipos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op2, Reciclaje De Equipos
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op2, Reciclaje De Equipos
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op2, Reciclaje De Equipos
 
-  @IVR_36 @IVR_85_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_36 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Hogar o Movil
 
-  @IVR_37 @IVR_86_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_37 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Desistir
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Desistir, Cancelar Servicios Adicionales
 
-  @IVR_38 @IVR_87_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_38 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Consultar Peticiones Quejas o Recursos Desde Web
 
-  @IVR_39 @IVR_88_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_39 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de la linea que llamas Op1
 
-  @IVR_40 @IVR_89_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_40 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Op2, Si es de un servicio diferente Op2
 
-  @IVR_41 @IVR_90_POS @Menu_Principal_Op3 @Menu_Principal_Op3_Pos
+  @IVR_41 @IVR
   Scenario: Marcación IVR y Menu Principal, Op3, Radicar Peticiones Quejas o Recursos
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op3, Radicar Peticiones, Radicar Peticiones Quejas o Recursos
 
-  @IVR_42 @IVR_91_POS @Menu_Principal_Op4 @Menu_Principal_Op4_Pos
+  @IVR_42 @IVR
   Scenario: Marcación IVR y Menu Principal, Op4, Claro Pay Master Card
     Given Se realiza la llamada al numero *611#
     And Menu Principal, Op4, Acerca De Billetra Claro Pay
     And El archivo de audio se trae automáticamente desde el celular
-    And Se realiza el reconocimiento de voz sobre el archivo convertido
-    And Visualizacion de la transcripcion
-    Then Validar la transcripción Menu Principal, Op4, Claro Pay Master Card
+    And Se eliminan y respaldan los audios del celular
+  #  And Se realiza el reconocimiento de voz sobre el archivo convertido
+  #  And Visualizacion de la transcripcion
+  #  Then Validar la transcripción Menu Principal, Op4, Claro Pay Master Card
 
