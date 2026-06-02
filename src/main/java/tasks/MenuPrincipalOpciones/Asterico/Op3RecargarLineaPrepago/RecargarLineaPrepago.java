@@ -31,10 +31,10 @@ public class RecargarLineaPrepago implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(500),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(14000),
+                WaitFor.aTime(34600),
                 net.serenitybdd.screenplay.actions.Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
@@ -61,7 +61,7 @@ public class RecargarLineaPrepago implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(46000),
                 net.serenitybdd.screenplay.actions.Click.on(BOTON_ASTERISCO_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion Asterisco");

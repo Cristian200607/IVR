@@ -30,10 +30,10 @@ public class Op1SoporteDeVoz implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(500),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(13600),
+                WaitFor.aTime(34600),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(31000)
@@ -60,12 +60,12 @@ public class Op1SoporteDeVoz implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 9");
         actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(46000),
                 Click.on(BOTON_NUMERAL_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion Numeral");
         actor.attemptsTo(
-                WaitFor.aTime(29000),
+                WaitFor.aTime(24000),
                 Click.on(BOTON_1_EN_GRABACION)
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
