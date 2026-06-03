@@ -49,7 +49,7 @@ import tasks.RealizarLlamada;
 import utils.EstadoPrueba;
 import utils.WordAppium;
 
-public class IVRDefinitions {
+public class  IVRDefinitions {
 
   User addCredentials;
   private static final Logger LOGGER = Logger.getLogger(WordAppium.class.getName());

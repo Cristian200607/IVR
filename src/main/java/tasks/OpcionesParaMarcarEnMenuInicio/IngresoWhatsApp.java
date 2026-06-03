@@ -21,9 +21,9 @@ public class IngresoWhatsApp implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(400),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(15000),
+                WaitFor.aTime(35000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_1_EN_GRABACION)
         );

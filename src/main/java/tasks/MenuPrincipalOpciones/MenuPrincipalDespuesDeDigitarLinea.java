@@ -29,9 +29,9 @@ public class MenuPrincipalDespuesDeDigitarLinea implements Task {
 
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(400),
+                WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(15000),
+                WaitFor.aTime(34000),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(30000)
@@ -53,12 +53,7 @@ public class MenuPrincipalDespuesDeDigitarLinea implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
-                WaitFor.aTime(27000),
-                Click.on(BOTON_9_EN_GRABACION)
-        );
-        EvidenciaUtils.registrarCaptura("Marca Opcion 9");
-        actor.attemptsTo(
-                WaitFor.aTime(41000),
+                WaitFor.aTime(48000),
                 Click.on(BTN_COLGAR),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
