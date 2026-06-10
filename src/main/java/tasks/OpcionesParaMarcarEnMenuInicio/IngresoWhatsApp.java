@@ -13,6 +13,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 import static userinterfaces.IVRPage.BTN_GRABAR;
 import static utils.Constantes.*;
+import static utils.IVRTiempos.*;
 
 
 public class IngresoWhatsApp implements Task {
@@ -23,7 +24,7 @@ public class IngresoWhatsApp implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
-                WaitFor.aTime(35000),
+                WaitFor.aTime(MENU_PRINCIPAL),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_1_EN_GRABACION)
         );

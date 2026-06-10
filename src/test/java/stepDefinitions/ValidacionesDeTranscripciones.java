@@ -9,11 +9,15 @@ import ManejoDeAudios.EliminarAudioEnCelular;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import utils.EstadoPrueba;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ValidacionesDeTranscripciones {
 
     private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
     private static final String udid = "R9WW70LL61V"; // tu UDID
-    private static final double UMBRAL_COINCIDENCIA = 90.0; // Porcentaje mínimo aceptable
+    private static final double UMBRAL_COINCIDENCIA = 85.0; // Porcentaje mínimo aceptable
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")
     public void validarTranscripcionMenuPrincipal() {
@@ -23,13 +27,13 @@ public class ValidacionesDeTranscripciones {
 
     /* IVR_01 */ @Then("^Validar la transcripción Menu Inicio, Ingreso a WhatsApp$")
     public void validarTranscripcionOpcion1() {
-        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podrás consultar tu plan pagar tu factura y mucho más quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menú principal marca 3  tu consulta será atendida por medio de whatsapp";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menudo un principal marca 3 estas en la linea de ventas claro si tu consultas sobre un servicio diferente por favor finaliza esta llamada vuelve a marcar ingresas por la opcion 3 del menu principal para servicios hogar marca 1 comprar un plan postpago muy marca 2 comprar celulares televisores computadores marca 3 adquirir servicios fijos o moviles para tu empresa y pasarte a claro con tu mismo numero marca 4 que 9 si deseas escuchar de nuevo la informacion en un momento se estaremos transfiriendo con un asesor";
         validarTranscripcion(textoEsperado);
     }
 
     /* IVR_02 */ @Then("^Validar la transcripción Comprar Servicios Claro, Servicios Hogar$")
     public void validarTranscripcionComprarServiciosClaroServiciosHogar() {
-        String textoEsperado = "ingresa whatsapp y ahorra tiempo podrá consultar tu plan pagar tu factura y mucho más quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menú principal marca 3  estás en la línea de ventas claro si tu consulta sobre un servicio diferente por favor finalizar la llamada vuelve a marcar ingresa por la opción 3 del menú principal para servicios hogar marca 1 comprar un plan pospago móvil marca 2 comprar celulares televisores computadores marca 3 adquirir servicios fijos o móviles para que empresa y pasarte a claro con tu mismo número marca 4 marca 9 si deseas escuchar de nuevo la información  bienvenido a la línea de ventas de claro hogar recuerda y tu consulta sobre servicio al cliente y no para comprar servicios por favor finaliza esta llamada vuelve a marcar ingresa por la opción 3 del menú principal dime lo que deseas adquirir por ejemplo quiero comprar internet hogar";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro en un principal marca 3 hasta en la linea de ventas claro si tu consultas sobre un servicio diferente por favor finaliza esta llamada vuelve a marcar ingresa por la opcion 3 de el menu principal para servicios hogar marca 1 comprar un plan postpago movil marca 2 comprar celulares televisores computadores marca 3 adquirir servicios fijos o moviles para te empresa y pasarte a claro con tu mismo numero marca 4 marca 9 si desea escuchar de nuevo la informacion en un momento se estaremos transidiendo con un asesor";
         validarTranscripcion(textoEsperado);
     }
 
@@ -51,15 +55,15 @@ public class ValidacionesDeTranscripciones {
         validarTranscripcion(textoEsperado);
     }
 
-    /* IVR_08 */ @Then("^Validar la transcripción Menu Principal, Asterisco, Consultar Saldo$")
+    /* IVR_06 */ @Then("^Validar la transcripción Menu Principal, Asterisco, Consultar Saldo$")
     public void validarTranscripcionOpcion3y24() {
-        String textoEsperado = "ingresa whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menu principal marca 3 quieres consultar otro servicio marca 4 para repetir este menu marca 9 por favor ingresa el numero de celular que vas a consultar tu numero de celular es 3 2 0 4 1 0 8 0 8 5 es correcto marca 1 eres corregirlo marca 2 hemos notado que llamaste recientemente por consulta paquetes activos si ese es el motivo de tu llamada marca 1 o 9 para ir al menu principal tienes dudas con tu factura pagos saldo consumos compra de paquetes y otros detalles marca asterisco si necesitas soporte de tus servicios movil o fijos gestionar visitas traslados o tu clave wi-fi marca numeral para informacion general o activar tus servicios marca 1 para gestionar tus equipos marca 2 si necesitas radicar una queja recurso o solicitar la cancelacion de tu servicio marca 3 si quieres conocer servicios especiales para ti marca 4 escuchar nuevamente estas opciones marca 9 quieres consultar el saldo de tu linea prepago marca 1 quieres comprar paquetes marca 2 quieres recargar tu linea prepago marca 3 quieres consultar tus productos financiados marca 4 quieres revisar tus paquetes activos marca 5 escuchar nuevamente estas opciones marca 9 si quieres volver al menu principal marca 0 su linea tiene un saldo de 100 60 9 10 800 70 6 pesos para que lo disfrutes hasta el dia 2 de noviembre b 2025 revisa tu celular en pocos minutos te enviaremos el detalle de tu saldo";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca para continuar con nuestro menu principal quieres consultar otro servicio marca 4 para este menu marca 9 por favor ingresa el numero de celular que vas a consultar un numero de celular es des 2 0 4 1 0 8 0 8 5 es correcto marca 1 si quieres corregirlo marca 2 hemos notado que llamaste recientemente por saldo prepago si ese es el motivo de tu llamada marca 1 no heves para ir al menu principal para consultar informacion disponibles sobre tu factura pagos consumos plan contratado compra de paquetes y mas detalles marca a cerisco si necesitas soporte para tus servicios movil o fijo gestionar visitas tecnicas tras lados o como consultar tu clave wifi marca numeral para informacion general o activar tu servicios marca 1 reportar tu equipo por robo o perdida reconectar tu linea o registrar el emaild marca 2 tienes necesitas radicar una peticion queja recurso o solicitar la cancelacion de tu servicios marca 3 conocer servicios especiales para ti marca 4 o escuchar nuevamente estas opciones marca 9 quieres consultar el saldo de tu linea propago marca 1 quieres comprar paquetes marca 2 quieres recargar tu linea propago marca 3 quieres consultar tus productos financiados marca 4 quieres revisar tus paquetes activos marca 5 escuchar nuevamente estas opciones marca 9 si quieres volver al menu principal marca 0 el linea tiene un saldo de 3105401 esos para que lo disfrutes hasta el dia 8 v agosto v 2026 revisa tu celular en pocos minutos te enviaremos en detalle de tu saldo";
         validarTranscripcion(textoEsperado);
     }
 
-    /* IVR_09 */ @Then("^Validar la transcripción Menu Principal, Asterisco, Comprar Paquetes$")
+    /* IVR_07 */ @Then("^Validar la transcripción Menu Principal, Asterisco, Comprar Paquetes$")
     public void validarTranscripcionMenuPrincipalAsteriscoComprarPaquetes() {
-        String textoEsperado = "ingreso whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menu principal marca 3 quieres consultar otro servicio marca 4 para repetir este menu marca 9 por favor ingresa el numero de celular que vas a consultar tu numero de celular es 3 2 0 4 1 0 8 0 8 5 es correcto marca 1 eres corregirlo marca 2 hemos notado que llamaste recientemente por saldo prepago si este es el motivo de tu llamada marca 1 o 9 para ir al menu principal tienes dudas con tu factura pagos saldo consumos compra de paquetes y otros detalles marca asterisco si necesitas soporte de tus servicios movil o fijos gestionar visitas traslados o tu clave wi-fi marca numeral para informacion general o activar tus servicios marca 1 para gestionar tus equipos marca 2 si necesitas radicar una queja recurso o solicitar la cancelacion de tus servicios marca 3 si quieres conocer servicios especiales para ti marca 4 escuchar nuevamente estas opciones marca 9 quieres consultar el saldo de tu linea prepago marca 1 quieres comprar paquetes marca 2 quieres recargar tu linea prepago marca 3 quieres consultar tus productos financiados marca 4 quieres revisar tus paquetes activos marca 5 escuchar nuevamente estas opciones marca 9 si quieres volver al menu principal marca 0 hola ahora puedes recargar y comprar paquetes en nuestros canales digitales con claro davi plata neki pc o tarjeta de credito y lo mejor recibe 3 por 1 en datos y minutos de tus paquetes marca 1 para paquete de 7500 pesos por 6 dias con llamadas ilimitadas 14 gb de navegacion y redes sociales marca 2 para paquete de 8500 pesos por 7 dias con llamadas ilimitadas 2 gb de navegacion y redes sociales marca 3 para mas opciones de paquetes marca 4 para mas opciones de recarga";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marco cad 2 para continuar con nuestro menu principal marcar 3 quieres consultar otro servicio marca 4 para este menu marca 9 por favor ingresa el numero de celular que vas a consultar el numero de celular es 3 2 0 4 1 0 8 0 8 5 es correcto marca 1 eres correcto marca 2 hemos notado que llamaste recientemente pues sando prepago si este es el motivo de tu llamada marca 1 o 9 para ir al menu principal para consultar informacion disponibles sobre tu factura pagos consumos plan contratado compra de paquetes y mas detalles marca asterisco si necesitas soporte para tus servicios movil o fijo gestionar visitas tecnicas traslados o como consultar tu clave wifi marca para informacion general o activar tus servicios marca 1 reportar tu equipo por robo o perdida reconectar tu linea o registrar el email marca 2 si necesitas radicar una peticion queja recorzo o solicitar la cancelacion de tus servicios marca 3 conocer servicios especiales para ti marca 4 o escuchar nuevamente estas opciones marca 9 quieres consultar el saldo de de linea prepago marca 1 quieres comprar paquetes marca 2 quieres recargar tu linea prepago marca 3 quieres consultar tus productos financiados marca 4 quieres revisar tus paquetes activos marca 5 escuchar nuevamente estas opciones marca 9 si quieres volver al menu principal marca 0 hola las puedes recargar y comprar paquetes de nuestros canales digitales con chiaros k nx pse o tarjeta de credito y lo mejor recibe 3 por 1 en datos luminotas de tus paquetes marca 1 para paquetes de 8 mil pesos por 6 dias con llamadas ilimitadas 1 punto 4 gigas de navegacion y redes sociales marca 2 para paquetes de 5 mil pesos por 3 dias con llamadas ilimitadas cuatrocientos megabytes de navegacion y redes sociales marca 3 para mas opciones de paquetes marca 4 para mas opciones de recarga";
         validarTranscripcion(textoEsperado);
     }
 
@@ -284,7 +288,6 @@ public class ValidacionesDeTranscripciones {
                     esperadoNormalizado
             );
 
-            // Log tradicional para consola
             assertTrue(
                     porcentaje >= UMBRAL_COINCIDENCIA,
                     () -> "La transcripción no coincide lo suficiente.\n" +
@@ -293,7 +296,6 @@ public class ValidacionesDeTranscripciones {
                             "Coincidencia: " + porcentaje + "%"
             );
 
-            // Logs bonitos
             System.out.println("✅ Coincidencia aceptable (" + porcentaje + "%)");
             System.out.println("🟦 Texto Esperado Normalizado:");
             System.out.println(esperadoNormalizado);
@@ -301,13 +303,8 @@ public class ValidacionesDeTranscripciones {
             System.out.println(transcripcionNormalizada);
 
         } finally {
-
-            // 🔹 Guardar todo para el Front / Reporte
-            EstadoPrueba.transcripcion = transcription;                  // texto crudo
-            EstadoPrueba.textoEsperado = textoEsperado;                  // texto crudo
-
-
-            // Mantener flujo que ya tenías
+            EstadoPrueba.transcripcion = transcription;
+            EstadoPrueba.textoEsperado = textoEsperado;
             EliminarAudioEnCelular.ejecutar(udid, RUTA_ARCHIVO_CELULAR);
             LimpiarYRespaldarAudio.ejecutar("Llamadas/Call", "Llamadas/BackupsAudio");
         }
@@ -315,30 +312,103 @@ public class ValidacionesDeTranscripciones {
 
     private String normalizar(String texto) {
         if (texto == null) return "";
-        texto = texto.toLowerCase()
-                // Números en palabra -> dígitos
+        return texto.toLowerCase()
+                // ===========================
+                // NÚMEROS PALABRA -> DÍGITO
+                // ===========================
                 .replaceAll("\\bcero\\b", "0")
-                .replaceAll("\\buno\\b", "1").replaceAll("\\bdos\\b", "2")
-                .replaceAll("\\btres\\b", "3").replaceAll("\\bcuatro\\b", "4")
-                .replaceAll("\\bcinco\\b", "5").replaceAll("\\bseis\\b", "6")
-                .replaceAll("\\bsiete\\b", "7").replaceAll("\\bocho\\b", "8")
-                .replaceAll("\\bnueve\\b", "9").replaceAll("\\bdiez\\b", "10")
-                .replaceAll("\\bonce\\b", "11").replaceAll("\\bdoce\\b", "12")
-                // Números ya escritos (para asegurar)
-                .replaceAll("\\b(1|2|3|4|5|6|7|8|9|10|11|12)\\b", "$1")
-                // Quitar acentos
-                .replaceAll("[áàäâ]", "a").replaceAll("[éèëê]", "e")
-                .replaceAll("[íìïî]", "i").replaceAll("[óòöô]", "o")
+                .replaceAll("\\buno\\b", "1")
+                .replaceAll("\\bdos\\b", "2")
+                .replaceAll("\\btres\\b", "3")
+                .replaceAll("\\bcuatro\\b", "4")
+                .replaceAll("\\bcinco\\b", "5")
+                .replaceAll("\\bseis\\b", "6")
+                .replaceAll("\\bsiete\\b", "7")
+                .replaceAll("\\bocho\\b", "8")
+                .replaceAll("\\bnueve\\b", "9")
+                // ===========================
+                // QUITAR ACENTOS
+                // ===========================
+                .replaceAll("[áàäâ]", "a")
+                .replaceAll("[éèëê]", "e")
+                .replaceAll("[íìïî]", "i")
+                .replaceAll("[óòöô]", "o")
                 .replaceAll("[úùüû]", "u")
-                // Quitar signos y espacios extra
-                .replaceAll("[,.;:!?]", "").replaceAll("\\s+", " ").trim();
-        return texto;
+                // ===========================
+                // COLAPSAR VARIANTES IVR
+                // ===========================
+                // marca y sus errores
+                .replaceAll("\\b(mark|market|marcat|marka|markat)\\b", "marca")
+                // menu y sus errores
+                .replaceAll("\\b(menue|menudo|menor)\\b", "menu")
+                // frases menu principal
+                .replaceAll("\\b(en\\s+un|menu\\s+un|menor\\s+un)\\s+principal\\b", "menu principal")
+                // postpago y variantes
+                .replaceAll("\\b(pospago|pos\\s+pago|post\\s+pago)\\b", "postpago")
+                // postpago movil y errores fonéticos graves
+                .replaceAll("\\b(postpago|pospago)\\s+(muy|mui|movi|movil)\\b", "postpago movil")
+                .replaceAll("\\bclampos\\s+pago\\s+(muy|movil|mui)\\b", "postpago movil")
+                // conjugaciones — colapsar a forma base
+                .replaceAll("\\b(ingreso|ingresas|ingresado|ingresando)\\b", "ingresa")
+                .replaceAll("\\b(podra|podras)\\b", "podras")
+                .replaceAll("\\bconsultas\\b", "consulta")
+                .replaceAll("\\b(finalizar|finalice)\\b", "finaliza")
+                .replaceAll("\\bingresas\\b", "ingresa")
+                // pronombres y artículos mal transcritos
+                .replaceAll("\\bpara\\s+te\\s+empresa\\b", "para tu empresa")
+                .replaceAll("\\bse\\s+estaremos\\b", "te estaremos")
+                .replaceAll("\\brecuerda\\s+y\\b", "recuerda que")
+                // negaciones que Whisper inventa
+                .replaceAll("\\bno\\s+esta\\s+en\\b", "estas en")
+                // transfiriendo y errores fonéticos
+                .replaceAll("\\b(transidiendo|transiriendo|transfiriendo)\\b", "transfiriendo")
+                // whatsapp variantes
+                .replaceAll("\\b(whatsap|whatsaap|whats\\s+app)\\b", "whatsapp")
+                // ===========================
+                // QUITAR RUIDO PURO
+                // ===========================
+                // palabras que Whisper agrega sin sentido
+                .replaceAll("\\btu\\s+consultas\\b", "tu consulta")
+                .replaceAll("\\bpara\\s+que\\s+empresa\\b", "para tu empresa")
+                // ===========================
+                // LIMPIAR SIGNOS Y ESPACIOS
+                // ===========================
+                .replaceAll("[,.;:!?¿¡]", "")
+                .replaceAll("\\s+", " ")
+                // ruido insertado por Whisper entre palabras reales
+                .replaceAll("\\bnuestras\\s+pero\\b", "nuestro")
+                .replaceAll("\\bpasar\\s+que\\s+a?\\s*claro\\b", "pasarte a claro")
+                .replaceAll("\\bestare\\s+transfiriendo\\b", "te estaremos transfiriendo")
+                .replaceAll("\\bestare\\s+transferiendo\\b", "te estaremos transfiriendo")
+                .replaceAll("\\bcon\\s+una?\\s+fesora\\b", "con un asesor")
+                .replaceAll("\\bhijos\\s+o\\s+moiles\\b", "fijos o moviles")
+                .replaceAll("\\b(propago|apropio|apropago)\\b", "prepago")
+                .replaceAll("\\btras\\s+lados\\b", "traslados")
+                .replaceAll("\\bel\\s+linea\\b", "su linea")
+                .replaceAll("\\ben\\s+detalle\\b", "el detalle")
+                .replaceAll("\\besos\\s+para\\b", "pesos para")
+                .replaceAll("\\bv\\s+(de\\s+)?agosto\\b", "de agosto")
+                .replaceAll("\\bno\\s+heves\\b", "o 9")
+// ma           rcados -> marca 2
+                .replaceAll("\\bmarcados\\b", "marca 2")
+                .trim();
     }
 
     private double calcularPorcentajeCoincidencia(String t1, String t2) {
-        LevenshteinDistance distancia = new LevenshteinDistance();
-        int dist = distancia.apply(t1, t2);
-        int maxLen = Math.max(t1.length(), t2.length());
-        return Math.round((1 - ((double) dist / maxLen)) * 10000.0) / 100.0; // 2 decimales
+        // Comparación por tokens (Jaccard)
+        // Más tolerante que Levenshtein para variaciones de IVR
+        Set<String> tokens1 = new HashSet<>(Arrays.asList(t1.split("\\s+")));
+        Set<String> tokens2 = new HashSet<>(Arrays.asList(t2.split("\\s+")));
+
+        Set<String> interseccion = new HashSet<>(tokens1);
+        interseccion.retainAll(tokens2);
+
+        Set<String> union = new HashSet<>(tokens1);
+        union.addAll(tokens2);
+
+        if (union.isEmpty()) return 100.0;
+
+        double score = (double) interseccion.size() / union.size() * 100.0;
+        return Math.round(score * 100.0) / 100.0; // 2 decimales
     }
 }

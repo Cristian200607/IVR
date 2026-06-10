@@ -13,6 +13,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 import static userinterfaces.IVRPage.BTN_COLGAR;
 import static utils.Constantes.FIN_LLAMADA_GRABACION;
+import static utils.IVRTiempos.MENU_PRINCIPAL;
 
 
 public class ComprarServiciosOpcion3 implements Task {
@@ -24,7 +25,7 @@ public class ComprarServiciosOpcion3 implements Task {
                 WaitFor.aTime(30),
                 ClickSostenido.sobre(BTN_GRABAR, 1),
                 Click.on(BOTON_SILENCIAR_EN_LLAMADA),
-                WaitFor.aTime(34000),
+                WaitFor.aTime(MENU_PRINCIPAL),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(28000)
@@ -32,7 +33,7 @@ public class ComprarServiciosOpcion3 implements Task {
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 2");
         actor.attemptsTo(
                 Click.on(BOTON_3_EN_GRABACION),
-                WaitFor.aTime(1700)
+                WaitFor.aTime(1800)
         );
         EvidenciaUtils.registrarCaptura("Marcar Opcion 3");
         actor.attemptsTo(
