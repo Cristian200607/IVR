@@ -13,7 +13,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
         features = "src/test/resources/features",
         glue = {"stepDefinitions", "utils", "hooks"},
         snippets = SnippetType.CAMELCASE,
-        tags = "@IVR_13",
+        tags = "@IVR_07",
         plugin = {
                 "pretty", // imprime pasos con coloresTerminal.colores en consola
                 "html:target/cucumber-reports/cucumber.html",
