@@ -50,6 +50,7 @@ log/
 Capturas/
 
 # Android APK
+*.apk
 
 # Mac
 .DS_Store
