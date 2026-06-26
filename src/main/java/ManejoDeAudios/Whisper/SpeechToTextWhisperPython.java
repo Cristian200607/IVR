@@ -10,7 +10,7 @@ public class SpeechToTextWhisperPython {
             System.getenv("WHISPER_PYTHON") != null &&
                     !System.getenv("WHISPER_PYTHON").trim().isEmpty()
                     ? System.getenv("WHISPER_PYTHON")
-                    : "C:\\Users\\Pruebas\\whisper_env\\Scripts\\python.exe";
+                    : "C:\\Users\\Pruebas\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
 
     private static final String SCRIPT =
             "C:\\Whisper\\transcribe_whisper.py";
