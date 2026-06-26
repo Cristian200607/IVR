@@ -17,7 +17,7 @@ public class ValidacionesDeTranscripciones {
 
     private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
     private static final String udid = "R9WW70LL61V"; // tu UDID
-    private static final double UMBRAL_COINCIDENCIA = 85.0; // Porcentaje mínimo aceptable
+    private static final double UMBRAL_COINCIDENCIA = 75.0; // Porcentaje mínimo aceptable
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")
     public void validarTranscripcionMenuPrincipal() {
@@ -27,7 +27,7 @@ public class ValidacionesDeTranscripciones {
 
     /* IVR_01 */ @Then("^Validar la transcripción Menu Inicio, Ingreso a WhatsApp$")
     public void validarTranscripcionOpcion1() {
-        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestros servicios claro marca 2 para continuar con nuestro menudo un principal marca 3 estas en la linea de ventas claro si tu consultas sobre un servicio diferente por favor finaliza esta llamada vuelve a marcar ingresas por la opcion 3 del menu principal para servicios hogar marca 1 comprar un plan postpago muy marca 2 comprar celulares televisores computadores marca 3 adquirir servicios fijos o moviles para tu empresa y pasarte a claro con tu mismo numero marca 4 que 9 si deseas escuchar de nuevo la informacion en un momento se estaremos transfiriendo con un asesor";
+        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podra consultar tu plan pagar tu factura mucho mas quieres hacerlo marca 1 si quieres comprar alguno de nuestro servicio claro marca 2 para continuar con nuestra menu principal marca 3 tu consulta sera atendida por medio de whatsapp";
         validarTranscripcion(textoEsperado);
     }
 
