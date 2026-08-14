@@ -6,14 +6,46 @@ Feature: Validar los flujos de IVR
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     Then Visualizacion de la transcripcion
 
-  @IVR_00 @Menu_Inicio @IVR_43_POS @IVR
+  @IVR_00_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
     When  Se Valida Menu Inicio
+    And   Compartir audio a la carpeta
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal
+
+  @IVR_01_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op1, IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op1 ivr empresas
+
+
+  @IVR_02_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op2, IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op2 ivr empresas
+
+  @IVR_03_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op3, IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op3 ivr empresas
 
 
   @IVR_01 #Funciona 09/06/26

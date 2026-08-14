@@ -1,6 +1,5 @@
-package tasks;
+package tasks.IVREmpresas;
 
-import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -10,15 +9,19 @@ import utils.EvidenciaUtils;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
+import static userinterfaces.IVRPage.BTN_COLGAR;
 
-
-public class MenuInicio implements Task {
-
+public class IvrEmpresasOp3 implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(25000),
+                WaitFor.aTime(22000),
+                Click.on(TECLADO_TELEFONO_EN_GRABACION),
+                Click.on(BOTON_2_EN_GRABACION),
+                WaitFor.aTime(11000),
+                Click.on(BOTON_2_EN_GRABACION),
+                WaitFor.aTime(10000),
                 Click.on(BTN_COLGAR)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
@@ -26,6 +29,6 @@ public class MenuInicio implements Task {
     }
 
     public static Performable validar () {
-        return instrumented(MenuInicio.class);
+        return instrumented(IvrEmpresasOp3.class);
     }
 }

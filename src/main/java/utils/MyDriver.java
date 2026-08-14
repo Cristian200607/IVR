@@ -5,47 +5,74 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import net.thucydides.core.webdriver.DriverSource;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class MyDriver implements DriverSource {
 
-  private static AndroidDriver driver;
+    private static AndroidDriver driver;
 
-  public static AndroidDriver getDriver() {
-    return driver;
-  }
-
-  @Override
-  public AndroidDriver newDriver() {
-    try {
-      ChromeOptions options = new ChromeOptions();
-      options.addArguments("test-type");
-      DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setCapability("appActivity", ".activities.CallLogActivity");
-      capabilities.setCapability("appPackage", "com.google.android.dialer");
-      capabilities.setCapability(
-          "chromedriverExecutable", "src/test/resources/webdriver/windows/chromedriver.exe");
-
-      capabilities.setCapability("noReset", true); // No borra datos, mantiene la sesión
-      capabilities.setCapability("fullReset", false); // Evita reiniciar la app
-
-      capabilities.setCapability("automationName", "UiAutomator2");
-      capabilities.setCapability("autoGrantPermissions", "true");
-      capabilities.setCapability("reset", "false");
-      capabilities.setCapability("noReset", "false");
-      capabilities.setCapability("autoDismissAlerts", "true");
-
-      driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-      return driver;
-    } catch (IOException e) {
-      throw new Error(e);
+    public static AndroidDriver getDriver() {
+        return driver;
     }
-  }
 
-  @Override
-  public boolean takesScreenshots() {
-    return true;
-  }
+    @Override
+    public AndroidDriver newDriver() {
+        try {
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+
+            // -------------------------
+            // ANDROID
+            // -------------------------
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("automationName", "UiAutomator2");
+            capabilities.setCapability("udid", "10AECM1AP5000XT");
+
+            // -------------------------
+            // APLICACIÓN TELÉFONO
+            // -------------------------
+            capabilities.setCapability(
+                    "appPackage",
+                    "com.google.android.dialer"
+            );
+
+            capabilities.setCapability(
+                    "appActivity",
+                    "com.google.android.dialer.extensions.GoogleDialtactsActivity"
+            );
+
+            // -------------------------
+            // CONFIGURACIÓN APP
+            // -------------------------
+            capabilities.setCapability("noReset", true);
+            capabilities.setCapability("autoGrantPermissions", true);
+            capabilities.setCapability("autoDismissAlerts", true);
+            capabilities.setCapability("newCommandTimeout", 3000);
+
+            // -------------------------
+            // CREAR DRIVER
+            // -------------------------
+            driver = new AndroidDriver(
+                    new URL("http://127.0.0.1:4723/wd/hub"),
+                    capabilities
+            );
+
+            // -------------------------
+            // TIMEOUT
+            // -------------------------
+            driver.manage()
+                    .timeouts()
+                    .implicitlyWait(20, TimeUnit.SECONDS);
+
+            return driver;
+
+        } catch (IOException e) {
+            throw new Error(e);
+        }
+    }
+
+    @Override
+    public boolean takesScreenshots() {
+        return true;
+    }
 }

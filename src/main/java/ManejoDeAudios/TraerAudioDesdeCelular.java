@@ -1,44 +1,114 @@
 package ManejoDeAudios;
 
-import interactions.comunes.WaitFor;
-
 import java.io.File;
 import java.io.IOException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TraerAudioDesdeCelular {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TraerAudioDesdeCelular.class);
-
     public static void desde(String udid, String rutaCelular, String rutaLocal) {
-        WaitFor.aTime(4000);
+
         try {
-            // Asegurar que la carpeta local exista
+
+            // Crear carpeta local
             File carpetaDestino = new File(rutaLocal);
+
             if (!carpetaDestino.exists()) {
                 carpetaDestino.mkdirs();
             }
 
-            // Comando adb pull con UDID
-            String comando = String.format("adb -s %s pull %s \"%s\"", udid, rutaCelular, rutaLocal);
+            // Buscar únicamente archivos record-*.wav
+            String comandoBuscar = String.format(
+                    "adb -s %s shell find %s -type f -name \"record-*.wav\"",
+                    udid,
+                    rutaCelular
+            );
 
-            LOGGER.info("Ejecutando comando: {}", comando);
+            System.out.println("Buscando grabaciones con:");
+            System.out.println(comandoBuscar);
 
+            Process procesoBuscar = Runtime.getRuntime().exec(comandoBuscar);
 
-            Process proceso = Runtime.getRuntime().exec(comando);
+            java.io.BufferedReader reader =
+                    new java.io.BufferedReader(
+                            new java.io.InputStreamReader(
+                                    procesoBuscar.getInputStream()
+                            )
+                    );
 
-            int resultado = proceso.waitFor();
+            List<String> archivos = reader.lines()
+                    .filter(linea -> !linea.trim().isEmpty())
+                    .collect(Collectors.toList());
+
+            procesoBuscar.waitFor();
+
+            if (archivos.isEmpty()) {
+                throw new RuntimeException(
+                        "No se encontró ninguna grabación record-*.wav en "
+                                + rutaCelular
+                );
+            }
+
+            // Tomar la última grabación encontrada
+            String archivoRemoto = archivos.get(archivos.size() - 1).trim();
+
+            System.out.println(
+                    "Grabación encontrada: " + archivoRemoto
+            );
+
+            // Obtener nombre del archivo
+            String nombreArchivo =
+                    Paths.get(archivoRemoto).getFileName().toString();
+
+            String rutaDestino =
+                    new File(rutaLocal, nombreArchivo).getAbsolutePath();
+
+            // Traer únicamente el archivo WAV
+            String comandoPull = String.format(
+                    "adb -s %s pull \"%s\" \"%s\"",
+                    udid,
+                    archivoRemoto,
+                    rutaDestino
+            );
+
+            System.out.println(
+                    "Ejecutando comando: " + comandoPull
+            );
+
+            Process procesoPull =
+                    Runtime.getRuntime().exec(comandoPull);
+
+            int resultado = procesoPull.waitFor();
 
             if (resultado == 0) {
-                LOGGER.info("Archivo(s) copiado(s) correctamente desde el celular con UDID:  {}", udid);
+
+                System.out.println(
+                        "Archivo copiado correctamente: "
+                                + rutaDestino
+                );
+
             } else {
-                LOGGER.info("Error al copiar archivo(s) desde el celular. Código:  {}", resultado);
+
+                throw new RuntimeException(
+                        "Error al copiar el audio. Código: "
+                                + resultado
+                );
             }
 
         } catch (IOException | InterruptedException e) {
+
             e.printStackTrace();
-            throw new RuntimeException("Error ejecutando adb pull: " + e.getMessage(), e);
+
+            throw new RuntimeException(
+                    "Error ejecutando adb para traer el audio: "
+                            + e.getMessage(),
+                    e
+            );
         }
     }
 }

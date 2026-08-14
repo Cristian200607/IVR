@@ -5,17 +5,15 @@ import java.io.InputStreamReader;
 
 public class SpeechToTextWhisperPython {
 
-    // Ruta configurable por variable de entorno
     private static final String PYTHON =
             System.getenv("WHISPER_PYTHON") != null &&
                     !System.getenv("WHISPER_PYTHON").trim().isEmpty()
                     ? System.getenv("WHISPER_PYTHON")
-                    : "C:\\Users\\Pruebas\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
+                    : "C:\\Users\\PARDOC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
 
     private static final String SCRIPT =
             "C:\\Whisper\\transcribe_whisper.py";
 
-    // 🔹 Ahora recibe solo la ruta de la carpeta, NO un WAV específico
     public static String transcribe(String folderPath) throws Exception {
 
         System.out.println("🐍 Python usado: " + PYTHON);
@@ -40,7 +38,6 @@ public class SpeechToTextWhisperPython {
         StringBuilder text = new StringBuilder();
         String line;
 
-        // 🔹 Captura la salida completa del script Python
         while ((line = reader.readLine()) != null) {
             System.out.println("PY → " + line);
             text.append(line).append("\n");

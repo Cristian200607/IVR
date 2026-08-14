@@ -1,31 +1,29 @@
 package tasks;
 
-import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import utils.EvidenciaUtils;
-
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static userinterfaces.IVRPage.*;
 
-
-public class MenuInicio implements Task {
+public class CompartirAudio implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
+
+        EvidenciaUtils.registrarCaptura("Finalizar llamada");
         actor.attemptsTo(
-                WaitFor.aTime(25000),
-                Click.on(BTN_COLGAR)
+            Click.on(VOLVER_PAGINA_PRINCIPAL),
+            Click.on(ULTIMA_LLAMADA),
+            Click.on(BTN_COMPARTIR_AUDIO),
+            Click.on(UBICACION_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
-        System.out.println("Llamada realizada y finalizada correctamente.");
     }
 
-    public static Performable validar () {
-        return instrumented(MenuInicio.class);
+    public static Performable validar() {
+        return instrumented(CompartirAudio.class);
     }
 }

@@ -15,15 +15,37 @@ import java.util.Set;
 
 public class ValidacionesDeTranscripciones {
 
-    private static final String RUTA_ARCHIVO_CELULAR = "/sdcard/Recordings/Call/";
-    private static final String udid = "R9WW70LL61V"; // tu UDID
+    private static final String RUTA_ARCHIVO_CELULAR = "/storage/emulated/0/Download/";
+    private static final String udid = "10AECM1AP5000XT"; // tu UDID
     private static final double UMBRAL_COINCIDENCIA = 75.0; // Porcentaje mínimo aceptable
+
+    //IVR EMPRESAS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
     /* IVR_00 */ @Then("^Validar la transcripción con el texto esperado del menu principal$")
     public void validarTranscripcionMenuPrincipal() {
-        String textoEsperado = "ingresa a whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca uno si quieres comprar alguno de nuestros servicios claro marca dos para continuar con nuestro menu principal marca tres";
+        String textoEsperado = "bienvenido a nuestra linea de atencion y venta de claro empresas para adquirir nuestros servicios o cambiarte a claro con tu mismo numero marca 1 para servicio cliente de tu portafolio claro empresas marca 2";
         validarTranscripcion(textoEsperado);
     }
+
+    /* IVR_01 */ @Then("^Validar la transcripción con el texto esperado del menu principal op1 ivr empresas$")
+    public void validarTranscripcionMenuPrincipalOp1IvrEmpresas() {
+        String textoEsperado = "bienvenido a nuestra linea de atencion y venta de claro empresas para adquirir nuestros servicios o cambiarte a claro con tu mismo numero marca 1 para servicio al cliente de tu portafolio claro empresas marca 2 aqui podras adquirir servicios exclusivamente para tu negocio o empresa requerimientos diferente te invitamos a llamar nuevamente y escuches con atencion nuestro menu principal";
+        validarTranscripcion(textoEsperado);
+    }
+
+    /* IVR_02 */ @Then("^Validar la transcripción con el texto esperado del menu principal op2 ivr empresas$")
+    public void validarTranscripcionMenuPrincipalOp2IvrEmpresas() {
+        String textoEsperado = "bienvenido a nuestra linea de atencion y venta de claro empresas para adquirir nuestros servicios o cambiarte a claro con tu mismo numero marca 1 para servicio al cliente de tu portafolio claro empresas marca 2 ingresa whatsapp y ahorra tiempo podras consultar tu plan para ver tu factura y mucho mas quieres hacerlo marca 1 para continuar en la llamada marca 2 revisa el mensaje que enviamos a tu celular para ingresar a nuestro chat gracias por comunicarte con nosotros recuerda que puedes efectuar tus consultas a traves de nuestra admi claro link empresas";
+        validarTranscripcion(textoEsperado);
+    }
+
+    /* IVR_02 */ @Then("^Validar la transcripción con el texto esperado del menu principal op3 ivr empresas$")
+    public void validarTranscripcionMenuPrincipalOp3IvrEmpresas() {
+        String textoEsperado = "bienvenido a nuestra linea de atencion y venta de claro empresas para adquirir nuestros servicios o cambiarte a claro con tu mismo numero marca 1 para servicio al cliente de tu portafolio claro empresas marca 2 ingresa whatsapp y ahorra tiempo podras consultar tu plan pagar tu factura y mucho mas quieres hacerlo marca 1 para continuar en la llamada marca 2 digita el numero de identificacion del servicio a consultar para mi sin digitado de verificacion seguido de la tecla numeral";
+        validarTranscripcion(textoEsperado);
+    }
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     /* IVR_01 */ @Then("^Validar la transcripción Menu Inicio, Ingreso a WhatsApp$")
     public void validarTranscripcionOpcion1() {

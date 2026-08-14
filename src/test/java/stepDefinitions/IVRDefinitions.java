@@ -11,6 +11,10 @@ import java.io.File;
 import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import tasks.CompartirAudio;
+import tasks.IVREmpresas.IvrEmpresasOp1;
+import tasks.IVREmpresas.IvrEmpresasOp2;
+import tasks.IVREmpresas.IvrEmpresasOp3;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetes;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op3;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op4;
@@ -70,7 +74,7 @@ public class  IVRDefinitions {
 
 
     // Mantener la pantalla encendida (infinito)
-    String udid = "R9WW70LL61V"; // tu UDID
+    String udid = "10AECM1AP5000XT"; // tu UDID
     try {
       String keepScreenOn = String.format(
               "adb -s %s shell settings put system_off_timeout 2147483647",
@@ -99,7 +103,7 @@ public class  IVRDefinitions {
     }
 
     // Limpiar audios en el celular
-    String rutaCelular = "/sdcard/Recordings/Call/";
+      String rutaCelular = "/storage/emulated/0/Download/";
     try {
       String crearCarpeta = String.format("adb -s %s shell mkdir -p %s", udid, rutaCelular);
       Runtime.getRuntime().exec(crearCarpeta).waitFor();
@@ -132,6 +136,34 @@ public class  IVRDefinitions {
             MenuInicio.validar()
     );
   }
+
+  @And("^Compartir audio a la carpeta$")
+  public void CompartirAudio() {
+      theActorInTheSpotlight().attemptsTo(
+                CompartirAudio.validar());
+  }
+
+  //IVR EMPRESAS ----------------------------------------------------------------------------------
+      @And("^Op1, IVR EMPRESAS$")
+      public void IvrEmpresasOp1() {
+          theActorInTheSpotlight().attemptsTo(
+                  IvrEmpresasOp1.validar()
+          );
+    }
+
+    @And("^Op2, IVR EMPRESAS$")
+    public void IvrEmpresasOp2() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp2.validar()
+        );
+    }
+
+    @And("^Op3, IVR EMPRESAS$")
+    public void IvrEmpresasOp3() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3.validar()
+        );
+    }
 
   //Menu Inicio
   @And("^Op1, Ingreso a WhatsApp$")
