@@ -92,6 +92,18 @@ public class  IVRDefinitions {
       throw new RuntimeException("Error ejecutando adb para mantener pantalla encendida", e);
     }
 
+    // Evita que el ahorro de batería del celular (vivo) mate el servidor de UiAutomator2
+    // durante las esperas largas de la llamada. No rompe la prueba si falla.
+    for (String paquete : new String[] {"io.appium.uiautomator2.server", "io.appium.uiautomator2.server.test"}) {
+      try {
+        Runtime.getRuntime()
+            .exec(String.format("adb -s %s shell dumpsys deviceidle whitelist +%s", udid, paquete))
+            .waitFor();
+      } catch (Exception e) {
+        System.err.println("No se pudo excluir " + paquete + " del ahorro de batería: " + e.getMessage());
+      }
+    }
+
     // Limpiar capturas locales
     File folder = new File("Capturas");
     if (folder.exists() && folder.isDirectory()) {

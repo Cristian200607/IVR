@@ -12,6 +12,7 @@ import static userinterfaces.IVRPage.*;
 public class DialPadHelper {
 
     private static final Map<Character, Target> DIGITOS = new HashMap<>();
+    private static final long PAUSA_ENTRE_DIGITOS_MS = 300;
 
     static {
         DIGITOS.put('0', BOTON_0_EN_GRABACION);
@@ -36,7 +37,18 @@ public class DialPadHelper {
                 // click directo en el MobileElement, evitando Serenity Click
                 MobileElement boton = (MobileElement) botonTarget.resolveFor(actor).getWrappedElement();
                 boton.click();
+                // Pausa corta: se sospecha que los clics seguidos sin respiro durante la llamada tumban el servidor
+                // de UiAutomator2 en el vivo (Android 15) -> "Process crashed".
+                pausa(PAUSA_ENTRE_DIGITOS_MS);
             }
+        }
+    }
+
+    private static void pausa(long ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 }
