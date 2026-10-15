@@ -70,3 +70,6 @@ LlamadasConvertidas/
 
 # 6. Ignorar carpeta completa reportes (y subcarpetas)
 reportes/
+
+# 7. Diagnósticos de fallos (logcat del celular)
+Diagnosticos/
