@@ -49,10 +49,9 @@ public class MyDriver implements DriverSource {
             capabilities.setCapability("autoDismissAlerts", true);
             capabilities.setCapability("newCommandTimeout", 3000);
 
-            // Arranque más rápido: no reconfigura el celular (app "Appium Settings", que además
-            // aparecía encima de la app de llamadas) ni captura logcat en cada sesión.
-            // Si cambias de celular, comenta skipDeviceInitialization en la primera ejecución.
-            capabilities.setCapability("skipDeviceInitialization", true);
+            // No captura logcat en cada sesión (arranque más rápido).
+            // skipDeviceInitialization se quitó: con él el servidor UiAutomator2 se caía a mitad de
+            // la llamada ("instrumentation process is not running") en el vivo.
             capabilities.setCapability("skipLogcatCapture", true);
 
             // -------------------------
