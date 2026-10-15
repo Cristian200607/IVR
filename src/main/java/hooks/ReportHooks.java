@@ -20,6 +20,10 @@ public class ReportHooks {
     ultimoPaso = paso;
   }
 
+  public static String getUltimoPaso() {
+    return ultimoPaso;
+  }
+
   public static void setLinea(String linea) {
     lineaUsada = linea;
   }
