@@ -12,9 +12,10 @@ import models.User;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import tasks.CompartirAudio;
-import tasks.IVREmpresas.IvrEmpresasOp1;
-import tasks.IVREmpresas.IvrEmpresasOp2;
-import tasks.IVREmpresas.IvrEmpresasOp3;
+import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp1;
+import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp2;
+import tasks.IVREmpresas.OpcionesAsteriscos.*;
+import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp1;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetes;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op3;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op4;
@@ -40,9 +41,7 @@ import tasks.MenuPrincipalOpciones.Opcion1.AdquirirEquipos.AdquirirEquipos;
 import tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro.*;
 import tasks.MenuPrincipalOpciones.Opcion1.EligidosMovilFamilia.ElegidosMovilFamilia;
 import tasks.MenuPrincipalOpciones.Opcion1.InformacionGeneral.InformacionGeneral;
-import tasks.MenuPrincipalOpciones.Opcion4.ClaroPay.ClaroPay;
 import tasks.MenuPrincipalOpciones.Opcion4.ClaroPayMasterCard.ClaroPayMasterCard;
-import tasks.MenuPrincipalOpciones.Opcion4.ClaroPayMasterCard.ClaroPayMasterCardOp2;
 import tasks.OpcionesParaMarcarEnMenuInicio.ComprarServicios.ComprarServiciosOpcion1;
 import tasks.OpcionesParaMarcarEnMenuInicio.ComprarServicios.ComprarServiciosOpcion2;
 import tasks.OpcionesParaMarcarEnMenuInicio.ComprarServicios.ComprarServiciosOpcion3;
@@ -60,6 +59,7 @@ public class  IVRDefinitions {
 
   // 📌 Variable general para el número de celular
   public static final String NUMERO_CELULAR = "3204108085";
+  public static final String CEDULA_IVR_EMPRESAS = "980010140";
 
 
   @Before
@@ -144,24 +144,88 @@ public class  IVRDefinitions {
   }
 
   //IVR EMPRESAS ----------------------------------------------------------------------------------
-      @And("^Op1, IVR EMPRESAS$")
-      public void IvrEmpresasOp1() {
-          theActorInTheSpotlight().attemptsTo(
-                  IvrEmpresasOp1.validar()
-          );
+    @And("^Menu Principal Op1 IVR EMPRESAS$")
+    public void MenuPrincipalOp1IVREMPRESAS() {
+      theActorInTheSpotlight().attemptsTo(
+              IvrEmpresasMenuPrincipalOp1.validar()
+      );
+
     }
 
-    @And("^Op2, IVR EMPRESAS$")
-    public void IvrEmpresasOp2() {
+    @And("^Menu Principal Op2 IVR EMPRESAS$")
+    public void MenuPrincipalOp2Op1IVREMPRESAS() {
         theActorInTheSpotlight().attemptsTo(
-                IvrEmpresasOp2.validar()
+                IvrEmpresasMenuPrincipalOp2.validar()
         );
     }
 
-    @And("^Op3, IVR EMPRESAS$")
-    public void IvrEmpresasOp3() {
+    @And("^Op Asterisco Op1 IVR EMPRESAS$")
+    public void OpAsteriscoOp1IVREMPRESAS() {
         theActorInTheSpotlight().attemptsTo(
-                IvrEmpresasOp3.validar()
+                IvrEmpresasAsteriscoOp1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op2 IVR EMPRESAS$")
+    public void OpAsteriscoOp2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op3 IVR EMPRESAS$")
+    public void OpAsteriscoOp3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op1 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op2 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op3 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op4 Op1 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op4Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op4Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op4 Op2 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op4Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op4Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Asterisco Op4 Op4 Op3 IVR EMPRESAS$")
+    public void OpAsteriscoOp4Op4Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasAsteriscoOp4Op4Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Numeral Op1 IVR EMPRESAS$")
+    public void OpNumeralOp1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasNumeralOp1.validar(CEDULA_IVR_EMPRESAS)
         );
     }
 

@@ -11,6 +11,11 @@ public class IVRPage extends PageObject {
     public static final Target TECLADO_TELEFONO = Target.the("Teclado del telefono")
             .located(By.id("com.google.android.dialer:id/tab_dialpad"));
 
+    public static final Target BOTON_SILENCIAR =
+            Target.the("Botón Silenciar")
+                    .located(By.xpath(
+                            "//android.view.View[@content-desc='Silenciar']/parent::android.view.View"
+                    ));
     public static final Target TECLADO_TELEFONO_EN_GRABACION = Target.the("Teclado del telefono en grabacion")
                     .located(By.xpath("//android.view.View[@clickable='true']" + "[.//android.view.View[@content-desc='Teclado']]"));
 
@@ -38,8 +43,11 @@ public class IVRPage extends PageObject {
     public static final Target FIN_LLAMADA_BUTTON = Target.the("Botón Fin de llamada")
             .located(By.xpath("//android.widget.ImageButton[@content-desc='Fin. llamada']"));
 
-    public static final Target BOTON_ASTERISCO_EN_GRABACION = Target.the("botón *")
+    public static final Target BOTON_ASTERISCO = Target.the("botón *")
             .located(By.id("com.google.android.dialer:id/star"));
+
+    public static final Target BOTON_ASTERISCO_EN_GRABACION = Target.the("botón *")
+            .located(By.xpath("//android.widget.FrameLayout[@content-desc='*']"));
 
     public static final Target BOTON_NUMERAL_EN_GRABACION = Target.the("botón #")
             .located(By.id("com.google.android.dialer:id/pound"));
@@ -54,7 +62,7 @@ public class IVRPage extends PageObject {
             .located(By.id("com.google.android.dialer:id/two"));
 
     public static final Target BOTON_3_EN_GRABACION = Target.the("botón tres")
-            .located(By.id("com.google.android.dialer:id/three"));
+            .located(By.xpath("//android.widget.FrameLayout[@content-desc=\"3,DEF\"]"));
 
     public static final Target BOTON_4_EN_GRABACION = Target.the("botón tres")
             .located(By.id("com.google.android.dialer:id/four"));
@@ -133,5 +141,5 @@ public class IVRPage extends PageObject {
 
     public static final Target UBICACION_GRABACION =
             Target.the("Ubicación donde se guardará la grabación")
-                    .located(By.xpath("(//android.widget.ImageView[@resource-id=\"android:id/icon\"])[7]"));
+                    .located(By.xpath("//android.widget.TextView[@resource-id='android:id/text1' and @text='Files de Google']"));
 }

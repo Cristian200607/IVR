@@ -6,7 +6,7 @@ Feature: Validar los flujos de IVR
     And Se realiza el reconocimiento de voz sobre el archivo convertido
     Then Visualizacion de la transcripcion
 
-  @IVR_00_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  @IVR_00 @Menu_Inicio @IVR_43_POS @IVR
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
     When  Se Valida Menu Inicio
@@ -16,10 +16,10 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal
 
-  @IVR_01_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  @IVR_01_EMPRESAS
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
-    When  Op1, IVR EMPRESAS
+    When  Menu Principal Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
@@ -27,26 +27,115 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal op1 ivr empresas
 
 
-  @IVR_02_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  @IVR_02_EMPRESAS
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
-    When  Op2, IVR EMPRESAS
+    When  Menu Principal Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op2 ivr empresas
 
-  @IVR_03_EMPRESAS @Menu_Inicio @IVR_43_POS @IVR
+  @IVR_03_EMPRESAS
   Scenario: Marcación IVR y Validar Menu Inicio
     Given Se realiza la llamada al numero *611
-    When  Op3, IVR EMPRESAS
+    When  Op Asterisco Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-    Then  Validar la transcripción con el texto esperado del menu principal op3 ivr empresas
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op1 ivr empresas
 
+  @IVR_04_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op2 ivr empresas
+
+  @IVR_05_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op3 ivr empresas
+
+  @IVR_06_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op1 ivr empresas
+
+  @IVR_07_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op2 ivr empresas
+
+  @IVR_08_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op3 ivr empresas
+
+  @IVR_09_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op4 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op1 ivr empresas
+
+  @IVR_10_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op4 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op2 ivr empresas
+
+  @IVR_11_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Asterisco Op4 Op4 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op3 ivr empresas
+
+  @IVR_12_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Numeral Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+  #  Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op3 ivr empresas
 
   @IVR_01 #Funciona 09/06/26
   Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp

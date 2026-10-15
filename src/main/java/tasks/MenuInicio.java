@@ -18,7 +18,7 @@ public class MenuInicio implements Task {
     public <T extends Actor> void performAs(T actor) {
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
-                WaitFor.aTime(25000),
+                WaitFor.aTime(24000),
                 Click.on(BTN_COLGAR)
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
