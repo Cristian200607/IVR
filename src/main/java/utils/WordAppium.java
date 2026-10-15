@@ -132,15 +132,18 @@ public class WordAppium {
   }
 
   private static File buscarImagenDePaso(String paso, File[] capturas) {
-    String pasoNormalizado =
-            paso.toLowerCase().replaceAll("[^a-z0-9]", "_");
+    // Prefijo exacto "<paso>_<timestamp>.png": con contains() el paso "1. X" tomaba la imagen de "11. X"
+    String prefijo = CapturaDePantallaMovil.normalizar(paso) + "_";
 
+    File encontrada = null;
     for (File img : capturas) {
-      if (img.getName().toLowerCase().contains(pasoNormalizado)) {
-        return img;
+      String nombre = img.getName().toLowerCase();
+      if (nombre.endsWith(".png") && nombre.startsWith(prefijo)
+              && (encontrada == null || nombre.compareTo(encontrada.getName().toLowerCase()) > 0)) {
+        encontrada = img;
       }
     }
-    return null;
+    return encontrada;
   }
 
   /** Genera la conclusión del reporte basada en la ejecución de los pasos */

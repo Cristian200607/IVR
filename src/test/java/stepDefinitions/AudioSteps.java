@@ -32,7 +32,7 @@ public class AudioSteps {
                 + File.separator
                 + "Call";
 
-        String udid = "10AECM1AP5000XT";
+        String udid = utils.Constantes.UDID;
 
         TraerAudioDesdeCelular.desde(
                 udid,
@@ -64,7 +64,7 @@ public class AudioSteps {
     }
 
     private static final String RUTA_ARCHIVO_CELULAR = "/storage/emulated/0/Download/";
-    private static final String UDID = "10AECM1AP5000XT";
+    private static final String UDID = utils.Constantes.UDID;
     private static final double UMBRAL_COINCIDENCIA = 90.0;
 
     @And("^Se eliminan y respaldan los audios del celular$")

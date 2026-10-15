@@ -6,6 +6,7 @@ import cucumber.api.java.Before;
 import java.util.ArrayList;
 import java.util.List;
 import utils.EstadoPrueba;
+import utils.EvidenciaUtils;
 import utils.WordAppium;
 
 public class ReportHooks {
@@ -27,6 +28,7 @@ public class ReportHooks {
   public void beforeEachScenario() {
     EstadoPrueba.inicio = System.currentTimeMillis();
     pasosEjecutados.clear();
+    EvidenciaUtils.reiniciarContador();
     EstadoPrueba.fallo = false;
     EstadoPrueba.pasoFallido = "";
   }

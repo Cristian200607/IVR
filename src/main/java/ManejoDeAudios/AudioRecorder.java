@@ -8,7 +8,7 @@ public class AudioRecorder {
         try {
             String ffmpegPath = "ffmpeg";
             String audioDevice = "Línea de entrada (Realtek(R) Audio)";
-            String outputFolderPath = "C:\\IVR\\Llamadas\\Call";
+            String outputFolderPath = "/Users/cris/Documents/IVR/Llamadas/Call";
 
             File outputFolder = new File(outputFolderPath);
             if (!outputFolder.exists()) {

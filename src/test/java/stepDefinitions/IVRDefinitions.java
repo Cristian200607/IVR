@@ -74,10 +74,10 @@ public class  IVRDefinitions {
 
 
     // Mantener la pantalla encendida (infinito)
-    String udid = "10AECM1AP5000XT"; // tu UDID
+    String udid = utils.Constantes.UDID;
     try {
       String keepScreenOn = String.format(
-              "adb -s %s shell settings put system_off_timeout 2147483647",
+              "adb -s %s shell settings put system screen_off_timeout 2147483647",
               udid
       );
       Process procesoKeepAlive = Runtime.getRuntime().exec(keepScreenOn);
@@ -96,7 +96,7 @@ public class  IVRDefinitions {
     File folder = new File("Capturas");
     if (folder.exists() && folder.isDirectory()) {
       for (File file : folder.listFiles()) {
-        if (file.isFile() && file.getName().endsWith(".jpg")) {
+        if (file.isFile() && (file.getName().endsWith(".jpg") || file.getName().endsWith(".png"))) {
           file.delete();
         }
       }
@@ -105,10 +105,8 @@ public class  IVRDefinitions {
     // Limpiar audios en el celular
       String rutaCelular = "/storage/emulated/0/Download/";
     try {
-      String crearCarpeta = String.format("adb -s %s shell mkdir -p %s", udid, rutaCelular);
-      Runtime.getRuntime().exec(crearCarpeta).waitFor();
-
-      String borrarArchivos = String.format("adb -s %s shell rm -rf %s*", udid, rutaCelular);
+      // Un solo comando adb: crea la carpeta y la vacía
+      String borrarArchivos = String.format("adb -s %s shell mkdir -p %s && rm -rf %s*", udid, rutaCelular, rutaCelular);
       System.out.println("Limpiando audios del celular con: " + borrarArchivos);
       Process proceso = Runtime.getRuntime().exec(borrarArchivos);
       int resultado = proceso.waitFor();

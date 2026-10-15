@@ -1,6 +1,5 @@
 repositories {
     google()               // Para Android / Speech-to-Text
-    jcenter()
     mavenLocal()
     mavenCentral()
 }
@@ -8,7 +7,6 @@ repositories {
 buildscript {
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"

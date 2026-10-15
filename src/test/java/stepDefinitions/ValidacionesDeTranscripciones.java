@@ -16,7 +16,7 @@ import java.util.Set;
 public class ValidacionesDeTranscripciones {
 
     private static final String RUTA_ARCHIVO_CELULAR = "/storage/emulated/0/Download/";
-    private static final String udid = "10AECM1AP5000XT"; // tu UDID
+    private static final String udid = utils.Constantes.UDID;
     private static final double UMBRAL_COINCIDENCIA = 80.0; // Porcentaje mínimo aceptable
 
     //IVR EMPRESAS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

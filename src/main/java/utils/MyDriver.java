@@ -26,7 +26,7 @@ public class MyDriver implements DriverSource {
             // -------------------------
             capabilities.setCapability("platformName", "Android");
             capabilities.setCapability("automationName", "UiAutomator2");
-            capabilities.setCapability("udid", "10AECM1AP5000XT");
+            capabilities.setCapability("udid", Constantes.UDID);
 
             // -------------------------
             // APLICACIÓN TELÉFONO
@@ -48,6 +48,12 @@ public class MyDriver implements DriverSource {
             capabilities.setCapability("autoGrantPermissions", true);
             capabilities.setCapability("autoDismissAlerts", true);
             capabilities.setCapability("newCommandTimeout", 3000);
+
+            // Arranque más rápido: no reconfigura el celular (app "Appium Settings", que además
+            // aparecía encima de la app de llamadas) ni captura logcat en cada sesión.
+            // Si cambias de celular, comenta skipDeviceInitialization en la primera ejecución.
+            capabilities.setCapability("skipDeviceInitialization", true);
+            capabilities.setCapability("skipLogcatCapture", true);
 
             // -------------------------
             // CREAR DRIVER
