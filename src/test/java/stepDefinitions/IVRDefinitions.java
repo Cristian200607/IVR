@@ -113,6 +113,25 @@ public class  IVRDefinitions {
       }
     }
 
+    // Desactiva los gestores de energía de vivo sospechosos de matar UiAutomator2 cada 5 minutos.
+    // Quedan desactivados en el celular; para reactivarlos: adb shell pm enable <paquete>
+    String[] gestoresVivo = {
+      "com.vivo.crontab", "com.vivo.abe", "com.vivo.pem",
+      "com.vivo.epm", "com.bbk.SuperPowerSave", "com.vivo.sps"
+    };
+    for (String paquete : gestoresVivo) {
+      try {
+        Process proceso = Runtime.getRuntime()
+            .exec(String.format("adb -s %s shell pm disable-user --user 0 %s", udid, paquete));
+        String salida = new String(proceso.getInputStream().readAllBytes()).trim();
+        String error = new String(proceso.getErrorStream().readAllBytes()).trim();
+        proceso.waitFor();
+        System.out.println("Desactivar " + paquete + ": " + (error.isEmpty() ? salida : error));
+      } catch (Exception e) {
+        System.err.println("No se pudo desactivar " + paquete + ": " + e.getMessage());
+      }
+    }
+
     // Limpiar capturas locales
     File folder = new File("Capturas");
     if (folder.exists() && folder.isDirectory()) {
