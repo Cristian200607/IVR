@@ -29,7 +29,10 @@ public class DiagnosticoFalloHook {
   private static final Pattern LINEAS_RELEVANTES =
       Pattern.compile(
           "(?i)uiautomator|instrumentation|AndroidRuntime|FATAL|has died|Process crashed"
-              + "|lowmemorykiller|Killing|ANR in");
+              + "|lowmemorykiller|Killing|ANR in|am_kill|am_proc_died|am_crash");
+  private static final String[] PAQUETES_UIAUTOMATOR2 = {
+    "io.appium.uiautomator2.server", "io.appium.uiautomator2.server.test"
+  };
 
   /** Limpia el buffer de crashes para que el diagnóstico solo muestre los de este escenario. */
   @Before
@@ -51,14 +54,23 @@ public class DiagnosticoFalloHook {
       StringBuilder sb = new StringBuilder();
       sb.append("Escenario: ").append(scenario.getName()).append('\n');
       sb.append("Fecha:     ").append(fecha).append('\n');
-      sb.append("Paso:      ").append(EstadoPrueba.pasoFallido).append("\n\n");
+      sb.append("Paso:      ").append(pasoFallido()).append("\n\n");
+
+      // Android 11+: el sistema guarda por qué terminó cada proceso (matado, crash, memoria...)
+      for (String paquete : PAQUETES_UIAUTOMATOR2) {
+        sb.append("===== POR QUÉ TERMINÓ ").append(paquete).append(" (exit-info) =====\n");
+        sb.append(ultimasSalidas(adb("shell", "dumpsys", "activity", "exit-info", paquete)))
+            .append('\n');
+      }
 
       sb.append("===== CRASHES EN EL CELULAR (adb logcat -b crash) =====\n");
       String crashes = adb("logcat", "-d", "-b", "crash");
       sb.append(crashes.isBlank() ? "(ninguno)\n" : crashes).append('\n');
 
       sb.append("===== LOGCAT FILTRADO (uiautomator, crashes, procesos matados) =====\n");
-      for (String linea : adb("logcat", "-d", "-t", "5000").split("\n")) {
+      // main + system + events: en events quedan los procesos matados por el sistema (am_kill)
+      String logcat = adb("logcat", "-d", "-b", "main", "-b", "system", "-b", "events", "-t", "20000");
+      for (String linea : logcat.split("\n")) {
         if (LINEAS_RELEVANTES.matcher(linea).find()) {
           sb.append(linea).append('\n');
         }
@@ -69,6 +81,29 @@ public class DiagnosticoFalloHook {
     } catch (Exception e) {
       System.err.println("No se pudo guardar el diagnóstico del fallo: " + e.getMessage());
     }
+  }
+
+  private String pasoFallido() {
+    if (!EstadoPrueba.pasoFallido.isBlank()) {
+      return EstadoPrueba.pasoFallido;
+    }
+    String ultimo = ReportHooks.getUltimoPaso();
+    return ultimo.isBlank() ? "(no identificado)" : "después de: " + ultimo;
+  }
+
+  /** exit-info lista las salidas de la más reciente a la más antigua; con las 3 primeras basta. */
+  private String ultimasSalidas(String exitInfo) {
+    StringBuilder sb = new StringBuilder();
+    int salidas = 0;
+    for (String linea : exitInfo.split("\n")) {
+      if (linea.contains("ApplicationExitInfo #") && ++salidas > 3) {
+        break;
+      }
+      if (salidas > 0) {
+        sb.append(linea).append('\n');
+      }
+    }
+    return sb.length() == 0 ? "(sin registros)\n" : sb.toString();
   }
 
   private String adb(String... args) {

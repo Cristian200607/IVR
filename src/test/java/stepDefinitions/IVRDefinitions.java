@@ -92,15 +92,24 @@ public class  IVRDefinitions {
       throw new RuntimeException("Error ejecutando adb para mantener pantalla encendida", e);
     }
 
-    // Evita que el ahorro de batería del celular (vivo) mate el servidor de UiAutomator2
-    // durante las esperas largas de la llamada. No rompe la prueba si falla.
+    // El vivo mata (SIGKILL) el servidor de UiAutomator2 cada 5 minutos exactos por ahorro de
+    // batería (visto en "dumpsys activity exit-info"). Se excluye de todas las restricciones de
+    // segundo plano que Android permite por adb. No rompe la prueba si falla.
+    String[] exclusiones = {
+      "shell dumpsys deviceidle whitelist +%s",
+      "shell cmd appops set %s RUN_IN_BACKGROUND allow",
+      "shell cmd appops set %s RUN_ANY_IN_BACKGROUND allow",
+      "shell am set-standby-bucket %s active"
+    };
     for (String paquete : new String[] {"io.appium.uiautomator2.server", "io.appium.uiautomator2.server.test"}) {
-      try {
-        Runtime.getRuntime()
-            .exec(String.format("adb -s %s shell dumpsys deviceidle whitelist +%s", udid, paquete))
-            .waitFor();
-      } catch (Exception e) {
-        System.err.println("No se pudo excluir " + paquete + " del ahorro de batería: " + e.getMessage());
+      for (String exclusion : exclusiones) {
+        try {
+          Runtime.getRuntime()
+              .exec(String.format("adb -s %s " + exclusion, udid, paquete))
+              .waitFor();
+        } catch (Exception e) {
+          System.err.println("No se pudo excluir " + paquete + " del ahorro de batería: " + e.getMessage());
+        }
       }
     }
 
