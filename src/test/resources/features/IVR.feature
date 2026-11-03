@@ -135,7 +135,30 @@ Feature: Validar los flujos de IVR
     And   El archivo de audio se trae automáticamente desde el celular
     And   Se realiza el reconocimiento de voz sobre el archivo convertido
     And   Visualizacion de la transcripcion
-  #  Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op3 ivr empresas
+    Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 ivr empresas
+
+
+  @IVR_13_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Numeral Op1 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op1 ivr empresas
+
+
+  @IVR_14_EMPRESAS
+  Scenario: Marcación IVR y Validar Menu Inicio
+    Given Se realiza la llamada al numero *611
+    When  Op Numeral Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op2 ivr empresas
+
 
   @IVR_01 #Funciona 09/06/26
   Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp

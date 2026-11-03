@@ -48,7 +48,7 @@ public class IvrEmpresasNumeralOp1 implements Task {
                 Click.on(BOTON_NUMERAL_EN_GRABACION),
                 WaitFor.aTime(18000),
                 Click.on(BOTON_1_EN_GRABACION),
-                WaitFor.aTime(45000),
+                WaitFor.aTime(57000),
                 Click.on(BTN_COLGAR)
         );
     }
