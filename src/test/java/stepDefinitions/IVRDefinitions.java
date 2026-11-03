@@ -3,6 +3,7 @@ package stepDefinitions;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
+import ManejoDeAudios.LimpiarYRespaldarAudio;
 import cucumber.api.Scenario;
 import cucumber.api.java.en.*;
 import freemarker.log.Logger;
@@ -161,6 +162,9 @@ public class  IVRDefinitions {
       e.printStackTrace();
       throw new RuntimeException("Error ejecutando adb para limpiar carpeta del celular", e);
     }
+
+    // Respaldar audios que dejó en la PC una prueba fallida: Whisper toma el primero que encuentra
+    LimpiarYRespaldarAudio.ejecutar("Llamadas/Call", "Llamadas/BackupsAudio");
   }
 
 
