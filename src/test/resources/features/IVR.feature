@@ -160,6 +160,248 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op2 ivr empresas
 
 
+  @IVR_15_EMPRESAS
+  Scenario: Marcación IVR y Validar Cambios en servicios
+    Given Se realiza la llamada al numero *611
+    When  Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 ivr empresas
+
+
+  @IVR_16_EMPRESAS
+  Scenario: Marcación IVR y Validar Activar roaming internacional
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op1 ivr empresas
+
+
+  @IVR_17_EMPRESAS
+  Scenario: Marcación IVR y Validar Larga distancia internacional
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 ivr empresas
+
+
+  @IVR_34_EMPRESAS
+  Scenario: Marcación IVR y Validar Paquetes de larga distancia
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op2 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op1 ivr empresas
+
+
+  @IVR_35_EMPRESAS
+  Scenario: Marcación IVR y Validar Marcar larga distancia internacional
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op2 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op2 ivr empresas
+
+
+  @IVR_36_EMPRESAS
+  Scenario: Marcación IVR y Validar Marcar larga distancia nacional
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op2 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op3 ivr empresas
+
+
+  @IVR_18_EMPRESAS
+  Scenario: Marcación IVR y Validar Cambio de plan
+    Given Se realiza la llamada al numero *611
+    When  Op1 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op3 ivr empresas
+
+
+  @IVR_19_EMPRESAS
+  Scenario: Marcación IVR y Validar Ayuda con servicio movil
+    Given Se realiza la llamada al numero *611
+    When  Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 2 ivr empresas
+
+
+  @IVR_20_EMPRESAS
+  Scenario: Marcación IVR y Validar PQR
+    Given Se realiza la llamada al numero *611
+    When  Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 3 ivr empresas
+
+
+  @IVR_21_EMPRESAS
+  Scenario: Marcación IVR y Validar Consultar estado de PQR
+    Given Se realiza la llamada al numero *611
+    When  Op3 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op1 ivr empresas
+
+
+  @IVR_22_EMPRESAS
+  Scenario: Marcación IVR y Validar PQR por soporte o fallas tecnicas
+    Given Se realiza la llamada al numero *611
+    When  Op3 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op2 ivr empresas
+
+
+  @IVR_23_EMPRESAS
+  Scenario: Marcación IVR y Validar PQR por cobros en la facturacion
+    Given Se realiza la llamada al numero *611
+    When  Op3 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op3 ivr empresas
+
+
+  @IVR_24_EMPRESAS
+  Scenario: Marcación IVR y Validar PQR por otros temas
+    Given Se realiza la llamada al numero *611
+    When  Op3 Op4 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op4 ivr empresas
+
+
+  @IVR_25_EMPRESAS
+  Scenario: Marcación IVR y Validar Prepago y cancelacion
+    Given Se realiza la llamada al numero *611
+    When  Op4 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 4 ivr empresas
+
+
+  @IVR_26_EMPRESAS
+  Scenario: Marcación IVR y Validar Conocer beneficios
+    Given Se realiza la llamada al numero *611
+    When  Op4 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op1 ivr empresas
+
+
+  @IVR_27_EMPRESAS
+  Scenario: Marcación IVR y Validar Desistir o confirmar la cancelacion
+    Given Se realiza la llamada al numero *611
+    When  Op4 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op2 ivr empresas
+
+
+  @IVR_28_EMPRESAS
+  Scenario: Marcación IVR y Validar Solicitar la cancelacion
+    Given Se realiza la llamada al numero *611
+    When  Op4 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op3 ivr empresas
+
+
+  @IVR_29_EMPRESAS
+  Scenario: Marcación IVR y Validar Robo o perdida
+    Given Se realiza la llamada al numero *611
+    When  Op5 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 5 ivr empresas
+
+
+  @IVR_30_EMPRESAS
+  Scenario: Marcación IVR y Validar Reportar equipo por robo o perdida
+    Given Se realiza la llamada al numero *611
+    When  Op5 Op1 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op1 ivr empresas
+
+
+  @IVR_31_EMPRESAS
+  Scenario: Marcación IVR y Validar Reconectar linea
+    Given Se realiza la llamada al numero *611
+    When  Op5 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op2 ivr empresas
+
+
+  @IVR_32_EMPRESAS
+  Scenario: Marcación IVR y Validar Reciclaje de equipos
+    Given Se realiza la llamada al numero *611
+    When  Op5 Op3 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op3 ivr empresas
+
+
+  @IVR_33_EMPRESAS
+  Scenario: Marcación IVR y Validar Registrar IMEI
+    Given Se realiza la llamada al numero *611
+    When  Op5 Op4 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op4 ivr empresas
+
+
   @IVR_01 #Funciona 09/06/26
   Scenario: Marcación IVR y Menu Inicio, Ingreso a WhatsApp
     Given Se realiza la llamada al numero *611#

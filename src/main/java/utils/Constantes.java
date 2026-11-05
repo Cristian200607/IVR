@@ -9,7 +9,11 @@ public class Constantes {
     public static final String ATENCION_AL_CLIENTE = "Atencion al Cliente";
 
     // Celular y app usados en la automatización Vivo=10AECM1AP5000XT
-    public static final String UDID = "NVOL4H0111";
+    // Otro celular: definir la variable de entorno UDID (adb devices)
+    public static final String UDID =
+            System.getenv("UDID") != null && !System.getenv("UDID").trim().isEmpty()
+                    ? System.getenv("UDID")
+                    : "NVOL4H0111";
     public static final String APP_MARCADOR = "com.google.android.dialer";
 
 

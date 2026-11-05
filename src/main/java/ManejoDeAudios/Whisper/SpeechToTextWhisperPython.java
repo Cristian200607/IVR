@@ -12,7 +12,10 @@ public class SpeechToTextWhisperPython {
                     : "C:\\Users\\PARDOC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
 
     private static final String SCRIPT =
-            "C:\\Whisper\\transcribe_whisper.py";
+            System.getenv("WHISPER_SCRIPT") != null &&
+                    !System.getenv("WHISPER_SCRIPT").trim().isEmpty()
+                    ? System.getenv("WHISPER_SCRIPT")
+                    : "C:\\Whisper\\transcribe_whisper.py";
 
     public static String transcribe(String folderPath) throws Exception {
 
