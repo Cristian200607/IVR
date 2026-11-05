@@ -32,7 +32,7 @@ public class IvrEmpresasAsteriscoOp1 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(11000),
                 Click.on(BOTON_2_EN_GRABACION),
-                WaitFor.aTime(10000)
+                WaitFor.aTime(8000)
         );
         EvidenciaUtils.registrarCaptura("Se marca opcion 2");
         DialPadHelper.marcarNumeroMaximo(actor, numero);

@@ -16,6 +16,7 @@ import tasks.CompartirAudio;
 import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp1;
 import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp2;
 import tasks.IVREmpresas.OpcionesAsteriscos.*;
+import tasks.IVREmpresas.OpcionesMenuPrincipal.*;
 import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp1;
 import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp1Op1;
 import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp2;
@@ -284,6 +285,160 @@ public class  IVRDefinitions {
     public void OpNumeralOp2IVREMPRESAS() {
         theActorInTheSpotlight().attemptsTo(
                 IvrEmpresasNumeralOp2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 IVR EMPRESAS$")
+    public void Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op1 IVR EMPRESAS$")
+    public void Op1Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op2 IVR EMPRESAS$")
+    public void Op1Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op2 Op1 IVR EMPRESAS$")
+    public void Op1Op2Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op2Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op2 Op2 IVR EMPRESAS$")
+    public void Op1Op2Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op2Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op2 Op3 IVR EMPRESAS$")
+    public void Op1Op2Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op2Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op1 Op3 IVR EMPRESAS$")
+    public void Op1Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp1Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op2 IVR EMPRESAS$")
+    public void Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op3 IVR EMPRESAS$")
+    public void Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op3 Op1 IVR EMPRESAS$")
+    public void Op3Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op3 Op2 IVR EMPRESAS$")
+    public void Op3Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op3 Op3 IVR EMPRESAS$")
+    public void Op3Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op3 Op4 IVR EMPRESAS$")
+    public void Op3Op4IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp3Op4.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op4 IVR EMPRESAS$")
+    public void Op4IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp4.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op4 Op1 IVR EMPRESAS$")
+    public void Op4Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp4Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op4 Op2 IVR EMPRESAS$")
+    public void Op4Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp4Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op4 Op3 IVR EMPRESAS$")
+    public void Op4Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp4Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op5 IVR EMPRESAS$")
+    public void Op5IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp5.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op5 Op1 IVR EMPRESAS$")
+    public void Op5Op1IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp5Op1.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op5 Op2 IVR EMPRESAS$")
+    public void Op5Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp5Op2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op5 Op3 IVR EMPRESAS$")
+    public void Op5Op3IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp5Op3.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op5 Op4 IVR EMPRESAS$")
+    public void Op5Op4IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasOp5Op4.validar(CEDULA_IVR_EMPRESAS)
         );
     }
 
