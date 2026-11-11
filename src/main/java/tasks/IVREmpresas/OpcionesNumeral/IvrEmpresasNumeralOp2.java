@@ -39,10 +39,8 @@ public class IvrEmpresasNumeralOp2 implements Task {
                 Click.on(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(35000),
                 Click.on(BOTON_NUMERAL_EN_GRABACION),
-                WaitFor.aTime(18000),
+                WaitFor.aTime(16000),
                 Click.on(BOTON_2_EN_GRABACION),
-                WaitFor.aTime(72000),
-                Click.on(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(76000),
                 ColgarSiSigueActiva.laLlamada()
         );

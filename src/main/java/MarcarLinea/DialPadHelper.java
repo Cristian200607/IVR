@@ -12,7 +12,7 @@ import static userinterfaces.IVRPage.*;
 public class DialPadHelper {
 
     private static final Map<Character, Target> DIGITOS = new HashMap<>();
-    private static final long PAUSA_ENTRE_DIGITOS_MS = 300;
+    private static final long PAUSA_ENTRE_DIGITOS_MS = 600;
 
     static {
         DIGITOS.put('0', BOTON_0_EN_GRABACION);

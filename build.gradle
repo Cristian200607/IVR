@@ -35,6 +35,9 @@ tasks.withType(JavaCompile) {
 test {
     systemProperties = System.properties
     systemProperty "cucumber.options", System.getProperty("cucumber.options")
+    // Las pruebas llaman al IVR real: nunca reutilizar un resultado guardado
+    outputs.cacheIf { false }
+    outputs.upToDateWhen { false }
 }
 
 tasks.withType(Test) {

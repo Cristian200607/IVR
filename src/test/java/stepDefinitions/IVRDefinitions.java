@@ -17,9 +17,7 @@ import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp1;
 import tasks.IVREmpresas.IvrEmpresasMenuPrincipalOp2;
 import tasks.IVREmpresas.OpcionesAsteriscos.*;
 import tasks.IVREmpresas.OpcionesMenuPrincipal.*;
-import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp1;
-import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp1Op1;
-import tasks.IVREmpresas.OpcionesNumeral.IvrEmpresasNumeralOp2;
+import tasks.IVREmpresas.OpcionesNumeral.*;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetes;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op3;
 import tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes.AsteriscoComprarPaquetesOp2Op4;
@@ -285,6 +283,13 @@ public class  IVRDefinitions {
     public void OpNumeralOp2IVREMPRESAS() {
         theActorInTheSpotlight().attemptsTo(
                 IvrEmpresasNumeralOp2.validar(CEDULA_IVR_EMPRESAS)
+        );
+    }
+
+    @And("^Op Numeral Op2 Op2 IVR EMPRESAS$")
+    public void OpNumeralOp2Op2IVREMPRESAS() {
+        theActorInTheSpotlight().attemptsTo(
+                IvrEmpresasNumeralOp2Op2.validar(CEDULA_IVR_EMPRESAS)
         );
     }
 
