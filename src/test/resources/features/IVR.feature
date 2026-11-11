@@ -16,8 +16,15 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal
 
-  @IVR_01_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  # ================================================================
+  # IVR EMPRESAS: @IVR_01_EMPRESAS a @IVR_37_EMPRESAS en el orden de los menús. Todo: --tags @EMPRESAS
+  # Un menú completo: --tags @EMP_AST (o @EMP_NUM, @EMP_OP1...)
+  # ================================================================
+
+  # ---------- MENÚ DE INICIO ----------
+
+  @EMPRESAS @EMP_INICIO @IVR_01_EMPRESAS
+  Scenario: IVR Empresas | Menú inicio > 1 Ventas: adquirir servicios o cambiarte a Claro
     Given Se realiza la llamada al numero *611
     When  Menu Principal Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -26,9 +33,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op1 ivr empresas
 
-
-  @IVR_02_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_INICIO @IVR_02_EMPRESAS
+  Scenario: IVR Empresas | Menú inicio > 2 Servicio al cliente: oferta de WhatsApp
     Given Se realiza la llamada al numero *611
     When  Menu Principal Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -37,8 +43,11 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op2 ivr empresas
 
-  @IVR_03_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+
+  # ---------- MENÚ PRINCIPAL > * FACTURA, PAGOS Y PRODUCTOS FINANCIADOS ----------
+
+  @EMPRESAS @EMP_AST @IVR_03_EMPRESAS
+  Scenario: IVR Empresas | * > 1 Factura o enlace de pago
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -47,8 +56,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op1 ivr empresas
 
-  @IVR_04_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_04_EMPRESAS
+  Scenario: IVR Empresas | * > 2 Factura por correo electrónico
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -57,8 +66,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op2 ivr empresas
 
-  @IVR_05_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_05_EMPRESAS
+  Scenario: IVR Empresas | * > 3 Productos financiados
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -67,8 +76,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op3 ivr empresas
 
-  @IVR_06_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_06_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 1 Claro Pay
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -77,8 +86,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op1 ivr empresas
 
-  @IVR_07_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_07_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 2 App Mi Claro
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -87,8 +96,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op2 ivr empresas
 
-  @IVR_08_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_08_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 3 Portal de pagos y recargas
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -97,8 +106,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op3 ivr empresas
 
-  @IVR_09_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_09_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 1 Billeteras y bancos por internet
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -107,8 +116,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op1 ivr empresas
 
-  @IVR_10_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_10_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 2 Bancos donde pagar
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -117,8 +126,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op2 ivr empresas
 
-  @IVR_11_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_AST @IVR_11_EMPRESAS
+  Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 3 Cajeros, almacenes y recaudo
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -127,8 +136,11 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op3 ivr empresas
 
-  @IVR_12_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+
+  # ---------- MENÚ PRINCIPAL > # PLAN Y CONSUMOS ----------
+
+  @EMPRESAS @EMP_NUM @IVR_12_EMPRESAS
+  Scenario: IVR Empresas | # > 1 Consumos de voz y datos
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -137,9 +149,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 ivr empresas
 
-
-  @IVR_13_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_NUM @IVR_13_EMPRESAS
+  Scenario: IVR Empresas | # > 1 Consumos > 1 Detalles del plan pospago
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op1 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -148,9 +159,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op1 ivr empresas
 
-
-  @IVR_14_EMPRESAS
-  Scenario: Marcación IVR y Validar Menu Inicio
+  @EMPRESAS @EMP_NUM @IVR_14_EMPRESAS
+  Scenario: IVR Empresas | # > 2 Plan contratado
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -159,9 +169,21 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op2 ivr empresas
 
+  @EMPRESAS @EMP_NUM @IVR_15_EMPRESAS
+  Scenario: IVR Empresas | # > 2 Plan contratado > 2 Consumos de datos
+    Given Se realiza la llamada al numero *611
+    When  Op Numeral Op2 Op2 IVR EMPRESAS
+    And   Compartir audio a la carpeta
+    And   El archivo de audio se trae automáticamente desde el celular
+    And   Se realiza el reconocimiento de voz sobre el archivo convertido
+    And   Visualizacion de la transcripcion
+    Then  Validar la transcripción con el texto esperado del menu principal op numeral plan op2 ivr empresas
 
-  @IVR_15_EMPRESAS
-  Scenario: Marcación IVR y Validar Cambios en servicios
+
+  # ---------- MENÚ PRINCIPAL > 1 CAMBIOS EN SERVICIOS ----------
+
+  @EMPRESAS @EMP_OP1 @IVR_16_EMPRESAS
+  Scenario: IVR Empresas | 1 Cambios en servicios
     Given Se realiza la llamada al numero *611
     When  Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -170,9 +192,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 ivr empresas
 
-
-  @IVR_16_EMPRESAS
-  Scenario: Marcación IVR y Validar Activar roaming internacional
+  @EMPRESAS @EMP_OP1 @IVR_17_EMPRESAS
+  Scenario: IVR Empresas | 1 > 1 Activar roaming internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -181,9 +202,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op1 ivr empresas
 
-
-  @IVR_17_EMPRESAS
-  Scenario: Marcación IVR y Validar Larga distancia internacional
+  @EMPRESAS @EMP_OP1 @IVR_18_EMPRESAS
+  Scenario: IVR Empresas | 1 > 2 Larga distancia internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -192,9 +212,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 ivr empresas
 
-
-  @IVR_34_EMPRESAS
-  Scenario: Marcación IVR y Validar Paquetes de larga distancia
+  @EMPRESAS @EMP_OP1 @IVR_19_EMPRESAS
+  Scenario: IVR Empresas | 1 > 2 Larga distancia > 1 Paquetes de larga distancia
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -203,9 +222,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op1 ivr empresas
 
-
-  @IVR_35_EMPRESAS
-  Scenario: Marcación IVR y Validar Marcar larga distancia internacional
+  @EMPRESAS @EMP_OP1 @IVR_20_EMPRESAS
+  Scenario: IVR Empresas | 1 > 2 Larga distancia > 2 Marcar larga distancia internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -214,9 +232,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op2 ivr empresas
 
-
-  @IVR_36_EMPRESAS
-  Scenario: Marcación IVR y Validar Marcar larga distancia nacional
+  @EMPRESAS @EMP_OP1 @IVR_21_EMPRESAS
+  Scenario: IVR Empresas | 1 > 2 Larga distancia > 3 Marcar larga distancia nacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -225,9 +242,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op3 ivr empresas
 
-
-  @IVR_18_EMPRESAS
-  Scenario: Marcación IVR y Validar Cambio de plan
+  @EMPRESAS @EMP_OP1 @IVR_22_EMPRESAS
+  Scenario: IVR Empresas | 1 > 3 Cambio de plan
     Given Se realiza la llamada al numero *611
     When  Op1 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -237,8 +253,10 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op3 ivr empresas
 
 
-  @IVR_19_EMPRESAS
-  Scenario: Marcación IVR y Validar Ayuda con servicio movil
+  # ---------- MENÚ PRINCIPAL > 2 AYUDA CON SERVICIO MÓVIL ----------
+
+  @EMPRESAS @EMP_OP2 @IVR_23_EMPRESAS
+  Scenario: IVR Empresas | 2 Ayuda con servicio móvil
     Given Se realiza la llamada al numero *611
     When  Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -248,8 +266,10 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal opcion 2 ivr empresas
 
 
-  @IVR_20_EMPRESAS
-  Scenario: Marcación IVR y Validar PQR
+  # ---------- MENÚ PRINCIPAL > 3 PQR ----------
+
+  @EMPRESAS @EMP_OP3 @IVR_24_EMPRESAS
+  Scenario: IVR Empresas | 3 PQR
     Given Se realiza la llamada al numero *611
     When  Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -258,9 +278,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 ivr empresas
 
-
-  @IVR_21_EMPRESAS
-  Scenario: Marcación IVR y Validar Consultar estado de PQR
+  @EMPRESAS @EMP_OP3 @IVR_25_EMPRESAS
+  Scenario: IVR Empresas | 3 > 1 Consultar estado de PQR
     Given Se realiza la llamada al numero *611
     When  Op3 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -269,9 +288,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op1 ivr empresas
 
-
-  @IVR_22_EMPRESAS
-  Scenario: Marcación IVR y Validar PQR por soporte o fallas tecnicas
+  @EMPRESAS @EMP_OP3 @IVR_26_EMPRESAS
+  Scenario: IVR Empresas | 3 > 2 PQR por soporte o fallas técnicas
     Given Se realiza la llamada al numero *611
     When  Op3 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -280,9 +298,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op2 ivr empresas
 
-
-  @IVR_23_EMPRESAS
-  Scenario: Marcación IVR y Validar PQR por cobros en la facturacion
+  @EMPRESAS @EMP_OP3 @IVR_27_EMPRESAS
+  Scenario: IVR Empresas | 3 > 3 PQR por cobros en la facturación
     Given Se realiza la llamada al numero *611
     When  Op3 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -291,9 +308,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op3 ivr empresas
 
-
-  @IVR_24_EMPRESAS
-  Scenario: Marcación IVR y Validar PQR por otros temas
+  @EMPRESAS @EMP_OP3 @IVR_28_EMPRESAS
+  Scenario: IVR Empresas | 3 > 4 PQR por otros temas
     Given Se realiza la llamada al numero *611
     When  Op3 Op4 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -303,8 +319,10 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op4 ivr empresas
 
 
-  @IVR_25_EMPRESAS
-  Scenario: Marcación IVR y Validar Prepago y cancelacion
+  # ---------- MENÚ PRINCIPAL > 4 PREPAGO Y CANCELACIÓN ----------
+
+  @EMPRESAS @EMP_OP4 @IVR_29_EMPRESAS
+  Scenario: IVR Empresas | 4 Prepago y cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -313,9 +331,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 ivr empresas
 
-
-  @IVR_26_EMPRESAS
-  Scenario: Marcación IVR y Validar Conocer beneficios
+  @EMPRESAS @EMP_OP4 @IVR_30_EMPRESAS
+  Scenario: IVR Empresas | 4 > 1 Conocer beneficios
     Given Se realiza la llamada al numero *611
     When  Op4 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -324,9 +341,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op1 ivr empresas
 
-
-  @IVR_27_EMPRESAS
-  Scenario: Marcación IVR y Validar Desistir o confirmar la cancelacion
+  @EMPRESAS @EMP_OP4 @IVR_31_EMPRESAS
+  Scenario: IVR Empresas | 4 > 2 Desistir o confirmar la cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -335,9 +351,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op2 ivr empresas
 
-
-  @IVR_28_EMPRESAS
-  Scenario: Marcación IVR y Validar Solicitar la cancelacion
+  @EMPRESAS @EMP_OP4 @IVR_32_EMPRESAS
+  Scenario: IVR Empresas | 4 > 3 Solicitar la cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -347,8 +362,10 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op3 ivr empresas
 
 
-  @IVR_29_EMPRESAS
-  Scenario: Marcación IVR y Validar Robo o perdida
+  # ---------- MENÚ PRINCIPAL > 5 ROBO O PÉRDIDA ----------
+
+  @EMPRESAS @EMP_OP5 @IVR_33_EMPRESAS
+  Scenario: IVR Empresas | 5 Robo o pérdida
     Given Se realiza la llamada al numero *611
     When  Op5 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -357,9 +374,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 ivr empresas
 
-
-  @IVR_30_EMPRESAS
-  Scenario: Marcación IVR y Validar Reportar equipo por robo o perdida
+  @EMPRESAS @EMP_OP5 @IVR_34_EMPRESAS
+  Scenario: IVR Empresas | 5 > 1 Reportar equipo por robo o pérdida
     Given Se realiza la llamada al numero *611
     When  Op5 Op1 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -368,9 +384,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op1 ivr empresas
 
-
-  @IVR_31_EMPRESAS
-  Scenario: Marcación IVR y Validar Reconectar linea
+  @EMPRESAS @EMP_OP5 @IVR_35_EMPRESAS
+  Scenario: IVR Empresas | 5 > 2 Reconectar línea
     Given Se realiza la llamada al numero *611
     When  Op5 Op2 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -379,9 +394,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op2 ivr empresas
 
-
-  @IVR_32_EMPRESAS
-  Scenario: Marcación IVR y Validar Reciclaje de equipos
+  @EMPRESAS @EMP_OP5 @IVR_36_EMPRESAS
+  Scenario: IVR Empresas | 5 > 3 Reciclaje de equipos
     Given Se realiza la llamada al numero *611
     When  Op5 Op3 IVR EMPRESAS
     And   Compartir audio a la carpeta
@@ -390,9 +404,8 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op3 ivr empresas
 
-
-  @IVR_33_EMPRESAS
-  Scenario: Marcación IVR y Validar Registrar IMEI
+  @EMPRESAS @EMP_OP5 @IVR_37_EMPRESAS
+  Scenario: IVR Empresas | 5 > 4 Registrar IMEI (puede registrar un equipo real: no correr sin autorización)
     Given Se realiza la llamada al numero *611
     When  Op5 Op4 IVR EMPRESAS
     And   Compartir audio a la carpeta

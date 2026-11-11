@@ -1,6 +1,7 @@
 package tasks.IVREmpresas.OpcionesAsteriscos;
 
 import MarcarLinea.DialPadHelper;
+import interactions.comunes.ColgarSiSigueActiva;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -45,7 +46,7 @@ public class IvrEmpresasAsteriscoOp2 implements Task {
                 WaitFor.aTime(24000),
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(17000),
-                Click.on(BTN_COLGAR)
+                ColgarSiSigueActiva.laLlamada()
         );
         EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }

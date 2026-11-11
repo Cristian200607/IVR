@@ -26,8 +26,8 @@ public class IvrEmpresasOp4Op1 implements Task {
                 Click.on(BOTON_4_EN_GRABACION),
                 WaitFor.aTime(19500),
                 Click.on(BOTON_1_EN_GRABACION),
-                WaitFor.aTime(18000),
-                ColgarSiSigueActiva.laLlamada()
+                WaitFor.aTime(68000),
+                Click.on(BTN_COLGAR)
         );
     }
 

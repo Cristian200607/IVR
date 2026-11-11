@@ -1,6 +1,7 @@
 package tasks.IVREmpresas.OpcionesAsteriscos;
 
 import MarcarLinea.DialPadHelper;
+import interactions.comunes.ColgarSiSigueActiva;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
