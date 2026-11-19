@@ -17,13 +17,12 @@ Feature: Validar los flujos de IVR
     Then  Validar la transcripción con el texto esperado del menu principal
 
   # ================================================================
-  # IVR EMPRESAS: @IVR_01_EMPRESAS a @IVR_37_EMPRESAS en el orden de los menús. Todo: --tags @EMPRESAS
-  # Un menú completo: --tags @EMP_AST (o @EMP_NUM, @EMP_OP1...)
+  # IVR EMPRESAS: @IVR_01_EMPRESAS a @IVR_37_EMPRESAS en el orden de los menús.
   # ================================================================
 
   # ---------- MENÚ DE INICIO ----------
 
-  @EMPRESAS @EMP_INICIO @IVR_01_EMPRESAS
+  @IVR_01_EMPRESAS
   Scenario: IVR Empresas | Menú inicio > 1 Ventas: adquirir servicios o cambiarte a Claro
     Given Se realiza la llamada al numero *611
     When  Menu Principal Op1 IVR EMPRESAS
@@ -33,7 +32,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op1 ivr empresas
 
-  @EMPRESAS @EMP_INICIO @IVR_02_EMPRESAS
+  @IVR_02_EMPRESAS
   Scenario: IVR Empresas | Menú inicio > 2 Servicio al cliente: oferta de WhatsApp
     Given Se realiza la llamada al numero *611
     When  Menu Principal Op2 IVR EMPRESAS
@@ -46,7 +45,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > * FACTURA, PAGOS Y PRODUCTOS FINANCIADOS ----------
 
-  @EMPRESAS @EMP_AST @IVR_03_EMPRESAS
+  @IVR_03_EMPRESAS
   Scenario: IVR Empresas | * > 1 Factura o enlace de pago
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op1 IVR EMPRESAS
@@ -56,7 +55,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op1 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_04_EMPRESAS
+  @IVR_04_EMPRESAS
   Scenario: IVR Empresas | * > 2 Factura por correo electrónico
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op2 IVR EMPRESAS
@@ -66,7 +65,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op2 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_05_EMPRESAS
+  @IVR_05_EMPRESAS
   Scenario: IVR Empresas | * > 3 Productos financiados
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op3 IVR EMPRESAS
@@ -76,7 +75,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op3 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_06_EMPRESAS
+  @IVR_06_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 1 Claro Pay
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op1 IVR EMPRESAS
@@ -86,7 +85,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op1 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_07_EMPRESAS
+  @IVR_07_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 2 App Mi Claro
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op2 IVR EMPRESAS
@@ -96,7 +95,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op2 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_08_EMPRESAS
+  @IVR_08_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 3 Portal de pagos y recargas
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op3 IVR EMPRESAS
@@ -106,7 +105,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op3 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_09_EMPRESAS
+  @IVR_09_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 1 Billeteras y bancos por internet
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op1 IVR EMPRESAS
@@ -116,7 +115,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op1 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_10_EMPRESAS
+  @IVR_10_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 2 Bancos donde pagar
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op2 IVR EMPRESAS
@@ -126,7 +125,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op asterisco op4 op4 op2 ivr empresas
 
-  @EMPRESAS @EMP_AST @IVR_11_EMPRESAS
+  @IVR_11_EMPRESAS
   Scenario: IVR Empresas | * > 4 Medios de pago > 4 Bancos y plataformas > 3 Cajeros, almacenes y recaudo
     Given Se realiza la llamada al numero *611
     When  Op Asterisco Op4 Op4 Op3 IVR EMPRESAS
@@ -139,7 +138,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > # PLAN Y CONSUMOS ----------
 
-  @EMPRESAS @EMP_NUM @IVR_12_EMPRESAS
+  @IVR_12_EMPRESAS
   Scenario: IVR Empresas | # > 1 Consumos de voz y datos
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op1 IVR EMPRESAS
@@ -149,7 +148,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 ivr empresas
 
-  @EMPRESAS @EMP_NUM @IVR_13_EMPRESAS
+  @IVR_13_EMPRESAS
   Scenario: IVR Empresas | # > 1 Consumos > 1 Detalles del plan pospago
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op1 Op1 IVR EMPRESAS
@@ -159,7 +158,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op1 ivr empresas
 
-  @EMPRESAS @EMP_NUM @IVR_14_EMPRESAS
+  @IVR_14_EMPRESAS
   Scenario: IVR Empresas | # > 2 Plan contratado
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op2 IVR EMPRESAS
@@ -169,7 +168,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal op numeral op1 op2 ivr empresas
 
-  @EMPRESAS @EMP_NUM @IVR_15_EMPRESAS
+  @IVR_15_EMPRESAS
   Scenario: IVR Empresas | # > 2 Plan contratado > 2 Consumos de datos
     Given Se realiza la llamada al numero *611
     When  Op Numeral Op2 Op2 IVR EMPRESAS
@@ -182,7 +181,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > 1 CAMBIOS EN SERVICIOS ----------
 
-  @EMPRESAS @EMP_OP1 @IVR_16_EMPRESAS
+  @IVR_16_EMPRESAS
   Scenario: IVR Empresas | 1 Cambios en servicios
     Given Se realiza la llamada al numero *611
     When  Op1 IVR EMPRESAS
@@ -192,7 +191,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_17_EMPRESAS
+  @IVR_17_EMPRESAS
   Scenario: IVR Empresas | 1 > 1 Activar roaming internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op1 IVR EMPRESAS
@@ -202,7 +201,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op1 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_18_EMPRESAS
+  @IVR_18_EMPRESAS
   Scenario: IVR Empresas | 1 > 2 Larga distancia internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 IVR EMPRESAS
@@ -212,7 +211,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_19_EMPRESAS
+  @IVR_19_EMPRESAS
   Scenario: IVR Empresas | 1 > 2 Larga distancia > 1 Paquetes de larga distancia
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op1 IVR EMPRESAS
@@ -222,7 +221,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op1 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_20_EMPRESAS
+  @IVR_20_EMPRESAS
   Scenario: IVR Empresas | 1 > 2 Larga distancia > 2 Marcar larga distancia internacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op2 IVR EMPRESAS
@@ -232,7 +231,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op2 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_21_EMPRESAS
+  @IVR_21_EMPRESAS
   Scenario: IVR Empresas | 1 > 2 Larga distancia > 3 Marcar larga distancia nacional
     Given Se realiza la llamada al numero *611
     When  Op1 Op2 Op3 IVR EMPRESAS
@@ -242,7 +241,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 1 op2 op3 ivr empresas
 
-  @EMPRESAS @EMP_OP1 @IVR_22_EMPRESAS
+  @IVR_22_EMPRESAS
   Scenario: IVR Empresas | 1 > 3 Cambio de plan
     Given Se realiza la llamada al numero *611
     When  Op1 Op3 IVR EMPRESAS
@@ -255,7 +254,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > 2 AYUDA CON SERVICIO MÓVIL ----------
 
-  @EMPRESAS @EMP_OP2 @IVR_23_EMPRESAS
+  @IVR_23_EMPRESAS
   Scenario: IVR Empresas | 2 Ayuda con servicio móvil
     Given Se realiza la llamada al numero *611
     When  Op2 IVR EMPRESAS
@@ -268,7 +267,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > 3 PQR ----------
 
-  @EMPRESAS @EMP_OP3 @IVR_24_EMPRESAS
+  @IVR_24_EMPRESAS
   Scenario: IVR Empresas | 3 PQR
     Given Se realiza la llamada al numero *611
     When  Op3 IVR EMPRESAS
@@ -278,7 +277,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 ivr empresas
 
-  @EMPRESAS @EMP_OP3 @IVR_25_EMPRESAS
+  @IVR_25_EMPRESAS
   Scenario: IVR Empresas | 3 > 1 Consultar estado de PQR
     Given Se realiza la llamada al numero *611
     When  Op3 Op1 IVR EMPRESAS
@@ -288,7 +287,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op1 ivr empresas
 
-  @EMPRESAS @EMP_OP3 @IVR_26_EMPRESAS
+  @IVR_26_EMPRESAS
   Scenario: IVR Empresas | 3 > 2 PQR por soporte o fallas técnicas
     Given Se realiza la llamada al numero *611
     When  Op3 Op2 IVR EMPRESAS
@@ -298,7 +297,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op2 ivr empresas
 
-  @EMPRESAS @EMP_OP3 @IVR_27_EMPRESAS
+  @IVR_27_EMPRESAS
   Scenario: IVR Empresas | 3 > 3 PQR por cobros en la facturación
     Given Se realiza la llamada al numero *611
     When  Op3 Op3 IVR EMPRESAS
@@ -308,7 +307,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 3 op3 ivr empresas
 
-  @EMPRESAS @EMP_OP3 @IVR_28_EMPRESAS
+  @IVR_28_EMPRESAS
   Scenario: IVR Empresas | 3 > 4 PQR por otros temas
     Given Se realiza la llamada al numero *611
     When  Op3 Op4 IVR EMPRESAS
@@ -321,7 +320,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > 4 PREPAGO Y CANCELACIÓN ----------
 
-  @EMPRESAS @EMP_OP4 @IVR_29_EMPRESAS
+  @IVR_29_EMPRESAS
   Scenario: IVR Empresas | 4 Prepago y cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 IVR EMPRESAS
@@ -331,7 +330,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 ivr empresas
 
-  @EMPRESAS @EMP_OP4 @IVR_30_EMPRESAS
+  @IVR_30_EMPRESAS
   Scenario: IVR Empresas | 4 > 1 Conocer beneficios
     Given Se realiza la llamada al numero *611
     When  Op4 Op1 IVR EMPRESAS
@@ -341,7 +340,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op1 ivr empresas
 
-  @EMPRESAS @EMP_OP4 @IVR_31_EMPRESAS
+  @IVR_31_EMPRESAS
   Scenario: IVR Empresas | 4 > 2 Desistir o confirmar la cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 Op2 IVR EMPRESAS
@@ -351,7 +350,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 4 op2 ivr empresas
 
-  @EMPRESAS @EMP_OP4 @IVR_32_EMPRESAS
+  @IVR_32_EMPRESAS
   Scenario: IVR Empresas | 4 > 3 Solicitar la cancelación
     Given Se realiza la llamada al numero *611
     When  Op4 Op3 IVR EMPRESAS
@@ -364,7 +363,7 @@ Feature: Validar los flujos de IVR
 
   # ---------- MENÚ PRINCIPAL > 5 ROBO O PÉRDIDA ----------
 
-  @EMPRESAS @EMP_OP5 @IVR_33_EMPRESAS
+  @IVR_33_EMPRESAS
   Scenario: IVR Empresas | 5 Robo o pérdida
     Given Se realiza la llamada al numero *611
     When  Op5 IVR EMPRESAS
@@ -374,7 +373,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 ivr empresas
 
-  @EMPRESAS @EMP_OP5 @IVR_34_EMPRESAS
+  @IVR_34_EMPRESAS
   Scenario: IVR Empresas | 5 > 1 Reportar equipo por robo o pérdida
     Given Se realiza la llamada al numero *611
     When  Op5 Op1 IVR EMPRESAS
@@ -384,7 +383,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op1 ivr empresas
 
-  @EMPRESAS @EMP_OP5 @IVR_35_EMPRESAS
+  @IVR_35_EMPRESAS
   Scenario: IVR Empresas | 5 > 2 Reconectar línea
     Given Se realiza la llamada al numero *611
     When  Op5 Op2 IVR EMPRESAS
@@ -394,7 +393,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op2 ivr empresas
 
-  @EMPRESAS @EMP_OP5 @IVR_36_EMPRESAS
+  @IVR_36_EMPRESAS
   Scenario: IVR Empresas | 5 > 3 Reciclaje de equipos
     Given Se realiza la llamada al numero *611
     When  Op5 Op3 IVR EMPRESAS
@@ -404,7 +403,7 @@ Feature: Validar los flujos de IVR
     And   Visualizacion de la transcripcion
     Then  Validar la transcripción con el texto esperado del menu principal opcion 5 op3 ivr empresas
 
-  @EMPRESAS @EMP_OP5 @IVR_37_EMPRESAS
+  @IVR_37_EMPRESAS
   Scenario: IVR Empresas | 5 > 4 Registrar IMEI (puede registrar un equipo real: no correr sin autorización)
     Given Se realiza la llamada al numero *611
     When  Op5 Op4 IVR EMPRESAS
