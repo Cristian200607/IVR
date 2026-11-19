@@ -13,7 +13,7 @@ public class Constantes {
     public static final String UDID =
             System.getenv("UDID") != null && !System.getenv("UDID").trim().isEmpty()
                     ? System.getenv("UDID")
-                    : "N5RL4E0108";
+                    : "N4BR490207";
     public static final String APP_MARCADOR = "com.google.android.dialer";
 
 
