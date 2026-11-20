@@ -19,6 +19,12 @@ public class MyDriver implements DriverSource {
     public AndroidDriver newDriver() {
         try {
 
+            // El "freezer" de apps en segundo plano (Android 12+) puede matar al servidor
+            // UiAutomator2 justo al iniciar la sesion ("sent binder code 1 with flags 2 to
+            // frozen apps and got error -32"), dejando el celular en el home en vez de abrir
+            // la app. Se desactiva antes de crear el driver para evitar esa caida.
+            deshabilitarFreezerDeApps();
+
             DesiredCapabilities capabilities = new DesiredCapabilities();
 
             // -------------------------
@@ -79,5 +85,19 @@ public class MyDriver implements DriverSource {
     @Override
     public boolean takesScreenshots() {
         return true;
+    }
+
+    private void deshabilitarFreezerDeApps() {
+        try {
+            new ProcessBuilder(
+                    "adb", "-s", Constantes.UDID,
+                    "shell", "device_config", "put",
+                    "activity_manager", "cached_apps_freezer", "disabled")
+                    .redirectErrorStream(true)
+                    .start()
+                    .waitFor(10, TimeUnit.SECONDS);
+        } catch (Exception e) {
+            System.err.println("No se pudo deshabilitar el freezer de apps: " + e.getMessage());
+        }
     }
 }
