@@ -170,6 +170,7 @@ public class  IVRDefinitions {
 
   @Given("^Se realiza la llamada al numero (.*)$")
   public void realizaUnaLlamadaAlNumero(String numero) {
+    utils.ContextoST.registrar("numeroMarcado", numero);
     theActorCalled("").attemptsTo(RealizarLlamada.Llamar(numero));
   }
 

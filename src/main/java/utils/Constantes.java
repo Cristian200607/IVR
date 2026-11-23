@@ -10,11 +10,20 @@ public class Constantes {
 
     // Celular y app usados en la automatización Vivo=10AECM1AP5000XT
     // Otro celular: definir la variable de entorno UDID (adb devices)
-    public static final String UDID =
-            System.getenv("UDID") != null && !System.getenv("UDID").trim().isEmpty()
-                    ? System.getenv("UDID")
-                    : "N4BR490207";
+    public static final String UDID = primeroConValor(
+            System.getProperty("appium.udid"),
+            System.getenv("UDID"),
+            "N4BR490207");
     public static final String APP_MARCADOR = "com.google.android.dialer";
+
+    private static String primeroConValor(String... valores) {
+        for (String valor : valores) {
+            if (valor != null && !valor.trim().isEmpty()) {
+                return valor.trim();
+            }
+        }
+        return null;
+    }
 
 
 }

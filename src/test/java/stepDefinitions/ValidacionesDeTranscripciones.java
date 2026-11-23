@@ -7,6 +7,7 @@ import static stepDefinitions.AudioSteps.transcription;
 
 import ManejoDeAudios.EliminarAudioEnCelular;
 import org.apache.commons.text.similarity.LevenshteinDistance;
+import utils.ContextoST;
 import utils.EstadoPrueba;
 
 import java.util.Arrays;
@@ -572,12 +573,15 @@ public class ValidacionesDeTranscripciones {
                     esperadoNormalizado
             );
 
+            ContextoST.registrar("coincidencia", Math.round(porcentaje) + " %");
+            ContextoST.registrar("coincidenciaMinima", Math.round(UMBRAL_COINCIDENCIA) + " %");
+
             assertTrue(
                     porcentaje >= UMBRAL_COINCIDENCIA,
-                    () -> "La transcripción no coincide lo suficiente.\n" +
-                            "Esperado : " + esperadoNormalizado + "\n" +
-                            "Obtenido : " + transcripcionNormalizada + "\n" +
-                            "Coincidencia: " + porcentaje + "%"
+                    () -> "La transcripción coincide solo el " + Math.round(porcentaje)
+                            + " % con lo esperado (mínimo " + Math.round(UMBRAL_COINCIDENCIA) + " %).\n"
+                            + "Obtenido : " + transcripcionNormalizada + "\n"
+                            + "Esperado : " + esperadoNormalizado
             );
 
             validarTramosEnOrden(transcripcionNormalizada, tramos);
@@ -659,9 +663,14 @@ public class ValidacionesDeTranscripciones {
             }
             double porcentajeTramo = 100.0 * aciertos / largo;
             String tramoEsperado = tramos[t];
+            if (porcentajeTramo < UMBRAL_TRAMO) {
+                ContextoST.registrar("tramoFaltante", resumirTramo(tramoEsperado));
+            }
             assertTrue(
                     porcentajeTramo >= UMBRAL_TRAMO,
-                    () -> "Falta un tramo del recorrido (" + Math.round(porcentajeTramo) + "%): " + tramoEsperado
+                    () -> "Falta un tramo del recorrido: solo se oyó el " + Math.round(porcentajeTramo)
+                            + " % de «" + resumirTramo(tramoEsperado) + "».\n"
+                            + "Tramo esperado completo: " + tramoEsperado
             );
             inicioTramo += largo;
         }
@@ -669,16 +678,22 @@ public class ValidacionesDeTranscripciones {
         double precision = 100.0 * alineacion[0][0] / obtenidas.length;
         assertTrue(
                 precision >= UMBRAL_PRECISION,
-                () -> String.format("La transcripción trae audio que no es de este recorrido: solo el %.1f%% "
-                        + "de sus palabras es del recorrido; mínimo %.0f%%",
-                        precision, UMBRAL_PRECISION)
+                () -> "La transcripción trae audio que no es de este recorrido: solo el " + Math.round(precision)
+                        + " % de sus palabras es del recorrido (mínimo " + Math.round(UMBRAL_PRECISION) + " %)."
         );
 
         int sobrantes = obtenidas.length - 1 - ultimaObtenida;
         assertTrue(
                 sobrantes <= MAX_PALABRAS_FINALES_SOBRANTES,
-                () -> "El IVR siguió hablando después del último tramo (" + sobrantes + " palabras)"
+                () -> "El IVR siguió hablando después del último tramo (" + sobrantes + " palabras de más)."
         );
+    }
+
+    private String resumirTramo(String tramo) {
+        String[] palabras = normalizar(tramo).replaceAll("[.]", " ").trim().split("\\s+");
+        int n = Math.min(palabras.length, 12);
+        String inicio = String.join(" ", Arrays.copyOfRange(palabras, 0, n));
+        return palabras.length > n ? inicio + "…" : inicio;
     }
 
     private String normalizar(String texto) {
