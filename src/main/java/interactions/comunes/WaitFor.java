@@ -6,6 +6,7 @@ import net.thucydides.core.annotations.Step;
 import net.serenitybdd.core.time.InternalSystemClock;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
+import utils.EvidenciaUtils;
 
 public class WaitFor implements Interaction {
 
@@ -22,6 +23,8 @@ public class WaitFor implements Interaction {
   @Override
   @Step("{0}")
   public <T extends Actor> void performAs(T actor) {
-    new InternalSystemClock().pauseFor(var);
+    // Descuenta lo que tardaron las capturas de evidencia tomadas desde la última espera
+    long espera = Math.max(0, var - EvidenciaUtils.tomarTiempoPorDescontar());
+    new InternalSystemClock().pauseFor(espera);
   }
 }

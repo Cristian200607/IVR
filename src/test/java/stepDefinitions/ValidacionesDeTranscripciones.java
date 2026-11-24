@@ -571,6 +571,7 @@ public class ValidacionesDeTranscripciones {
                     transcripcionNormalizada,
                     esperadoNormalizado
             );
+            EstadoPrueba.coincidencia = porcentaje + "%";
 
             assertTrue(
                     porcentaje >= UMBRAL_COINCIDENCIA,

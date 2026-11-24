@@ -1,5 +1,6 @@
 package tasks.OpcionesParaMarcarEnMenuInicio;
 
+import interactions.comunes.Colgar;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
 import interactions.comunes.WaitForResponse;
@@ -29,10 +30,9 @@ public class ValidaMenuDeLineas implements Task {
         EvidenciaUtils.registrarCaptura("Se Empieza A Grabar Y Marca Opcion 3");
         actor.attemptsTo(
                 WaitFor.aTime(31000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar() {

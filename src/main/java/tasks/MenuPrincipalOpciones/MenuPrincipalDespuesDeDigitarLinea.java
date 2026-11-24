@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
@@ -54,10 +55,9 @@ public class MenuPrincipalDespuesDeDigitarLinea implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(48000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

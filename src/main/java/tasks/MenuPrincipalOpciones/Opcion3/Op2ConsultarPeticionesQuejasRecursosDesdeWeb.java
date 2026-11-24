@@ -78,7 +78,6 @@ public class Op2ConsultarPeticionesQuejasRecursosDesdeWeb implements Task {
                 WaitFor.aTime(20000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

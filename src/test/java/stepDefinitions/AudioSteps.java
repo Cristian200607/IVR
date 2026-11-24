@@ -51,6 +51,8 @@ public class AudioSteps {
         System.out.println("Carpeta: " + carpetaAudios);
 
         transcription = SpeechToTextWhisperPython.transcribe(carpetaAudios);
+        // Queda en el reporte aunque luego falle la validación
+        utils.EstadoPrueba.transcripcion = transcription;
 
         System.out.println("Transcripción recibida desde Whisper Python:");
     }

@@ -79,7 +79,6 @@ public class Op6LargaDistanciaInternacional implements Task {
                 WaitFor.aTime(7000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

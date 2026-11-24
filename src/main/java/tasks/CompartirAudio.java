@@ -14,7 +14,7 @@ public class CompartirAudio implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        EvidenciaUtils.registrarCaptura("Finalizar llamada");
+        EvidenciaUtils.registrarCaptura("Llamada finalizada");
         actor.attemptsTo(
             Click.on(VOLVER_PAGINA_PRINCIPAL),
             Click.on(ULTIMA_LLAMADA),

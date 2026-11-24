@@ -1,5 +1,8 @@
 package tasks.IVREmpresas.OpcionesAsteriscos;
 
+
+import interactions.comunes.MarcarOpcion;
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import interactions.comunes.ColgarSiSigueActiva;
 import interactions.comunes.WaitFor;
@@ -27,28 +30,26 @@ public class IvrEmpresasAsteriscoOp3 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(WaitTimes.INICIO_LLAMADA),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
-                Click.on(BOTON_2_EN_GRABACION)
+                MarcarOpcion.conBoton(BOTON_2_EN_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Se marca opcion 2");
         actor.attemptsTo(
                 WaitFor.aTime(11000),
-                Click.on(BOTON_2_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(8000)
         );
-        EvidenciaUtils.registrarCaptura("Se marca opcion 2");
         DialPadHelper.marcarNumeroMaximo(actor, numero);
+        EvidenciaUtils.registrarCapturaSinAlterarTiempos("Se digita el documento " + numero);
         actor.attemptsTo(
-                Click.on(BOTON_NUMERAL_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_NUMERAL_EN_GRABACION),
                 WaitFor.aTime(15000),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(37000),
-                Click.on(BOTON_ASTERISCO_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_ASTERISCO_EN_GRABACION),
                 WaitFor.aTime(25000),
-                Click.on(BOTON_3_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(19000),
-                Click.on(BTN_COLGAR)
+                Colgar.laLlamada()
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable validar(String numero) {

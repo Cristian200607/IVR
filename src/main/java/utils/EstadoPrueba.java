@@ -12,6 +12,9 @@ public class EstadoPrueba {
   // Campos para el reporte
   public static String transcripcion = "";
   public static String textoEsperado = "";
+  public static String coincidencia = ""; // 👉 % de coincidencia transcripción vs. esperado
+  public static String error = ""; // 👉 mensaje del error que hizo fallar la prueba
+  public static boolean capturaDeErrorTomada = false;
   public static String linea = "";  // 👉 número de celular usado en la prueba
   public static String horaInicio = "";     // 👉 hora en que empezó la prueba
 
@@ -23,6 +26,9 @@ public class EstadoPrueba {
 
     transcripcion = "";
     textoEsperado = "";
+    coincidencia = "";
+    error = "";
+    capturaDeErrorTomada = false;
     linea = "";
 
     // Guarda automáticamente la hora actual al iniciar la prueba

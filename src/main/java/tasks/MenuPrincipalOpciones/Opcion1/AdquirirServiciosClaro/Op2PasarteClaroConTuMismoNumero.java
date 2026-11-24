@@ -90,7 +90,6 @@ public class Op2PasarteClaroConTuMismoNumero implements Task {
                 WaitFor.aTime(5000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

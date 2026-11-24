@@ -74,7 +74,6 @@ public class InformacionGeneral implements Task {
         actor.attemptsTo(
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

@@ -1,5 +1,6 @@
 package tasks.OpcionesParaMarcarEnMenuInicio.ComprarServicios;
 
+import interactions.comunes.Colgar;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
 import interactions.comunes.WaitForResponse;
@@ -37,10 +38,9 @@ public class ComprarServiciosOpcion3 implements Task {
         );
         EvidenciaUtils.registrarCaptura("Marcar Opcion 3");
         actor.attemptsTo(
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(FIN_LLAMADA_GRABACION)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
 
     }
 

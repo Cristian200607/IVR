@@ -80,7 +80,6 @@ public class Op3ClaroVideo implements Task {
                 Click.on(BOTON_2_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

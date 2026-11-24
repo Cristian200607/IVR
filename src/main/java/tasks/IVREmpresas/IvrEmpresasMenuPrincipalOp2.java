@@ -1,5 +1,8 @@
 package tasks.IVREmpresas;
 
+
+import interactions.comunes.MarcarOpcion;
+import interactions.comunes.Colgar;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
@@ -18,13 +21,12 @@ public class IvrEmpresasMenuPrincipalOp2 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(WaitTimes.INICIO_LLAMADA),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
-                Click.on(BOTON_2_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(12000),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(12000),
-                Click.on(BTN_COLGAR)
+                Colgar.laLlamada()
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
         System.out.println("Llamada realizada y finalizada correctamente.");
     }
 

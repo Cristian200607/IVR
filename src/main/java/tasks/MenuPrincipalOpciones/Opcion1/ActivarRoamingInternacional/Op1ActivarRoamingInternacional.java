@@ -75,7 +75,6 @@ public class Op1ActivarRoamingInternacional implements Task {
                 Click.on(BOTON_1_EN_GRABACION),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

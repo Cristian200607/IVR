@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones.Opcion1.AdquirirServiciosClaro;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
 import interactions.Click.ClickSostenido;
@@ -84,10 +85,9 @@ public class Op5AdquiriServicioAsistenciaClaroOp3 implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 3");
         actor.attemptsTo(
                 WaitFor.aTime(50000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

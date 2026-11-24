@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones.Asterico.Op2ComprarPaquetes;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
@@ -79,10 +80,9 @@ public class AsteriscoComprarPaquetesOp2Op3 implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 3");
         actor.attemptsTo(
                 WaitFor.aTime(33000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

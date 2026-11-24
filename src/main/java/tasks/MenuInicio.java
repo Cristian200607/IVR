@@ -1,5 +1,6 @@
 package tasks;
 
+import interactions.comunes.Colgar;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
@@ -19,9 +20,8 @@ public class MenuInicio implements Task {
         EvidenciaUtils.registrarCaptura("Pulsar Grabar Llamada");
         actor.attemptsTo(
                 WaitFor.aTime(24000),
-                Click.on(BTN_COLGAR)
+                Colgar.laLlamada()
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
         System.out.println("Llamada realizada y finalizada correctamente.");
     }
 

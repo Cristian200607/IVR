@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones.Opcion1.EligidosMovilFamilia;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
 import interactions.Click.ClickSostenido;
@@ -71,10 +72,9 @@ public class ElegidosMovilFamilia implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 5");
         actor.attemptsTo(
                 WaitFor.aTime(8000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

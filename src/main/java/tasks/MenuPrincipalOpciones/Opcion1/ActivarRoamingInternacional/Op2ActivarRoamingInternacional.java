@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones.Opcion1.ActivarRoamingInternacional;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import coloresTerminal.Click;
 import interactions.Click.ClickSostenido;
@@ -75,11 +76,10 @@ public class Op2ActivarRoamingInternacional implements Task {
                 WaitFor.aTime(34000),
                 Click.on(BOTON_3_EN_GRABACION),
                 WaitFor.aTime(53000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
 
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

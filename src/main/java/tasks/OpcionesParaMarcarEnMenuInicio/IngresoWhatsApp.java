@@ -32,7 +32,6 @@ public class IngresoWhatsApp implements Task {
         actor.attemptsTo(
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
 
     }
 

@@ -8,6 +8,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.actions.Click;
 import net.thucydides.core.annotations.Step;
+import utils.EvidenciaUtils;
 import utils.MyDriver;
 
 /**
@@ -33,9 +34,11 @@ public class ColgarSiSigueActiva implements Interaction {
       MyDriver.getDriver().manage().timeouts().implicitlyWait(ESPERA_IMPLICITA_SEGUNDOS, TimeUnit.SECONDS);
     }
     if (sigueActiva) {
+      EvidenciaUtils.registrarCaptura(Colgar.PASO_DURACION);
       actor.attemptsTo(Click.on(BTN_COLGAR));
     } else {
       System.out.println("⚠️ La llamada ya había terminado: colgó el IVR.");
+      EvidenciaUtils.registrarCaptura("La llamada ya había finalizado (colgó el IVR)");
     }
   }
 }

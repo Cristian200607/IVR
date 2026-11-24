@@ -1,5 +1,8 @@
 package tasks.IVREmpresas.OpcionesMenuPrincipal;
 
+
+import interactions.comunes.MarcarOpcion;
+import interactions.comunes.Colgar;
 import interactions.comunes.ColgarSiSigueActiva;
 import interactions.comunes.WaitFor;
 import net.serenitybdd.screenplay.Actor;
@@ -23,11 +26,11 @@ public class IvrEmpresasOp4Op1 implements Task {
 
         actor.attemptsTo(
                 IrAlMenuPrincipalEmpresas.con(numero),
-                Click.on(BOTON_4_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_4_EN_GRABACION),
                 WaitFor.aTime(19500),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(68000),
-                Click.on(BTN_COLGAR)
+                Colgar.laLlamada()
         );
     }
 

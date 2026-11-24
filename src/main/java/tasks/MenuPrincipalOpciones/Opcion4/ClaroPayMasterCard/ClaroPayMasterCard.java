@@ -70,7 +70,6 @@ public class ClaroPayMasterCard implements Task {
                 WaitFor.aTime(25000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar (String numero){

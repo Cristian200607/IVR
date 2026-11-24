@@ -1,5 +1,6 @@
 package tasks.MenuPrincipalOpciones.Opcion2;
 
+import interactions.comunes.Colgar;
 import MarcarLinea.DialPadHelper;
 import interactions.Click.ClickSostenido;
 import interactions.comunes.WaitFor;
@@ -71,10 +72,9 @@ public class Op1PerdidaCelular implements Task {
         EvidenciaUtils.registrarCaptura("Marca Opcion 1");
         actor.attemptsTo(
                 WaitFor.aTime(56000),
-                Click.on(BTN_COLGAR),
+                Colgar.laLlamada(),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar(String numero) {

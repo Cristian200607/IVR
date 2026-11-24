@@ -68,7 +68,6 @@ public class  IVRDefinitions {
   public void initScenario(Scenario scenario) {
     OnStage.setTheStage(new OnlineCast());
     LOGGER.info("Limpiando carpeta de capturas...");
-    WordAppium.inicializarPlantillaReporte();
 
     EstadoPrueba.reset();  // esto ya guarda horaInicio automáticamente
     // 👉 Guardar en EstadoPrueba el número de celular y la hora

@@ -1,5 +1,8 @@
 package tasks.IVREmpresas.OpcionesNumeral;
 
+
+import utils.EvidenciaUtils;
+import interactions.comunes.MarcarOpcion;
 import MarcarLinea.DialPadHelper;
 import interactions.comunes.ColgarSiSigueActiva;
 import interactions.comunes.WaitFor;
@@ -25,24 +28,25 @@ public class IvrEmpresasNumeralOp1Op1 implements Task {
         actor.attemptsTo(
                 WaitFor.aTime(WaitTimes.INICIO_LLAMADA),
                 Click.on(TECLADO_TELEFONO_EN_GRABACION),
-                Click.on(BOTON_2_EN_GRABACION)
+                MarcarOpcion.conBoton(BOTON_2_EN_GRABACION)
         );
         actor.attemptsTo(
                 WaitFor.aTime(11000),
-                Click.on(BOTON_2_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_2_EN_GRABACION),
                 WaitFor.aTime(8000)
         );
         DialPadHelper.marcarNumeroMaximo(actor, numero);
+        EvidenciaUtils.registrarCapturaSinAlterarTiempos("Se digita el documento " + numero);
         actor.attemptsTo(
-                Click.on(BOTON_NUMERAL_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_NUMERAL_EN_GRABACION),
                 WaitFor.aTime(14000),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(35000),
-                Click.on(BOTON_NUMERAL_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_NUMERAL_EN_GRABACION),
                 WaitFor.aTime(16000),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(59000),
-                Click.on(BOTON_1_EN_GRABACION),
+                MarcarOpcion.conBoton(BOTON_1_EN_GRABACION),
                 WaitFor.aTime(71000),
                 ColgarSiSigueActiva.laLlamada()
         );

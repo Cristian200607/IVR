@@ -84,7 +84,6 @@ public class ClaroPayMasterCardOp2 implements Task {
                 WaitFor.aTime(2000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar (String numero){

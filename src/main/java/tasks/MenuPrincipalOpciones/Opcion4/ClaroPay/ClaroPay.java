@@ -80,7 +80,6 @@ public class ClaroPay implements Task {
                 WaitFor.aTime(28000),
                 WaitForResponse.withText(ATENCION_AL_CLIENTE)
         );
-        EvidenciaUtils.registrarCaptura("Finalizar Llamada");
     }
 
     public static Performable marcar (String numero){
