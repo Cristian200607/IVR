@@ -6,6 +6,7 @@ import cucumber.api.java.Before;
 import java.util.ArrayList;
 import java.util.List;
 import net.thucydides.core.steps.StepEventBus;
+import utils.ContextoST;
 import utils.EstadoPrueba;
 import utils.EvidenciaUtils;
 import utils.WordAppium;
@@ -44,6 +45,7 @@ public class ReportHooks {
     EstadoPrueba.pasoFallido = "";
     EstadoPrueba.error = "";
     EstadoPrueba.capturaDeErrorTomada = false;
+    ContextoST.reiniciar();
   }
 
   /**
@@ -60,6 +62,7 @@ public class ReportHooks {
 
   @After
   public void generarReporteFinal(Scenario scenario) {
+    ContextoST.registrarEscenario(scenario, EstadoPrueba.transcripcion);
     EstadoPrueba.fin = System.currentTimeMillis();
 
     long duracionTotal = (EstadoPrueba.fin - EstadoPrueba.inicio) / 1000;

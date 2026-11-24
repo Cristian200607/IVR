@@ -9,6 +9,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
+import utils.ContextoST;
 import userinterfaces.WaitTimes;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
@@ -25,6 +26,8 @@ public class IrAlMenuPrincipalEmpresas implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+        ContextoST.registrar("documento", numero);
+        ContextoST.registrar("segmento", "E&N");
 
         actor.attemptsTo(
                 WaitFor.aTime(WaitTimes.INICIO_LLAMADA),

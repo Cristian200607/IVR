@@ -11,6 +11,9 @@ public class MyDriver implements DriverSource {
 
     private static AndroidDriver driver;
 
+    private static final String APPIUM_HUB =
+            System.getProperty("appium.hub", "http://127.0.0.1:4723/wd/hub");
+
     public static AndroidDriver getDriver() {
         return driver;
     }
@@ -58,7 +61,7 @@ public class MyDriver implements DriverSource {
             // CREAR DRIVER
             // -------------------------
             driver = new AndroidDriver(
-                    new URL("http://127.0.0.1:4723/wd/hub"),
+                    new URL(APPIUM_HUB),
                     capabilities
             );
 

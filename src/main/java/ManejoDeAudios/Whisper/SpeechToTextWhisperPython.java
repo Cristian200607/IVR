@@ -14,9 +14,12 @@ public class SpeechToTextWhisperPython {
             Paths.get(System.getProperty("user.home"), "Whisper").toString();
 
     // Variables de entorno WHISPER_PYTHON y WHISPER_SCRIPT mandan; si no están, se usa la ruta del sistema operativo.
+    private static final String PYTHON_PARDOC =
+            "C:\\Users\\PARDOC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe";
+
     private static final String PYTHON = variableOValorPorDefecto("WHISPER_PYTHON",
             ES_WINDOWS
-                    ? "C:\\Users\\PARDOC\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+                    ? (new File(PYTHON_PARDOC).isFile() ? PYTHON_PARDOC : "python")
                     : pythonMac());
 
     // El script versionado en el proyecto (whisper/transcribe_whisper.py) es el que se usa en Mac y en Windows;
