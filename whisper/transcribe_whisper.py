@@ -414,6 +414,30 @@ def cut_from_anchor(text, anchor):
 
 
 # ============================================================
+# QUITAR AVISOS TEMPORALES DESPUÉS DEL SALUDO
+# El IVR a veces mete un aviso ("apreciado cliente debido a una situacion...") entre el saludo
+# y el primer menú, y el DTMF lo corta en cualquier palabra. Se conserva el saludo y se
+# descarta todo hasta la primera frase fija del menú.
+# ============================================================
+
+SALUDO = r"bienvenido a nuestra linea de atencion y ventas? de claro empresas"
+INICIO_MENU = r"para adquirir|ingresa whatsapp"
+
+
+def remove_announcements(text):
+
+    if not text:
+        return ""
+
+    return re.sub(
+        rf"({SALUDO})\s+.*?(?=\b(?:{INICIO_MENU})\b)",
+        r"\1 ",
+        text,
+        count=1
+    ).strip()
+
+
+# ============================================================
 # LIMPIEZA DE REPETICIONES
 # ============================================================
 
@@ -484,6 +508,9 @@ def process_transcription(text):
         text,
         "bienvenido a nuestra linea de atencion"
     )
+
+    # 7b. Quitar avisos temporales entre el saludo y el primer menú
+    text = remove_announcements(text)
 
     # 8. Limpieza final
     text = re.sub(
